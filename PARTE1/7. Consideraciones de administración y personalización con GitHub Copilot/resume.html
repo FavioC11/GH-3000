@@ -1,0 +1,407 @@
+<link rel="stylesheet" href="../../_shared/cards.css">
+
+<div class="board">
+
+  <!-- OBJETIVOS -->
+  <div class="section-label">Objetivos del módulo</div>
+  <ul class="obj-list">
+    <li>Conocer los planes de GitHub Copilot y sus funciones de administración y personalización.</li>
+    <li>Entender las protecciones contractuales y cómo deshabilitar el código público coincidente.</li>
+    <li>Administrar exclusiones de contenido en Copilot.</li>
+    <li>Resolver problemas comunes con GitHub Copilot.</li>
+  </ul>
+
+  <!-- HERO -->
+  <div class="hero postit-blue">
+    <div class="face-icon"><i class="ti ti-settings"></i></div>
+    <h1>Administración y personalización</h1>
+    <p>Controla la privacidad, cumplimiento y comportamiento de GitHub Copilot a nivel personal, organizativo y empresarial.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PLANES -->
+  <div class="section-label">Planes de GitHub Copilot — <em>mnemónico: "Gratis Pro Business Enterprise"</em></div>
+  <div class="grid-4">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-yellow">
+          <div class="face-icon"><i class="ti ti-user"></i></div>
+          <div class="face-title">Gratis</div>
+          <p>2000 autocompletados + 50 chats/mes</p>
+          <div class="flip-hint">↩ ver límites</div>
+        </div>
+        <div class="back postit-yellow">
+          <strong>Características</strong>
+          <p>✅ Filtro código público</p>
+          <p>❌ Administración usuarios</p>
+          <p>❌ Datos excluidos del entrenamiento</p>
+          <p>❌ Indemnización IP</p>
+          <p>❌ Exclusiones contenido</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-user-check"></i></div>
+          <div class="face-title">Pro</div>
+          <p>Individual, sin límites de uso</p>
+          <div class="flip-hint">↩ ver límites</div>
+        </div>
+        <div class="back postit-blue">
+          <strong>Características</strong>
+          <p>✅ Filtro código público</p>
+          <p>❌ Administración usuarios</p>
+          <p>❌ Datos excluidos del entrenamiento</p>
+          <p>❌ Indemnización IP</p>
+          <p>❌ Exclusiones contenido</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-green">
+          <div class="face-icon"><i class="ti ti-building"></i></div>
+          <div class="face-title">Business</div>
+          <p>Equipos y organizaciones</p>
+          <div class="flip-hint">↩ ver ventajas</div>
+        </div>
+        <div class="back postit-green">
+          <strong>Añade sobre Pro:</strong>
+          <p>✅ Administración usuarios</p>
+          <p>✅ Datos excluidos entrenamiento</p>
+          <p>✅ Seguridad empresarial</p>
+          <p>✅ Indemnización IP</p>
+          <p>✅ Exclusiones contenido</p>
+          <p>✅ SAML SSO + Métricas</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-purple">
+          <div class="face-icon"><i class="ti ti-crown"></i></div>
+          <div class="face-title">Enterprise</div>
+          <p>Requiere GitHub Enterprise Cloud</p>
+          <div class="flip-hint">↩ ver exclusivos</div>
+        </div>
+        <div class="back postit-purple">
+          <strong>Exclusivo Enterprise:</strong>
+          <p>✅ Chat adaptado al código privado</p>
+          <p>✅ Bases de conocimiento organizativas</p>
+          <p>✅ Todo lo de Business incluido</p>
+          <p><em>Requiere GH Enterprise Cloud</em></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PERSONALIZACIÓN -->
+  <div class="section-label">Características de personalización — <em>todos los planes tienen extensiones (beta)</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-teal">
+          <div class="face-icon"><i class="ti ti-puzzle"></i></div>
+          <div class="face-title">Extensiones ilimitadas</div>
+          <p>Integraciones con Copilot Extensions (beta pública)</p>
+          <div class="flip-hint">↩ disponibilidad</div>
+        </div>
+        <div class="back postit-teal">
+          <p>Disponible en <strong>todos los planes</strong>: Gratis, Pro, Business, Enterprise.</p>
+          <p>Permite integrar herramientas externas al flujo de Copilot.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-teal">
+          <div class="face-icon"><i class="ti ti-code"></i></div>
+          <div class="face-title">Extensión privada</div>
+          <p>Crear extensión para herramientas internas (beta pública)</p>
+          <div class="flip-hint">↩ disponibilidad</div>
+        </div>
+        <div class="back postit-teal">
+          <p>Disponible en <strong>todos los planes</strong>.</p>
+          <p>Permite crear extensiones personalizadas para el ecosistema interno de la organización.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-purple">
+          <div class="face-icon"><i class="ti ti-database"></i></div>
+          <div class="face-title">Bases de conocimiento</div>
+          <p>Adjuntar al chat para contexto organizativo</p>
+          <div class="flip-hint">↩ disponibilidad</div>
+        </div>
+        <div class="back postit-purple">
+          <p>Solo disponible en <strong>Enterprise</strong>.</p>
+          <p>Permite vincular documentación interna al chat de Copilot para respuestas contextualizadas.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PROTECCIONES CONTRACTUALES -->
+  <div class="section-label">Protecciones contractuales — <em>mnemónico: "IDC: Indemnización Datos Centro"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-red">
+          <div class="face-icon"><i class="ti ti-shield-check"></i></div>
+          <div class="face-title">I — Indemnización IP</div>
+          <p>Business y Enterprise</p>
+          <div class="flip-hint">↩ condición</div>
+        </div>
+        <div class="back postit-red">
+          <p>GitHub asume responsabilidad jurídica si se impugna una sugerencia como infracción de IP.</p>
+          <p><strong>Requisito:</strong> el filtro de código público coincidente debe estar <em>bloqueado</em>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-orange">
+          <div class="face-icon"><i class="ti ti-file-text"></i></div>
+          <div class="face-title">D — DPA</div>
+          <p>Acuerdo de protección de datos</p>
+          <div class="flip-hint">↩ detalle</div>
+        </div>
+        <div class="back postit-orange">
+          <p>Describe las medidas adoptadas para proteger los datos y garantizar el cumplimiento de normativas de privacidad.</p>
+          <p>Proporciona transparencia y garantías sobre el tratamiento seguro de los datos.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-building-bank"></i></div>
+          <div class="face-title">C — Centro de confianza</div>
+          <p>Trust Center de GitHub Copilot</p>
+          <div class="flip-hint">↩ detalle</div>
+        </div>
+        <div class="back postit-blue">
+          <p>Información detallada sobre seguridad, privacidad, cumplimiento y propiedad intelectual.</p>
+          <p>Ayuda a las organizaciones a adherirse a los procedimientos recomendados.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FILTRADO CÓDIGO PÚBLICO -->
+  <div class="section-label">Filtrado de código público coincidente — <em>ámbitos de control</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-green">
+          <div class="face-icon"><i class="ti ti-users"></i></div>
+          <div class="face-title">Organización</div>
+          <p>Business / Enterprise — administradores</p>
+          <div class="flip-hint">↩ ruta de configuración</div>
+        </div>
+        <div class="back postit-green">
+          <strong>Ruta:</strong>
+          <p>Perfil → Sus organizaciones → Configuración → Copilot → Características → Privacidad → Sugerencias código público → <em>Bloquear</em></p>
+          <p>Necesario para activar la indemnización IP.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-yellow">
+          <div class="face-icon"><i class="ti ti-user"></i></div>
+          <div class="face-title">Personal (pago propio)</div>
+          <p>Gratis, Pro, Pro+ — licencia personal</p>
+          <div class="flip-hint">↩ ruta de configuración</div>
+        </div>
+        <div class="back postit-yellow">
+          <strong>Ruta:</strong>
+          <p>Perfil → Configuración → Copilot → Características → Privacidad → Alternar <em>Permitir/Bloquear</em></p>
+          <p>El usuario controla completamente esta opción.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-orange">
+          <div class="face-icon"><i class="ti ti-user-cog"></i></div>
+          <div class="face-title">Personal (asignada por org)</div>
+          <p>Licencia provista por la organización</p>
+          <div class="flip-hint">↩ detalle</div>
+        </div>
+        <div class="back postit-orange">
+          <p>El botón de alternancia puede estar <strong>bloqueado</strong> y reflejará la política de la organización.</p>
+          <p>El usuario no puede sobreescribir la configuración organizativa.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- EXCLUSIONES DE CONTENIDO -->
+  <div class="section-label">Exclusiones de contenido — <em>mnemónico: "CIO: Configura, Impacta, Observa límites"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-lime">
+          <div class="face-icon"><i class="ti ti-settings-2"></i></div>
+          <div class="face-title">C — Configuración</div>
+          <p>Repositorios y organizaciones</p>
+          <div class="flip-hint">↩ rutas</div>
+        </div>
+        <div class="back postit-lime">
+          <strong>Repositorio:</strong>
+          <p>Repo → Configuración → Copilot → Repositorios y rutas a excluir</p>
+          <strong>Organización:</strong>
+          <p>Org → Configuración → Copilot → Exclusión de contenido</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-teal">
+          <div class="face-icon"><i class="ti ti-eye-off"></i></div>
+          <div class="face-title">I — Impacto</div>
+          <p>Qué cambia al excluir un archivo</p>
+          <div class="flip-hint">↩ efectos</div>
+        </div>
+        <div class="back postit-teal">
+          <p>❌ No hay autocompletado en archivos excluidos.</p>
+          <p>❌ El contenido excluido no informa sugerencias en otros archivos.</p>
+          <p>❌ No informa respuestas de Chat.</p>
+          <p>⚠️ Puede reducir calidad de sugerencias por menos contexto.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-red">
+          <div class="face-icon"><i class="ti ti-alert-triangle"></i></div>
+          <div class="face-title">O — Observa límites</div>
+          <p>Limitaciones de las exclusiones</p>
+          <div class="flip-hint">↩ detalle — "ISA"</div>
+        </div>
+        <div class="back postit-red">
+          <strong>ISA:</strong>
+          <p><strong>I</strong>DE: @github en chat no respeta exclusiones en VS Code/VS.</p>
+          <p><strong>S</strong>emántica: tipos/símbolos de archivo excluido pueden filtrarse por el IDE.</p>
+          <p><strong>Á</strong>mbito: solo aplica a miembros de la org configurada.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SOLUCIÓN DE PROBLEMAS -->
+  <div class="section-label">Solución de problemas comunes — <em>mnemónico: "FES: Faltan, Exclusiones, Sugerencias"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-yellow">
+          <div class="face-icon"><i class="ti ti-code-off"></i></div>
+          <div class="face-title">F — Faltan sugerencias</div>
+          <p>Copilot no proporciona autocompletado</p>
+          <div class="flip-hint">↩ pasos</div>
+        </div>
+        <div class="back postit-yellow">
+          <p>1. Verifica conexión a Internet.</p>
+          <p>2. Actualiza la extensión de Copilot.</p>
+          <p>3. Verifica compatibilidad del IDE.</p>
+          <p>4. Revisa las exclusiones de contenido activas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-orange">
+          <div class="face-icon"><i class="ti ti-filter-off"></i></div>
+          <div class="face-title">E — Exclusiones no funcionan</div>
+          <p>Las exclusiones no surten efecto</p>
+          <div class="flip-hint">↩ causas</div>
+        </div>
+        <div class="back postit-orange">
+          <p><strong>Demora:</strong> Los cambios tardan hasta 30 min. Recarga la configuración manualmente.</p>
+          <p><strong>Ámbito:</strong> Solo aplica a miembros de la org configurada.</p>
+          <p><strong>IDE:</strong> Verifica ícono de Copilot en barra de estado (línea diagonal = excluido).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-pink">
+          <div class="face-icon"><i class="ti ti-mood-sad"></i></div>
+          <div class="face-title">S — Sugerencias insatisfactorias</div>
+          <p>La calidad de las sugerencias es baja</p>
+          <div class="flip-hint">↩ técnicas</div>
+        </div>
+        <div class="back postit-pink">
+          <p>1. <strong>Contexto claro:</strong> usa comentarios descriptivos y nombres de variables significativos.</p>
+          <p>2. <strong>Ctrl+Enter</strong> en VS Code para desencadenar Copilot.</p>
+          <p>3. <strong>Indicación más larga:</strong> experimenta con distintas longitudes.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- RESUMEN -->
+  <div class="summary-box">
+    <strong>Resumen</strong>
+    <p>
+      <strong>4 planes:</strong> Gratis/Pro (básico, solo filtro público) → Business (admin, IP, exclusiones) → Enterprise (personalización avanzada, bases de conocimiento).<br>
+      <strong>Protecciones IDC:</strong> Indemnización IP (bloquear código público como requisito), DPA y Centro de confianza.<br>
+      <strong>Exclusiones CIO:</strong> Configurar en repo/org, el impacto es triple (no completado, no contexto, no chat), con límites ISA (IDE, Semántica, Ámbito).<br>
+      <strong>Problemas FES:</strong> Faltan sugerencias (internet/extensión/IDE/exclusiones), Exclusiones no aplican (demora 30min, recarga), Sugerencias pobres (contexto, indicación más larga).
+    </p>
+  </div>
+
+  <!-- LEYENDA -->
+  <div class="legend">
+    <span class="postit-yellow">Gratis/Pro</span>
+    <span class="postit-green">Business</span>
+    <span class="postit-purple">Enterprise</span>
+    <span class="postit-teal">Personalización</span>
+    <span class="postit-red">Protecciones/Límites</span>
+    <span class="postit-orange">Filtrado/Problemas</span>
+    <span class="postit-lime">Config exclusiones</span>
+    <span class="postit-pink">Sugerencias</span>
+  </div>
+
+</div>
