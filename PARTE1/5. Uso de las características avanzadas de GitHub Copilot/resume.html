@@ -1,0 +1,193 @@
+<h2 class="sr-only">Infografía del módulo Características avanzadas de GitHub Copilot</h2>
+<link rel="stylesheet" href="../../_shared/cards.css">
+
+<div class="board">
+
+<p class="section-label">Objetivos de aprendizaje</p>
+<ul class="obj-list">
+  <li>Usar ghost text, chat, chat inline y agentes para tareas de codificación con flexibilidad.</li>
+  <li>Aplicar los 6 comandos de barra diagonal para obtener mejores respuestas con menos texto.</li>
+  <li>Aprovechar el contexto selectivo: archivos abiertos, @workspace y @terminal.</li>
+  <li>Completar un flujo real: crear ruta API → escribir prueba → documentar con agente.</li>
+</ul>
+
+<div class="hero">
+  <i class="ti ti-wand" style="font-size:32px;color:#92400e;opacity:.7;flex-shrink:0" aria-hidden="true"></i>
+  <div class="hero-text">
+    <strong>Características avanzadas de GitHub Copilot</strong>
+    Más allá del autocompletado: chat interactivo, comandos de barra diagonal, agentes de contexto y técnicas implícitas para corregir, documentar, generar y probar código en proyectos existentes.
+  </div>
+</div>
+
+<p class="section-label">Conceptos básicos — cómo activa Copilot sus sugerencias</p>
+<div class="grid grid-3">
+
+<div class="flip-wrap postit-yellow" tabindex="0" role="button" aria-label="Ghost text" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Ghost text · texto fantasma</span><i class="ti ti-ghost face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Tab para aceptar · Esc para omitir</span><span class="face-body">Sugerencias automáticas mientras escribes. Aparecen como texto atenuado. No requieren prompt: Copilot usa los archivos abiertos como contexto por defecto.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-yellow" tabindex="0" role="button" aria-label="Activar sugerencias" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">3 formas de indicar</span><i class="ti ti-input-search face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Comentario · Chat · Chat inline</span><span class="face-body">1. Escribe un comentario en el código → Copilot sugiere. 2. Abre el panel de chat y pregunta. 3. Ctrl+I / Cmd+I para chat inline en el punto del cursor.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-yellow" tabindex="0" role="button" aria-label="Contexto default" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Contexto por defecto</span><i class="ti ti-files face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Archivos abiertos en el editor</span><span class="face-body">Por defecto, Copilot usa todos los archivos abiertos como contexto adicional. No necesitas abrir muchos archivos; el chat puede consultar el workspace completo.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">4 modos de interacción · nemotecnia: "Ghosts Chat Inline Agentes"</p>
+<div class="grid grid-4">
+
+<div class="flip-wrap postit-blue" tabindex="0" role="button" aria-label="Ghost text" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">G — Ghost text</span><i class="ti ti-ghost face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Autocompletado pasivo</span><span class="face-body">Sin prompt explícito. Copilot sugiere mientras escribes basándose en el contexto de los archivos abiertos. Tab para aceptar.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-blue" tabindex="0" role="button" aria-label="Chat panel" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">C — Chat panel</span><i class="ti ti-message-circle face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Panel lateral dedicado</span><span class="face-body">Ícono de chat en la barra lateral izquierda de VS Code. Conversación sobre código actual u otras preguntas de software. Historial de contexto en el panel.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-blue" tabindex="0" role="button" aria-label="Chat inline" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">I — Chat inline · Ctrl+I</span><i class="ti ti-keyboard face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Sin cambiar de contexto</span><span class="face-body">Ctrl+I (Win) / Cmd+I (Mac). Interacción en el punto exacto del código. Sugerencias más cercanas al código, sin abrir otro panel.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-blue" tabindex="0" role="button" aria-label="Agentes" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">A — Agentes @</span><i class="ti ti-at face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Contexto especializado</span><span class="face-body">@terminal: ayuda con la salida y errores del terminal. @workspace: contexto de todo el proyecto. Permiten preguntas con un contexto más específico y potente.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">6 comandos de barra diagonal · nemotecnia: "Desarrolladores Exigen Generar Hoy Óptimas Tareas"</p>
+<div class="grid grid-3">
+
+<div class="flip-wrap postit-red" tabindex="0" role="button" aria-label="/doc" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">D — /doc</span><i class="ti ti-file-description face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Agregar comentarios al código</span><span class="face-body">Genera documentación y comentarios para el código especificado o seleccionado. Útil para mantener el código autoexplicativo.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-red" tabindex="0" role="button" aria-label="/explain" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">E — /explain</span><i class="ti ti-question-mark face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Explicar el código seleccionado</span><span class="face-body">Obtiene una explicación detallada del fragmento de código. Ideal para aprender lógica existente o entender código de otros.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-red" tabindex="0" role="button" aria-label="/generate" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">G — /generate</span><i class="ti ti-sparkles face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Generar código desde una pregunta</span><span class="face-body">Genera código como respuesta a una solicitud específica. Equivale a un prompt libre pero con la intención marcada explícitamente.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-red" tabindex="0" role="button" aria-label="/help" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">H — /help</span><i class="ti ti-help face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Ayuda sobre Copilot Chat</span><span class="face-body">Muestra cómo usar el chat de Copilot, los comandos disponibles y cómo formular preguntas de forma más efectiva.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-red" tabindex="0" role="button" aria-label="/optimize" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">O — /optimize</span><i class="ti ti-rocket face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Mejorar tiempo de ejecución</span><span class="face-body">Analiza y optimiza el rendimiento del código seleccionado. Propone algoritmos o estructuras más eficientes.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-red" tabindex="0" role="button" aria-label="/tests" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">T — /tests</span><i class="ti ti-test-pipe face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Crear pruebas unitarias</span><span class="face-body">Genera pruebas unitarias para el código seleccionado. Combínalo con chat inline: selecciona el código → Ctrl+I → /tests → refina con el chat.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Técnicas avanzadas · nemotecnia: "Implícito Selectivo Iterativo"</p>
+<div class="grid grid-3">
+
+<div class="flip-wrap postit-green" tabindex="0" role="button" aria-label="Mensajes implícitos" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">I — Mensajes implícitos</span><i class="ti ti-wand face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">/fix sin escribir todo</span><span class="face-body">Selecciona código con error → Ctrl+I → escribe solo /fix. Copilot detecta automáticamente el problema y propone la corrección sin necesidad de describir el bug.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-green" tabindex="0" role="button" aria-label="Contexto selectivo" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">S — Contexto selectivo</span><i class="ti ti-adjustments face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">@workspace · @terminal</span><span class="face-body">@workspace: genera artefactos del proyecto completo (ej. Dockerfile). @terminal: explica errores de la consola. Copilot adapta las sugerencias al contexto del agente.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-green" tabindex="0" role="button" aria-label="Iteración de prompts" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">I — Iterar el prompt</span><i class="ti ti-refresh face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Replantear o empezar a escribir</span><span class="face-body">Si el resultado no es el esperado: sé más específico en el siguiente mensaje. O empieza a escribir código para que Copilot lo autocomplete con mejor contexto.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Flujo práctico completo — API + Tests + Docs</p>
+<div class="grid grid-3">
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Paso 1: Nueva ruta" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">1 · Nueva ruta API</span><i class="ti ti-api face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">main.py → Ctrl+I → prompt</span><span class="face-body">Abre main.py → Ctrl+I → "Create a new route that exposes the cities of a country". Copilot genera el endpoint. Prueba y refina el prompt hasta obtener el resultado deseado.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Paso 2: Prueba" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">2 · Crear prueba</span><i class="ti ti-test-pipe face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Seleccionar código → /tests</span><span class="face-body">Selecciona la ruta nueva → chat: "/tests help me to create a new test for this route using Spain". Si falla, describe el problema al chat: "This test is not quite right, it is not including cities that don't exist".</span></div>
+</div></div>
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Paso 3: Documentar" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">3 · Documentar con agente</span><i class="ti ti-book face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">README.md → modo agente</span><span class="face-body">Abre README.md → Copilot Chat con modo agente: "I want to document how to run this project so that other developers can get started quickly by reading the README.md file".</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">GitHub Codespaces — entorno preconfigurado en la nube</p>
+<div class="grid grid-2">
+
+<div class="flip-wrap postit-teal" tabindex="0" role="button" aria-label="Qué es Codespaces" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">GitHub Codespaces</span><i class="ti ti-cloud face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">VS Code en la nube</span><span class="face-body">Entorno de desarrollador hospedado que funciona con VS Code. Preinstala dependencias, extensiones y configuraciones. Copilot viene preconfigurado. 60 h gratis/mes (2 núcleos).</span></div>
+</div></div>
+
+<div class="flip-wrap postit-teal" tabindex="0" role="button" aria-label="Limpiar Codespaces" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">⚠ Eliminar instancias</span><i class="ti ti-trash face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Confirmar cambios antes de eliminar</span><span class="face-body">Tras usar Codespaces: git add → git commit → git push → ve a github.com/codespaces → elimina la instancia. Si no confirmas, perderás todo el trabajo.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Resumen del módulo</p>
+<div class="summary-box">
+  <p>Copilot ofrece <strong>4 modos de interacción</strong> (Ghost text · Chat · Inline · Agentes) que se combinan para adaptarse a cualquier tarea en proyectos existentes.</p>
+  <p><strong>6 slash commands</strong>: /doc · /explain · /generate · /help · /optimize · /tests — cada uno con una intención específica que mejora la respuesta sin prompts largos.</p>
+  <p><strong>Técnicas clave:</strong> Mensajes implícitos (/fix sin describir el error) · Contexto selectivo (@terminal, @workspace) · Iteración del prompt cuando el resultado no es exacto.</p>
+  <p>Flujo real completo: crear endpoint API → generar prueba con /tests → documentar README con agente. Cada paso se refina iterando con el chat.</p>
+</div>
+
+<p class="legend">Haz clic en cualquier post-it para girar · Clic de nuevo para voltear · Versión final completa</p>
+</div>
