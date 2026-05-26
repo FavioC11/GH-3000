@@ -1,0 +1,343 @@
+<link rel="stylesheet" href="../../_shared/cards.css">
+
+<div class="board">
+
+  <div class="section-label">Objetivos del módulo</div>
+  <ul class="obj-list">
+    <li>Configurar un repositorio de GitHub en Codespaces con la extensión GitHub Copilot para Python</li>
+    <li>Diseñar indicaciones efectivas para generar sugerencias de código Python precisas</li>
+    <li>Aplicar GitHub Copilot para extender una API web de Python con FastAPI</li>
+  </ul>
+
+  <div class="hero postit-blue">
+    <i class="ti ti-brand-python"></i>
+    <h1>GitHub Copilot con Python</h1>
+    <p>Usa indicaciones en lenguaje natural para que Copilot genere modelos Pydantic, endpoints FastAPI e importaciones — acelerando el ciclo completo de desarrollo de APIs web.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── CÓMO FUNCIONA ─────────────────────────────────── -->
+  <div class="section-label">Cómo funciona con Python</div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-yellow">
+          <i class="ti ti-cpu"></i>
+          <h3>Motor</h3>
+          <p>OpenAI Codex</p>
+        </div>
+        <div class="flip-back postit-yellow">
+          <p>Analiza el archivo activo y los archivos relacionados para derivar contexto. Genera sugerencias de nuevas líneas o funciones completas en Python basándose en comentarios y código existente.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-yellow">
+          <i class="ti ti-bolt"></i>
+          <h3>Ejemplo FastAPI</h3>
+          <p>Del comentario al código</p>
+        </div>
+        <div class="flip-back postit-yellow">
+          <pre style="font-size:.68rem"># Create a web API using
+# FastAPI with a route
+# to products.
+
+from fastapi import FastAPI
+app = FastAPI()
+
+@app.get("/products")
+def read_products():
+    return []</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-yellow">
+          <i class="ti ti-keyboard"></i>
+          <h3>Aceptar sugerencias</h3>
+          <p>Tab · Ctrl+Enter</p>
+        </div>
+        <div class="flip-back postit-yellow">
+          <p>La sugerencia aparece como <strong>texto gris</strong> en el editor. Presiona <kbd>Tab</kbd> para aceptar. Usa <kbd>Ctrl+Enter</kbd> para ver el panel completo con múltiples opciones y elegir la más adecuada.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── INGENIERÍA DE SOLICITUDES ───────────────────── -->
+  <div class="section-label">Ingeniería de solicitudes — prompts Python</div>
+  <div class="grid-2">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-red">
+          <i class="ti ti-alert-triangle"></i>
+          <h3>Indicación vaga</h3>
+          <p>Resultado impredecible</p>
+        </div>
+        <div class="flip-back postit-red">
+          <pre style="font-size:.75rem"># Create an API endpoint</pre>
+          <p>Ambigua: sin framework, sin método HTTP, sin tipo de datos. Copilot puede sugerir un framework desconocido o un endpoint que requiere datos inesperados.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-green">
+          <i class="ti ti-circle-check"></i>
+          <h3>Indicación específica</h3>
+          <p>Resultado enfocado</p>
+        </div>
+        <div class="flip-back postit-green">
+          <pre style="font-size:.66rem"># Create an API endpoint
+# using the FastAPI framework
+# that accepts a JSON payload
+# in a POST request</pre>
+          <p>Clara: especifica framework, método y formato. Copilot genera exactamente lo necesario para el proyecto.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── PROCEDIMIENTOS RECOMENDADOS ─────────────────── -->
+  <div class="section-label">Procedimientos recomendados — mnemónico <strong>SRRC</strong></div>
+  <p style="text-align:center;font-size:.85rem;color:#555;margin-top:-.5rem;margin-bottom:1rem">
+    <em>Simple → Recorre → Reescribe → Contexto</em>
+  </p>
+  <div class="grid-4">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-teal">
+          <i class="ti ti-steps"></i>
+          <h3>S — Simple primero</h3>
+        </div>
+        <div class="flip-back postit-teal">
+          <p>Empieza con un prompt básico y añade complejidad progresivamente. Primero el formulario, luego el event listener, luego el endpoint — paso a paso.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-teal">
+          <i class="ti ti-refresh"></i>
+          <h3>R — Recorre opciones</h3>
+        </div>
+        <div class="flip-back postit-teal">
+          <p>Usa <kbd>Ctrl+Enter</kbd> (Mac: <kbd>Cmd+Enter</kbd>) para abrir el panel de sugerencias y seleccionar la más adecuada entre todas las que genera Copilot.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-teal">
+          <i class="ti ti-edit"></i>
+          <h3>R — Reescribe si falla</h3>
+        </div>
+        <div class="flip-back postit-teal">
+          <p>Si la sugerencia no es la esperada, <strong>reformula la indicación</strong> con más detalles o empieza a escribir el código tú mismo para que Copilot lo complete automáticamente.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-teal">
+          <i class="ti ti-files"></i>
+          <h3>C — Contexto abierto</h3>
+        </div>
+        <div class="flip-back postit-teal">
+          <p>Copilot usa los <strong>archivos abiertos</strong> como contexto adicional. Abre los archivos relacionados o referencialos en Copilot Chat para obtener sugerencias más coherentes con el proyecto.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── CODESPACES + FASTAPI ─────────────────────────── -->
+  <div class="section-label">Codespaces con Python — puerto 8000</div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-pink">
+          <i class="ti ti-cloud-computing"></i>
+          <h3>Codespace Python</h3>
+          <p>uvicorn · puerto 8000</p>
+        </div>
+        <div class="flip-back postit-pink">
+          <p>Codespaces instala todas las extensiones y dependencias en el contenedor. Ejecuta <strong>uvicorn</strong> automáticamente para iniciar la API web. El terminal confirma el servidor en el <strong>puerto 8000</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-pink">
+          <i class="ti ti-api"></i>
+          <h3>FastAPI autodocs</h3>
+          <p>/docs interactivo</p>
+        </div>
+        <div class="flip-back postit-pink">
+          <p>FastAPI genera automáticamente documentación interactiva en <strong>/docs</strong>. Usa el botón <em>POST → Probarlo → Ejecutar</em> en el Explorador simple para probar cada endpoint sin cliente externo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-pink">
+          <i class="ti ti-key"></i>
+          <h3>Token pseudoaleatorio</h3>
+          <p>Caso de uso base</p>
+        </div>
+        <div class="flip-back postit-pink">
+          <p>La API de plantilla genera un <strong>token pseudoaleatorio</strong> — habitual en rutinas de identificación. El ejercicio la extiende con un nuevo endpoint que acepta texto y retorna un checksum.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── EJERCICIO: API PYTHON ────────────────────────── -->
+  <div class="section-label">Ejercicio: Extender la API Python — mnemónico <strong>MEI</strong></div>
+  <p style="text-align:center;font-size:.85rem;color:#555;margin-top:-.5rem;margin-bottom:1rem">
+    <em>Modelo Pydantic · Endpoint POST · Importaciones</em>
+  </p>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-purple">
+          <i class="ti ti-box-model"></i>
+          <h3>M — Modelo Pydantic</h3>
+          <p>Paso 1 · <code>main.py</code></p>
+        </div>
+        <div class="flip-back postit-purple">
+          <p>Agrega un comentario en <code>main.py</code> para que Copilot genere el modelo automáticamente:</p>
+          <pre style="font-size:.72rem">class Text(BaseModel):
+    text: str</pre>
+          <p>Pydantic valida el cuerpo JSON de la solicitud POST.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-purple">
+          <i class="ti ti-route"></i>
+          <h3>E — Endpoint POST</h3>
+          <p>Paso 2 · Checksum de texto</p>
+        </div>
+        <div class="flip-back postit-purple">
+          <p>Indicación precisa para Copilot:</p>
+          <pre style="font-size:.65rem"># Create a FastAPI endpoint
+# that accepts a POST request
+# with a JSON body containing
+# a single field called "text"
+# and returns a checksum
+# of the text</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-purple">
+          <i class="ti ti-package-import"></i>
+          <h3>I — Importaciones</h3>
+          <p>Paso 3 · Copilot Chat</p>
+        </div>
+        <div class="flip-back postit-purple">
+          <p>El código generado puede fallar si faltan <code>base64</code> y <code>os</code>. Usa <strong>Copilot Chat</strong> para pedir las importaciones faltantes, o agrégalas manualmente:</p>
+          <pre style="font-size:.75rem">import base64
+import os</pre>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── FORMAS DE SOLICITAR ──────────────────────────── -->
+  <div class="section-label">Formas de indicar a Copilot</div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-orange">
+          <i class="ti ti-code"></i>
+          <h3>Comentario en .py</h3>
+          <p>Indicación directa en código</p>
+        </div>
+        <div class="flip-back postit-orange">
+          <p>Escribe un comentario <code>#</code> en el archivo <code>.py</code> y Copilot genera el bloque siguiente. Es la forma más natural para Python — el comentario queda como documentación del intento.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-orange">
+          <i class="ti ti-markdown"></i>
+          <h3>Texto en Markdown</h3>
+          <p>Espera unos segundos</p>
+        </div>
+        <div class="flip-back postit-orange">
+          <p>En un archivo <code>.md</code>, escribe la descripción y espera. Copilot responde con sugerencias de código o documentación dentro del mismo archivo markdown.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-orange">
+          <i class="ti ti-messages"></i>
+          <h3>Copilot Chat</h3>
+          <p>Preguntas + archivos de referencia</p>
+        </div>
+        <div class="flip-back postit-orange">
+          <p>Interfaz conversacional para preguntar, refinar y corregir código. Puedes <strong>referenciar otros archivos</strong> del proyecto para que Copilot tenga contexto completo al generar la respuesta.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="summary-box">
+    <strong>Resumen</strong> — GitHub Copilot con Python sigue el mismo modelo que con JavaScript: indicaciones en lenguaje natural → sugerencias en gris → <kbd>Tab</kbd> para aceptar. La clave está en la <strong>calidad del prompt</strong> (patrón SRRC). En el ejercicio extendiste una API web FastAPI en tres pasos <strong>MEI</strong>: generaste un modelo Pydantic con un comentario, creaste un endpoint POST de checksum con una indicación específica, y usaste Copilot Chat para detectar y agregar las importaciones faltantes (<code>base64</code>, <code>os</code>). Verifica el resultado en <strong>/docs</strong> con la UI interactiva de FastAPI.
+  </div>
+
+  <div class="legend">
+    <span class="postit-yellow" style="padding:.2rem .6rem;border-radius:4px">Motor Codex</span>
+    <span class="postit-red" style="padding:.2rem .6rem;border-radius:4px">Prompt vago</span>
+    <span class="postit-green" style="padding:.2rem .6rem;border-radius:4px">Prompt específico</span>
+    <span class="postit-teal" style="padding:.2rem .6rem;border-radius:4px">Buenas prácticas SRRC</span>
+    <span class="postit-pink" style="padding:.2rem .6rem;border-radius:4px">Codespaces · uvicorn · 8000</span>
+    <span class="postit-purple" style="padding:.2rem .6rem;border-radius:4px">Ejercicio MEI</span>
+    <span class="postit-orange" style="padding:.2rem .6rem;border-radius:4px">Formas de indicar</span>
+  </div>
+
+</div>
