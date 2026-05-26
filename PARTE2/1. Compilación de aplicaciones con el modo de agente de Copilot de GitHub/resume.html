@@ -1,0 +1,407 @@
+<link rel="stylesheet" href="../../_shared/cards.css">
+
+<div class="board">
+
+  <!-- OBJETIVOS -->
+  <div class="section-label">Objetivos del módulo</div>
+  <ul class="obj-list">
+    <li>Describir cómo desarrollar con VS Code en GitHub Codespaces.</li>
+    <li>Solicitar el modo agente de GitHub Copilot para crear una aplicación autónomamente.</li>
+    <li>Usar archivos de documentación para instruir al modo agente.</li>
+    <li>Comprender cómo el modo agente itera sobre corrección de errores, refactorización y nuevas características.</li>
+  </ul>
+
+  <!-- HERO -->
+  <div class="hero postit-purple">
+    <div class="face-icon"><i class="ti ti-robot"></i></div>
+    <h1>Modo Agente de GitHub Copilot</h1>
+    <p>Más que autocompletado: un programador colaborativo autónomo que analiza, ejecuta, itera y corrige en ciclos continuos.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- QUÉ ES EL MODO AGENTE -->
+  <div class="section-label">¿Qué es el modo agente? — <em>mnemónico: "DSES: Determina, Sugiere, Ejecuta, Supervisa"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-yellow">
+          <div class="face-icon"><i class="ti ti-arrows-diff"></i></div>
+          <div class="face-title">Agente vs. tradicional</div>
+          <p>No es solo autocompletado</p>
+          <div class="flip-hint">↩ diferencias clave</div>
+        </div>
+        <div class="back postit-yellow">
+          <p><strong>Tradicional:</strong> sugerencias estáticas de autocompletar en el contexto inmediato.</p>
+          <p><strong>Modo agente:</strong> comprende todo el entorno, procesa tareas dinámicamente e itera sobre sus propios resultados.</p>
+          <p>Evalúa la estructura completa del proyecto antes de modificar.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-yellow">
+          <div class="face-icon"><i class="ti ti-refresh"></i></div>
+          <div class="face-title">Ciclo DSES</div>
+          <p>El ciclo iterativo del modo agente</p>
+          <div class="flip-hint">↩ pasos</div>
+        </div>
+        <div class="back postit-yellow">
+          <p><strong>D</strong>etermina los archivos y dependencias relevantes.</p>
+          <p><strong>S</strong>ugiere y ejecuta cambios alineados con la estructura del proyecto.</p>
+          <p><strong>E</strong>jecuta comandos de terminal: compilar, instalar, correr pruebas.</p>
+          <p><strong>S</strong>upervisa y refina, iterando varias veces para mejorar precisión.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-yellow">
+          <div class="face-icon"><i class="ti ti-award"></i></div>
+          <div class="face-title">Ventajas clave</div>
+          <p>Por qué usar el modo agente</p>
+          <div class="flip-hint">↩ beneficios</div>
+        </div>
+        <div class="back postit-yellow">
+          <p>Reduce la carga cognitiva: ediciones repetitivas, dependencias y pruebas automatizadas.</p>
+          <p>Detecta errores y refina antes de revisión manual.</p>
+          <p>Actúa como colaborador proactivo que se adapta al flujo del desarrollador.</p>
+          <p>El desarrollador mantiene control total sobre cada cambio propuesto.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 4 MODOS DE INTERACCIÓN -->
+  <div class="section-label">4 modos de interacción con Copilot — <em>mnemónico: "ICEA: Inline, Chat, Ediciones, Agente"</em></div>
+  <div class="grid-4">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-cursor-text"></i></div>
+          <div class="face-title">I — Inline</div>
+          <p>Sugerencias insertadas en tiempo real</p>
+          <div class="flip-hint">↩ detalle</div>
+        </div>
+        <div class="back postit-blue">
+          <p>Funciona como autocompletado avanzado.</p>
+          <p>Finalizaciones de código a medida que escribes.</p>
+          <p>Contexto limitado al archivo actual.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-message-chatbot"></i></div>
+          <div class="face-title">C — Chat</div>
+          <p>Panel de preguntas y respuestas</p>
+          <div class="flip-hint">↩ detalle</div>
+        </div>
+        <div class="back postit-blue">
+          <p>Panel dedicado para preguntas de codificación.</p>
+          <p>Adapta respuestas al contexto de archivos y dependencias del proyecto.</p>
+          <p>Más contextual que un chat IA genérico.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-files"></i></div>
+          <div class="face-title">E — Ediciones</div>
+          <p>Cambios en varios archivos</p>
+          <div class="flip-hint">↩ detalle</div>
+        </div>
+        <div class="back postit-blue">
+          <p>Aplica cambios en múltiples archivos para alcanzar objetivos específicos.</p>
+          <p>Facilita actualizaciones a gran escala de forma eficiente.</p>
+          <p>Más estructurado que el Chat pero menos autónomo que el Agente.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-purple">
+          <div class="face-icon"><i class="ti ti-robot-face"></i></div>
+          <div class="face-title">A — Agente</div>
+          <p>Orquestación dinámica autónoma</p>
+          <div class="flip-hint">↩ detalle</div>
+        </div>
+        <div class="back postit-purple">
+          <p>Itera varias veces refinando sus propias salidas.</p>
+          <p>Controla flujos de trabajo complejos de forma autónoma.</p>
+          <p>Nivel máximo de automatización con el desarrollador en control.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- OPERACIÓN AUTÓNOMA -->
+  <div class="section-label">Operación autónoma — <em>ejemplos de tareas complejas</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-green">
+          <div class="face-icon"><i class="ti ti-api"></i></div>
+          <div class="face-title">Nuevo endpoint REST</div>
+          <p>Tarea autónoma de 5 acciones</p>
+          <div class="flip-hint">↩ acciones</div>
+        </div>
+        <div class="back postit-green">
+          <p>1. Crea rutas de API (<code>routes/api.js</code>)</p>
+          <p>2. Actualiza la aplicación principal (<code>app.js</code>)</p>
+          <p>3. Instala dependencias (<code>npm install express</code>)</p>
+          <p>4. Genera casos de prueba (<code>tests/api.test.js</code>)</p>
+          <p>Con transparencia y control en cada cambio propuesto.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-green">
+          <div class="face-icon"><i class="ti ti-database"></i></div>
+          <div class="face-title">Integración de base de datos</div>
+          <p>Tarea multi-paso compleja</p>
+          <div class="flip-hint">↩ pasos</div>
+        </div>
+        <div class="back postit-green">
+          <p>1. Actualiza dependencias (<code>npm install mongoose</code>)</p>
+          <p>2. Genera lógica de conexión (<code>database.js</code>)</p>
+          <p>3. Modifica configuración del entorno (<code>.env</code>)</p>
+          <p>4. Crea modelos de datos (<code>models/userModel.js</code>)</p>
+          <p>5. Escribe pruebas automatizadas (<code>tests/userModel.test.js</code>)</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-teal">
+          <div class="face-icon"><i class="ti ti-server-cog"></i></div>
+          <div class="face-title">Fundaciones de microservicio</div>
+          <p>Setup automatizado completo</p>
+          <div class="flip-hint">↩ qué genera</div>
+        </div>
+        <div class="back postit-teal">
+          <p>Estructura: <code>src/, tests/, config/</code></p>
+          <p>Config: <code>package.json, Dockerfile, .gitignore</code></p>
+          <p>Tests: <code>jest.config.js</code> + ejemplos</p>
+          <p>CI/CD: <code>.github/workflows/test.yml</code></p>
+          <p>Env: <code>.env.example, config/default.js</code></p>
+          <p>Monitoring: <code>utils/logger.js</code> + health checks</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FLUJO BRA -->
+  <div class="section-label">Flujo borrador → revisión → aceptar — <em>mnemónico: "BRA: Borra, Revisa, Acepta"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-orange">
+          <div class="face-icon"><i class="ti ti-pencil"></i></div>
+          <div class="face-title">B — Borrador</div>
+          <p>El agente genera la implementación inicial</p>
+          <div class="flip-hint">↩ ejemplo: autenticación</div>
+        </div>
+        <div class="back postit-orange">
+          <p>Middleware de autenticación (<code>middleware/auth.js</code>)</p>
+          <p>Rutas de login (<code>routes/auth.js</code>)</p>
+          <p>Utilidades de hash (<code>utils/password.js</code>)</p>
+          <p>Formulario frontend (<code>views/login.html</code>)</p>
+          <p><em>~1 PRU por entrega; secuencia de 2 pasos: 2–3 PRUs.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-orange">
+          <div class="face-icon"><i class="ti ti-eye-check"></i></div>
+          <div class="face-title">R — Revisión</div>
+          <p>El agente evalúa su propio borrador</p>
+          <div class="flip-hint">↩ qué detecta</div>
+        </div>
+        <div class="back postit-orange">
+          <p>Identifica vulnerabilidades de seguridad en el control de contraseñas.</p>
+          <p>Sugiere mejoras en patrones de manejo de errores.</p>
+          <p>Recomienda validación adicional para casos perimetrales.</p>
+          <p>Propone pruebas unitarias para funciones críticas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-orange">
+          <div class="face-icon"><i class="ti ti-check"></i></div>
+          <div class="face-title">A — Aceptar</div>
+          <p>El desarrollador revisa la implementación final</p>
+          <div class="flip-hint">↩ resultado</div>
+        </div>
+        <div class="back postit-orange">
+          <p>Característica completa con seguridad integrada desde el principio.</p>
+          <p>Control y validación de errores completos.</p>
+          <p>Código listo para merge siguiendo convenciones del proyecto.</p>
+          <p>Documentación y pruebas incluidas.</p>
+          <p><em>Elimina los ciclos tradicionales de ida y vuelta en revisiones.</em></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- RECUPERACIÓN + CONTROL -->
+  <div class="section-label">Recuperación automática y control del desarrollador</div>
+  <div class="grid-2">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-lime">
+          <div class="face-icon"><i class="ti ti-refresh-alert"></i></div>
+          <div class="face-title">Recuperación automática</div>
+          <p>Detecta → corrige → revalida</p>
+          <div class="flip-hint">↩ ejemplo</div>
+        </div>
+        <div class="back postit-lime">
+          <p><strong>Problema:</strong> pruebas unitarias fallan por error de sintaxis.</p>
+          <p>1. Detecta la causa del error automáticamente.</p>
+          <p>2. Aplica corrección.</p>
+          <p>3. Vuelve a ejecutar pruebas hasta que pasen.</p>
+          <p><em>Minimiza el esfuerzo manual de depuración.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-purple">
+          <div class="face-icon"><i class="ti ti-user-check"></i></div>
+          <div class="face-title">Control del desarrollador</div>
+          <p>Autonomía ≠ pérdida de control</p>
+          <div class="flip-hint">↩ mecanismos</div>
+        </div>
+        <div class="back postit-purple">
+          <p>Cada acción propuesta puede revisarse antes de aplicarse.</p>
+          <p>Revisar cambios resumidos en una solicitud de cambios.</p>
+          <p>Solicitar modificaciones o revisiones específicas.</p>
+          <p>Deshacer o ajustar cambios en cualquier momento.</p>
+          <p><em>Equilibrio entre eficacia de IA y juicio humano.</em></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- RAZONAMIENTO PREMIUM + LIMITACIONES -->
+  <div class="section-label">Razonamiento avanzado y limitaciones — <em>mnemónico: "DNC: Dominio, Negocio, Contexto"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-brain"></i></div>
+          <div class="face-title">Razonamiento premium</div>
+          <p>~4+ PRUs por solicitud</p>
+          <div class="flip-hint">↩ capacidades</div>
+        </div>
+        <div class="back postit-blue">
+          <p>Análisis de decisiones arquitectónicas: evalúa equilibrios entre enfoques.</p>
+          <p>Evaluación de impacto entre sistemas: cómo los cambios afectan múltiples componentes.</p>
+          <p>Optimización del rendimiento: detecta cuellos de botella.</p>
+          <p>Análisis de vulnerabilidades de seguridad.</p>
+          <p><em>Duplica el consumo vs. modelo estándar (~2 PRUs).</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-red">
+          <div class="face-icon"><i class="ti ti-alert-triangle"></i></div>
+          <div class="face-title">Limitaciones DNC</div>
+          <p>Cuándo el agente tiene dificultades</p>
+          <div class="flip-hint">↩ detalle</div>
+        </div>
+        <div class="back postit-red">
+          <p><strong>D — Dominio:</strong> lógica especializada de dominio técnico complejo.</p>
+          <p><strong>N — Negocio:</strong> reglas de negocio matizadas o mal documentadas.</p>
+          <p><strong>C — Contexto:</strong> cuando falta contexto crítico del proyecto.</p>
+          <p><em>Resultado: soluciones menos precisas, mayor necesidad de revisión manual.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-teal">
+          <div class="face-icon"><i class="ti ti-school"></i></div>
+          <div class="face-title">Ejercicio: OctoFit</div>
+          <p>App fitness social para escuela</p>
+          <div class="flip-hint">↩ características</div>
+        </div>
+        <div class="back postit-teal">
+          <p>Perfiles de usuario (estudiantes y profesores).</p>
+          <p>Seguimiento de actividades y progreso.</p>
+          <p>Creación y administración de equipos.</p>
+          <p>Tablas de clasificación por rendimiento.</p>
+          <p>Sugerencias de entrenamiento personalizadas.</p>
+          <p><em>Desarrollado con el modo agente en GitHub Codespaces.</em></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- RESUMEN -->
+  <div class="summary-box">
+    <strong>Resumen</strong>
+    <p>
+      <strong>Ciclo DSES:</strong> Determina archivos → Sugiere/ejecuta cambios → Ejecuta comandos de terminal → Supervisa y refina iterativamente.<br>
+      <strong>Modos ICEA:</strong> Inline (autocompletado) → Chat (Q&amp;A contextual) → Ediciones (multi-archivo) → Agente (autónomo con DSES).<br>
+      <strong>Flujo BRA:</strong> Borrador (genera) → Revisión (el agente se autoevalúa: seguridad, errores, casos límite) → Aceptar (listo para merge).<br>
+      <strong>Limitaciones DNC:</strong> Dominio especializado, reglas de Negocio matizadas, falta de Contexto → soluciones incompletas, más revisión manual.<br>
+      <strong>PRUs:</strong> tarea simple ~1–2, borrador+revisión ~2–3, razonamiento premium ~4+.
+    </p>
+  </div>
+
+  <!-- LEYENDA -->
+  <div class="legend">
+    <span class="postit-yellow">Conceptos base</span>
+    <span class="postit-blue">Modos ICEA / Razonamiento</span>
+    <span class="postit-green">Ejemplos autónomos</span>
+    <span class="postit-teal">Fundaciones / Ejercicio</span>
+    <span class="postit-orange">Flujo BRA</span>
+    <span class="postit-purple">Agente / Control</span>
+    <span class="postit-red">Limitaciones</span>
+    <span class="postit-lime">Recuperación automática</span>
+  </div>
+
+</div>
