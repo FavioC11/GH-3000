@@ -1,0 +1,267 @@
+<h2 class="sr-only">Infografía del módulo Ingeniería de Solicitudes con GitHub Copilot</h2>
+<link rel="stylesheet" href="../../_shared/cards.css">
+
+<div class="board">
+
+<p class="section-label">Objetivos de aprendizaje</p>
+<ul class="obj-list">
+  <li>Comprender los principios de ingeniería de instrucciones y cómo Copilot aprende de tus prompts.</li>
+  <li>Aplicar estrategias avanzadas: role prompting y gestión del historial de chat.</li>
+  <li>Conocer el flujo interno de cómo Copilot procesa solicitudes y genera código.</li>
+  <li>Entender el manejo de datos en sugerencias de código vs. chat (retención, filtrado).</li>
+  <li>Comprender qué son los LLM, el fine-tuning y la optimización LoRA.</li>
+  <li>Crear prompts eficaces que minimicen ciclos de revisión.</li>
+</ul>
+
+<div class="hero">
+  <i class="ti ti-prompt" style="font-size:32px;color:#92400e;opacity:.7;flex-shrink:0" aria-hidden="true"></i>
+  <div class="hero-text">
+    <strong>¿Qué es la ingeniería de solicitudes?</strong>
+    El proceso de crear instrucciones claras para guiar a Copilot a generar código sintáctica, funcional y contextualmente correcto. La calidad del output depende directamente de la calidad del prompt.
+  </div>
+</div>
+
+<p class="section-label">Las 4 S · los principios base de todo buen prompt</p>
+<div class="grid grid-4">
+
+<div class="flip-wrap postit-yellow" tabindex="0" role="button" aria-label="Single" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">S — Single · Única</span><i class="ti ti-circle-dot face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Una tarea, un prompt</span><span class="face-body">Centra cada solicitud en una única tarea bien definida. La claridad es fundamental para obtener respuestas precisas y útiles de Copilot.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-yellow" tabindex="0" role="button" aria-label="Specific" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">S — Specific · Específica</span><i class="ti ti-target face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Instrucciones explícitas</span><span class="face-body">Las instrucciones explícitas y detalladas producen sugerencias más aplicables y precisas. Ej: "función Python que filtra números pares de una lista".</span></div>
+</div></div>
+
+<div class="flip-wrap postit-yellow" tabindex="0" role="button" aria-label="Short" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">S — Short · Corta</span><i class="ti ti-minimize face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Concisa sin perder detalle</span><span class="face-body">Mantén las solicitudes al grano. El equilibrio entre especificidad y brevedad garantiza claridad sin sobrecargar a Copilot ni complicar la interacción.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-yellow" tabindex="0" role="button" aria-label="Surround" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">S — Surround · Enmarcada</span><i class="ti ti-layout-sidebar face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Contexto enriquecido</span><span class="face-body">Usa nombres de archivo descriptivos y mantén abiertos los archivos relacionados. Copilot también usa las pestañas abiertas adyacentes como contexto adicional.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Procedimientos recomendados · nemotecnia: "Copilot Comprende Ejemplos Iterativamente"</p>
+<div class="grid grid-4">
+
+<div class="flip-wrap postit-green" tabindex="0" role="button" aria-label="Claridad" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">C — Claridad suficiente</span><i class="ti ti-eye face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Single + Specific aplicados</span><span class="face-body">Apunta siempre a la claridad. Una solicitud debe ser específica y centrada en una sola cosa. Si es ambigua, Copilot generará sugerencias genéricas.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-green" tabindex="0" role="button" aria-label="Contexto" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">C — Contexto con detalles</span><i class="ti ti-file-text face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Surround aplicado</span><span class="face-body">Enriquece con contexto. Agrega comentarios en la parte superior del código, usa pasos numerados para detallar sin hacer el prompt largo.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-green" tabindex="0" role="button" aria-label="Ejemplos" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">E — Ejemplos para aprender</span><i class="ti ti-math-function face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Patrones concretos</span><span class="face-body">Los ejemplos bien diseñados ayudan a Copilot a comprender patrones, generando sugerencias más precisas. Ideal para código reutilizable y plantillas de prueba.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-green" tabindex="0" role="button" aria-label="Iteración" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">I — Iterar, no reescribir</span><i class="ti ti-refresh face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Diálogo, no monólogo</span><span class="face-body">Si el resultado no es el esperado: borra el código sugerido, enriquece el comentario con más detalles y ejemplos, y vuelve a preguntar. Cada iteración mejora.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Enfoques de aprendizaje · nemotecnia: "Sin Un Par de ejemplos"</p>
+<div class="grid grid-3">
+
+<div class="flip-wrap postit-blue" tabindex="0" role="button" aria-label="Zero-shot" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Sin — Zero-shot</span><i class="ti ti-player-play face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Sin ejemplos específicos</span><span class="face-body">Copilot genera código basándose únicamente en su entrenamiento fundamental. Ideal para patrones comunes. Ej: un comentario que describe una función de conversión de temperatura.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-blue" tabindex="0" role="button" aria-label="One-shot" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Un — One-shot</span><i class="ti ti-number-1 face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Un ejemplo de referencia</span><span class="face-body">Se proporciona un único ejemplo. El modelo genera respuestas que siguen los patrones y convenciones del ejemplo. Crea implementaciones coherentes en el codebase.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-blue" tabindex="0" role="button" aria-label="Few-shot" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Par — Few-shot</span><i class="ti ti-stack-2 face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Varios ejemplos · equilibrio óptimo</span><span class="face-body">Equilibrio entre zero-shot y fine-tuning. Genera implementaciones sofisticadas que manejan múltiples escenarios y casos extremos, reduciendo pruebas manuales.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Gestión del historial de chat · conversaciones largas = más costo</p>
+<div class="grid grid-3">
+
+<div class="flip-wrap postit-teal" tabindex="0" role="button" aria-label="Resumir contexto" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Resumir el contexto</span><i class="ti ti-text-wrap face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Condensar antes de continuar</span><span class="face-body">"Basándonos en nuestra discusión anterior sobre autenticación, ahora agrega limitación de velocidad…" Usa referencias concisas en lugar de repetir implementaciones completas.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-teal" tabindex="0" role="button" aria-label="Resetear conversación" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Resetear para nuevas tareas</span><i class="ti ti-player-skip-forward face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Contexto fresco = mejor rendimiento</span><span class="face-body">Para nuevas características, empieza con detalles esenciales en lugar de continuar toda la conversación anterior. El historial completo puede confundir al modelo.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-teal" tabindex="0" role="button" aria-label="Costo PRU" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">⚠ Costo de tokens</span><i class="ti ti-coins face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">2–3 PRU vs 1 PRU por turno</span><span class="face-body">Historial largo → 2–3 PRU por turno. Resumir o resetear → ~1 PRU. La ventana de contexto del chat es de 4.000 tokens. Desglosar en consultas más pequeñas mejora las respuestas.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Role prompting · nemotecnia: "Siempre Respeta Protocolos"</p>
+<div class="grid grid-3">
+
+<div class="flip-wrap postit-purple" tabindex="0" role="button" aria-label="Rol seguridad" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">S — Experto en seguridad</span><i class="ti ti-shield-lock face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">"Actúa como experto en ciberseguridad"</span><span class="face-body">Genera código con: saneamiento de entrada · protección contra ataques comunes · validación OWASP · procedimientos recomendados de seguridad.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-purple" tabindex="0" role="button" aria-label="Rol rendimiento" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">R — Experto en rendimiento</span><i class="ti ti-rocket face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">"Actúa como experto en optimización"</span><span class="face-body">Genera: algoritmos optimizados · estructuras de datos eficientes · implementaciones conscientes de memoria · consideraciones de escalabilidad.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-purple" tabindex="0" role="button" aria-label="Rol pruebas" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">P — Especialista en pruebas</span><i class="ti ti-test-pipe face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">"Actúa como especialista en testing"</span><span class="face-body">Genera: cobertura exhaustiva · gestión de casos extremos · implementaciones ficticias (mocks) · pruebas de condición de error.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Flujo de proceso — 7 pasos de solicitud a sugerencia</p>
+<div class="grid grid-4">
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Paso 1" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">1 · Transmisión + contexto</span><i class="ti ti-lock face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">HTTPS + FIM</span><span class="face-body">Envío seguro vía HTTPS. Recopila: código antes/después del cursor, nombre del archivo, pestañas abiertas, estructura del proyecto. Técnica FIM para contexto bidireccional.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Paso 2" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">2 · Filtro de proxy</span><i class="ti ti-server face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Servidor Azure de GitHub</span><span class="face-body">El proxy filtra el tráfico y bloquea intentos de manipular el sistema para revelar detalles internos del modelo. Primera línea de defensa.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Paso 3" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">3 · Filtrado de toxicidad</span><i class="ti ti-shield-x face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Contenido + datos personales</span><span class="face-body">Elimina: discursos de odio, lenguaje ofensivo, contenido inapropiado. Filtra activamente datos personales (nombres, direcciones, IDs) para proteger la privacidad.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Paso 4" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">4 · Generación con LLM</span><i class="ti ti-brain face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Modelo de lenguaje grande</span><span class="face-body">La solicitud filtrada y analizada se pasa al LLM, que genera sugerencias basadas en la comprensión del contexto. Garantiza relevancia y alineación con el proyecto.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Paso 5" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">5 · Validación de respuesta</span><i class="ti ti-checks face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">XSS · SQL · código público</span><span class="face-body">Toxicidad post-generación. Chequeo de calidad: XSS, SQL injection. Filtro opcional: si la respuesta coincide con código público en >~150 caracteres, se descarta.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Paso 6" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">6 · Entrega + feedback</span><i class="ti ti-send face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Bucle de retroalimentación</span><span class="face-body">Solo pasan los filtros → se entrega. Copilot aprende de: sugerencias aceptadas (amplía conocimiento) · rechazos y modificaciones (mejora el modelo).</span></div>
+</div></div>
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Paso 7" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">7 · Repetición continua</span><i class="ti ti-repeat face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">El modelo aprende contigo</span><span class="face-body">El proceso se repite con cada prompt. Copilot acumula datos de contexto e interacciones para mejorar progresivamente su comprensión de tu estilo y necesidades.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Control de datos — qué conserva Copilot y qué descarta</p>
+<div class="grid grid-3">
+
+<div class="flip-wrap postit-lime" tabindex="0" role="button" aria-label="Sugerencias de código" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Sugerencias de código</span><i class="ti ti-trash face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">No se conservan · se descartan</span><span class="face-body">Copilot no conserva ninguna solicitud de código para entrenar modelos fundamentales. Las descarta una vez devuelta la sugerencia.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-lime" tabindex="0" role="button" aria-label="Chat Copilot" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Chat de Copilot · 28 días</span><i class="ti ti-calendar face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Retención temporal</span><span class="face-body">GitHub conserva solicitudes, sugerencias y contexto auxiliar del chat durante 28 días. Aplica también a CLI, móvil y chat en GitHub.com.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-lime" tabindex="0" role="button" aria-label="Opt-out individual" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Opt-out individual</span><i class="ti ti-toggle-left face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Control del usuario</span><span class="face-body">Los suscriptores individuales pueden optar por no compartir sus solicitudes con GitHub para el refinamiento del modelo fundamental. Es una opción de privacidad disponible.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">LLM y optimización LoRA</p>
+<div class="grid grid-4">
+
+<div class="flip-wrap postit-pink" tabindex="0" role="button" aria-label="Qué son LLM" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">¿Qué son los LLM?</span><i class="ti ti-brain face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Modelos de lenguaje grande</span><span class="face-body">Redes neuronales con millones/billones de parámetros entrenados en grandes volúmenes de texto. Comprenden contexto, son versátiles y aplicables en múltiples dominios.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-pink" tabindex="0" role="button" aria-label="LLM en Copilot" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">LLM en Copilot</span><i class="ti ti-api face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Contexto = todos los archivos abiertos</span><span class="face-body">Copilot considera no solo el archivo actual sino también todos los archivos y pestañas abiertos en el IDE para generar finalizaciones precisas y relevantes.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-pink" tabindex="0" role="button" aria-label="Fine-tuning" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Fine-tuning</span><i class="ti ti-adjustments face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Adaptar LLM a tareas específicas</span><span class="face-body">Entrenar el modelo en un dataset pequeño específico (destino) aprovechando los parámetros de un modelo grande preentrenado (origen). Mejora el rendimiento en dominio.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-pink" tabindex="0" role="button" aria-label="LoRA" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">LoRA · Low-Rank Adaptation</span><i class="ti ti-components face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Trabajar más listo, no más difícil</span><span class="face-body">Agrega capas entrenables pequeñas a cada capa del modelo sin cambiar el original. Ahorra tiempo y recursos vs. fine-tuning completo. Supera a adaptadores y ajuste de prefijos.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Resumen del módulo</p>
+<div class="summary-box">
+  <p>La ingeniería de solicitudes es el arte de guiar a Copilot con precisión. La calidad del output depende directamente de la calidad del prompt: aplica las <strong>4 S</strong> (Single · Specific · Short · Surround) en cada interacción.</p>
+  <p><strong>Estrategias clave:</strong> Zero/One/Few-shot para calibrar ejemplos · Role prompting para código especializado · Gestión del historial para optimizar tokens.</p>
+  <p><strong>Internamente:</strong> cada prompt pasa por 7 pasos (transmisión segura → proxy → toxicidad → LLM → validación → entrega → repetición). El chat conserva datos 28 días; las sugerencias de código se descartan.</p>
+  <p>LoRA permite adaptar los LLM a dominios específicos sin reentrenar todo el modelo, haciendo a Copilot más preciso para tu contexto de codificación.</p>
+</div>
+
+<p class="legend">Haz clic en cualquier post-it para girar · Clic de nuevo para voltear · Versión final completa</p>
+</div>
