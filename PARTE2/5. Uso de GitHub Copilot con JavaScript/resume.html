@@ -1,0 +1,382 @@
+<link rel="stylesheet" href="../../_shared/cards.css">
+
+<div class="board">
+
+  <div class="section-label">Objetivos del módulo</div>
+  <ul class="obj-list">
+    <li>Configurar GitHub Copilot en VS Code / GitHub Codespaces con la extensión correcta</li>
+    <li>Diseñar prompts efectivos que generen sugerencias precisas y útiles</li>
+    <li>Aplicar GitHub Copilot para mejorar proyectos JavaScript existentes</li>
+  </ul>
+
+  <div class="hero postit-orange">
+    <i class="ti ti-brand-javascript"></i>
+    <h1>GitHub Copilot con JavaScript</h1>
+    <p>Asistente de IA que completa código y responde preguntas — desde una sugerencia de una línea hasta funciones completas, guiado por tus comentarios y contexto abierto.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── CÓMO FUNCIONA ─────────────────────────────────── -->
+  <div class="section-label">Cómo funciona Copilot</div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-yellow">
+          <i class="ti ti-cpu"></i>
+          <h3>Motor</h3>
+          <p>OpenAI Codex</p>
+        </div>
+        <div class="flip-back postit-yellow">
+          <p>Modelo entrenado en código público y lenguaje natural. Analiza el <strong>archivo activo</strong> y los <strong>archivos relacionados</strong> para derivar contexto y generar sugerencias coherentes.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-yellow">
+          <i class="ti ti-ghost"></i>
+          <h3>Sugerencia fantasma</h3>
+          <p>Texto gris en el editor</p>
+        </div>
+        <div class="flip-back postit-yellow">
+          <p>Copilot muestra la sugerencia como <strong>texto gris</strong> sobre el cursor. Presiona <kbd>Tab</kbd> para aceptar. Si hay varias opciones, usa <kbd>Ctrl+Enter</kbd> para ver el panel completo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-yellow">
+          <i class="ti ti-message-chatbot"></i>
+          <h3>Copilot Chat</h3>
+          <p>Preguntas en lenguaje natural</p>
+        </div>
+        <div class="flip-back postit-yellow">
+          <p>Interfaz de chat interactiva para <strong>formular preguntas</strong> sobre código, recibir explicaciones, generar tests y refactorizar — sin salir del IDE.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── FORMAS DE SOLICITAR ──────────────────────────── -->
+  <div class="section-label">Formas de solicitar — mnemónico <strong>CMC</strong></div>
+  <p style="text-align:center;font-size:.85rem;color:#555;margin-top:-.5rem;margin-bottom:1rem">
+    <em>Comentario · Markdown · Chat</em>
+  </p>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-blue">
+          <i class="ti ti-code"></i>
+          <h3>C — Comentario en código</h3>
+          <p><code>// descripción de la tarea</code></p>
+        </div>
+        <div class="flip-back postit-blue">
+          <p>Escribe un comentario en un archivo <code>.js</code>, <code>.py</code>, etc. y Copilot completará el bloque siguiente. Ejemplo:</p>
+          <pre style="font-size:.72rem">// Create an API endpoint using
+// React that accepts JSON POST</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-blue">
+          <i class="ti ti-markdown"></i>
+          <h3>M — Markdown</h3>
+          <p>Escribe texto y espera</p>
+        </div>
+        <div class="flip-back postit-blue">
+          <p>En un archivo <code>.md</code>, escribe el texto descriptivo y espera unos segundos. Copilot responde con sugerencias de código o documentación dentro del mismo archivo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-blue">
+          <i class="ti ti-messages"></i>
+          <h3>C — Chat interactivo</h3>
+          <p>Panel lateral de preguntas</p>
+        </div>
+        <div class="flip-back postit-blue">
+          <p>Abre <strong>GitHub Copilot Chat</strong> desde la barra lateral. Puedes pasar contexto de otros archivos abriéndolos antes de preguntar — Copilot los usa como contexto adicional.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── INGENIERÍA RÁPIDA ────────────────────────────── -->
+  <div class="section-label">Ingeniería rápida — prompts de calidad</div>
+  <div class="grid-2">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-red">
+          <i class="ti ti-alert-triangle"></i>
+          <h3>Prompt vago</h3>
+          <p>Resultado impredecible</p>
+        </div>
+        <div class="flip-back postit-red">
+          <pre style="font-size:.75rem">// Create an API endpoint</pre>
+          <p>Ambiguo: no especifica framework, método HTTP, tipo de datos ni propósito. Copilot puede generar algo completamente diferente a lo que necesitas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-green">
+          <i class="ti ti-circle-check"></i>
+          <h3>Prompt específico</h3>
+          <p>Resultado enfocado</p>
+        </div>
+        <div class="flip-back postit-green">
+          <pre style="font-size:.68rem">// Create an API endpoint using
+// React that accepts a JSON
+// payload in a POST request</pre>
+          <p>Claro: indica framework, método y formato. Copilot genera exactamente lo que el equipo necesita.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── PROCEDIMIENTOS RECOMENDADOS ─────────────────── -->
+  <div class="section-label">Procedimientos recomendados — mnemónico <strong>SRRC</strong></div>
+  <p style="text-align:center;font-size:.85rem;color:#555;margin-top:-.5rem;margin-bottom:1rem">
+    <em>Simple → Recorre → Reescribe → Contexto</em>
+  </p>
+  <div class="grid-4">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-teal">
+          <i class="ti ti-steps"></i>
+          <h3>S — Simple primero</h3>
+        </div>
+        <div class="flip-back postit-teal">
+          <p>Empieza con un prompt básico:<br><em>"create an HTML form with a text field and button"</em><br>Luego añade complejidad:<br><em>"Add event listener to POST to /generate and show result in #result"</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-teal">
+          <i class="ti ti-refresh"></i>
+          <h3>R — Recorre opciones</h3>
+        </div>
+        <div class="flip-back postit-teal">
+          <p>Usa <kbd>Ctrl+Enter</kbd> (o <kbd>Cmd+Enter</kbd> en Mac) para abrir el panel de sugerencias completo y elegir la más adecuada entre las opciones que Copilot genera.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-teal">
+          <i class="ti ti-edit"></i>
+          <h3>R — Reescribe si falla</h3>
+        </div>
+        <div class="flip-back postit-teal">
+          <p>Si no obtienes los resultados deseados: reescribe el mensaje con más detalles o empieza a escribir el código tú mismo para que Copilot lo complete automáticamente.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-teal">
+          <i class="ti ti-files"></i>
+          <h3>C — Contexto abierto</h3>
+        </div>
+        <div class="flip-back postit-teal">
+          <p>Copilot usa los <strong>archivos abiertos</strong> en el editor como contexto adicional. Abre los archivos relacionados antes de escribir tu prompt para obtener sugerencias más precisas.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── CONFIGURACIÓN ────────────────────────────────── -->
+  <div class="section-label">Configuración y plan gratuito</div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-purple">
+          <i class="ti ti-user-circle"></i>
+          <h3>Cuenta GitHub</h3>
+          <p>Requisito base</p>
+        </div>
+        <div class="flip-back postit-purple">
+          <p>Necesitas una cuenta de GitHub activa. Copilot es un servicio de GitHub — sin cuenta no hay acceso. El plan <strong>Copilot Free</strong> no requiere tarjeta de crédito.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-purple">
+          <i class="ti ti-gift"></i>
+          <h3>Plan Free</h3>
+          <p>2 000 completados · 50 chats/mes</p>
+        </div>
+        <div class="flip-back postit-purple">
+          <p><strong>2 000</strong> autocompletados de código y <strong>50</strong> mensajes de chat al mes. Suficiente para aprender. Educadores, estudiantes y OSS maintainers pueden obtener <strong>Copilot Pro gratis</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-purple">
+          <i class="ti ti-brand-vscode"></i>
+          <h3>Extensión VS Code</h3>
+          <p>GitHub Copilot + Chat</p>
+        </div>
+        <div class="flip-back postit-purple">
+          <p>Instala <strong>GitHub Copilot</strong> y <strong>GitHub Copilot Chat</strong> desde el marketplace. También disponible para JetBrains, VIM, XCode y Visual Studio.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── CODESPACES ───────────────────────────────────── -->
+  <div class="section-label">GitHub Codespaces</div>
+  <div class="grid-2">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-pink">
+          <i class="ti ti-cloud-computing"></i>
+          <h3>Entorno en la nube</h3>
+          <p>VS Code preconfigurado</p>
+        </div>
+        <div class="flip-back postit-pink">
+          <p>Entorno de desarrollador hospedado en la nube con <strong>extensión Copilot preinstalada</strong>. Incluye dependencias, bibliotecas y configuraciones listas para usar. <strong>60 horas gratis/mes</strong> con 2 cores.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-pink">
+          <i class="ti ti-server"></i>
+          <h3>Puerto 1234</h3>
+          <p>npm start dentro del Codespace</p>
+        </div>
+        <div class="flip-back postit-pink">
+          <p>La aplicación de cartera JavaScript corre en el <strong>puerto 1234</strong> del Codespace. El terminal muestra el mensaje de servidor activo una vez completada la instalación.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── EJERCICIO: PORTFOLIO ─────────────────────────── -->
+  <div class="section-label">Ejercicio: Portfolio JS — mnemónico <strong>PAS</strong></div>
+  <p style="text-align:center;font-size:.85rem;color:#555;margin-top:-.5rem;margin-bottom:1rem">
+    <em>Personaliza · Anima · Supervisa</em>
+  </p>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-lime">
+          <i class="ti ti-settings"></i>
+          <h3>P — Personaliza siteProps</h3>
+          <p><code>src/App.jsx</code></p>
+        </div>
+        <div class="flip-back postit-lime">
+          <pre style="font-size:.68rem">const siteProps = {
+  name: "Tu Nombre",
+  title: "Web Developer",
+  email: "tu@email.com",
+  gitHub: "usuario",
+  linkedIn: "perfil",
+  twitter: "handle",
+  youTube: "canal",
+};</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-lime">
+          <i class="ti ti-bounce"></i>
+          <h3>A — Anima con Copilot</h3>
+          <p><code>src/styles.css</code></p>
+        </div>
+        <div class="flip-back postit-lime">
+          <pre style="font-size:.68rem">/* add an amazing animation
+   to the social icons */
+
+img.socialIcon:hover {
+  animation: bounce 0.5s;
+  animation-iteration-count:
+    infinite;
+}
+@keyframes bounce {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front postit-lime">
+          <i class="ti ti-eye"></i>
+          <h3>S — Supervisa en vivo</h3>
+          <p>Hot-reload automático</p>
+        </div>
+        <div class="flip-back postit-lime">
+          <p>El Codespace recarga la página automáticamente al guardar. Pasa el cursor sobre los iconos del pie de página para ver la animación <strong>bounce</strong> en acción. Confirma cambios antes de eliminar el Codespace.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="summary-box">
+    <strong>Resumen</strong> — GitHub Copilot (motor: OpenAI Codex) actúa como copiloto de IA dentro del IDE: lee el contexto de los archivos abiertos y ofrece sugerencias en gris que se aceptan con <kbd>Tab</kbd>. La calidad de las sugerencias depende directamente de la calidad del prompt — aplica el patrón <strong>SRRC</strong> (Simple → Recorre → Reescribe → Contexto). En el ejercicio de portfolio JavaScript, usaste un comentario CSS para que Copilot generara una animación bounce completa, demostrando que la IA puede asistir en código, estilos, documentación y pruebas.
+  </div>
+
+  <div class="legend">
+    <span class="postit-yellow" style="padding:.2rem .6rem;border-radius:4px">Motor &amp; Sugerencias</span>
+    <span class="postit-blue" style="padding:.2rem .6rem;border-radius:4px">Formas CMC</span>
+    <span class="postit-red" style="padding:.2rem .6rem;border-radius:4px">Prompt vago</span>
+    <span class="postit-green" style="padding:.2rem .6rem;border-radius:4px">Prompt específico</span>
+    <span class="postit-teal" style="padding:.2rem .6rem;border-radius:4px">Buenas prácticas SRRC</span>
+    <span class="postit-purple" style="padding:.2rem .6rem;border-radius:4px">Setup &amp; Plan Free</span>
+    <span class="postit-pink" style="padding:.2rem .6rem;border-radius:4px">Codespaces</span>
+    <span class="postit-lime" style="padding:.2rem .6rem;border-radius:4px">Ejercicio PAS</span>
+  </div>
+
+</div>
