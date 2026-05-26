@@ -1,0 +1,327 @@
+<link rel="stylesheet" href="../../_shared/cards.css">
+
+<div class="board">
+
+  <!-- OBJETIVOS -->
+  <div class="section-label">Objetivos del módulo</div>
+  <ul class="obj-list">
+    <li>Comprender qué son MCP y el servidor MCP de GitHub y por qué son útiles.</li>
+    <li>Configurar el servidor MCP de GitHub en VS Code con OAuth, PAT o Docker.</li>
+    <li>Usar el servidor MCP con Copilot Chat para automatizar tareas de desarrollo.</li>
+    <li>Identificar y resolver problemas comunes de configuración.</li>
+  </ul>
+
+  <!-- HERO -->
+  <div class="hero postit-teal">
+    <div class="face-icon"><i class="ti ti-plug-connected"></i></div>
+    <h1>Servidor MCP de GitHub</h1>
+    <p>El "USB-C para herramientas de IA": conecta GitHub Copilot a herramientas y datos externos con un estándar abierto, sin configuración compleja.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- QUÉ ES MCP -->
+  <div class="section-label">¿Qué es MCP? — <em>mnemónico: "LPR: Local, Puente, Remota"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-yellow">
+          <div class="face-icon"><i class="ti ti-usb"></i></div>
+          <div class="face-title">MCP en una línea</div>
+          <p>El USB-C para IA</p>
+          <div class="flip-hint">↩ definición</div>
+        </div>
+        <div class="back postit-yellow">
+          <p>Estándar abierto (Anthropic) para que los modelos de IA se conecten a herramientas y datos.</p>
+          <p>✅ Biblioteca creciente de herramientas listas para usar.</p>
+          <p>✅ Flexibilidad: funciona con distintos proveedores de IA.</p>
+          <p>✅ Se integra en entornos y procesos existentes.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-yellow">
+          <div class="face-icon"><i class="ti ti-topology-star"></i></div>
+          <div class="face-title">L — Local ↔ Local</div>
+          <p>Cliente MCP + servidor local + datos locales</p>
+          <div class="flip-hint">↩ cuándo usarlo</div>
+        </div>
+        <div class="back postit-yellow">
+          <p>El cliente MCP (IDE, Claude, etc.) se comunica con un servidor local.</p>
+          <p>El servidor accede a archivos, bases de datos u otros recursos locales.</p>
+          <p><strong>Ideal para:</strong> desarrollo local con datos privados que no deben salir del equipo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-yellow">
+          <div class="face-icon"><i class="ti ti-world"></i></div>
+          <div class="face-title">P — Puente / R — Remota</div>
+          <p>Servidor local como puente · Todo remoto</p>
+          <div class="flip-hint">↩ cuándo usarlos</div>
+        </div>
+        <div class="back postit-yellow">
+          <p><strong>Puente:</strong> servidor local que llama APIs web remotas. Útil para caché, seguridad o preprocesado antes de pasar a servicio remoto.</p>
+          <p><strong>Remota:</strong> cliente → servidor en Internet → APIs externas. Para servicios SaaS, plataformas cloud o integraciones de terceros que solo existen online.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SERVIDOR MCP DE GITHUB -->
+  <div class="section-label">Servidor MCP de GitHub — <em>mnemónico: "SOWSE: Sin Docker, OAuth, Web/Móvil, SSO, Escala"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-brand-github"></i></div>
+          <div class="face-title">Qué hace</div>
+          <p>+30 herramientas disponibles</p>
+          <div class="flip-hint">↩ capacidades</div>
+        </div>
+        <div class="back postit-blue">
+          <p>Analizar y resumir código para entender mejor los proyectos.</p>
+          <p>Crear y administrar issues y pull requests.</p>
+          <p>Automatizar triage del repositorio y seguimiento de tareas.</p>
+          <p>Agregar issues, editar archivos, crear ramas.</p>
+          <p>Clasificar PRs e issues por prioridad.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-rocket"></i></div>
+          <div class="face-title">Ventajas SOWSE</div>
+          <p>Por qué usar el servidor hospedado</p>
+          <div class="flip-hint">↩ ventajas</div>
+        </div>
+        <div class="back postit-blue">
+          <p><strong>S — Sin Docker:</strong> no requiere configuración manual ni archivos docker.</p>
+          <p><strong>O — OAuth:</strong> login de un clic para autenticación rápida.</p>
+          <p><strong>W — Web/Móvil:</strong> funciona en entornos web, desktop y móvil.</p>
+          <p><strong>S — SSO:</strong> compatible con Entra y Auth0 para empresas.</p>
+          <p><strong>E — Escala:</strong> escala automáticamente según el uso.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-building"></i></div>
+          <div class="face-title">vs. servidor local</div>
+          <p>Hospedado en GitHub vs. Docker local</p>
+          <div class="flip-hint">↩ comparativa</div>
+        </div>
+        <div class="back postit-blue">
+          <p><strong>Local (Docker):</strong> requiere Docker, gestión de tokens y config manual. No funciona con clientes web como GitHub.com.</p>
+          <p><strong>Hospedado GitHub:</strong> conexión rápida, OAuth, funciona en web/móvil/desktop, escala automática, SSO empresarial.</p>
+          <p><em>GitHub Enterprise Server con restricciones de PAT puede limitar la disponibilidad.</em></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CONFIGURACIÓN EN VS CODE -->
+  <div class="section-label">3 formas de configurar en VS Code — <em>mnemónico: "OPD: OAuth, PAT, Docker"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-green">
+          <div class="face-icon"><i class="ti ti-key"></i></div>
+          <div class="face-title">O — OAuth</div>
+          <p>Recomendado · Más sencillo</p>
+          <div class="flip-hint">↩ pasos</div>
+        </div>
+        <div class="back postit-green">
+          <p>1. Paleta de comandos: <code>Ctrl+Shift+P</code> → <strong>MCP: Add Server</strong>.</p>
+          <p>2. Seleccionar <strong>HTTP (HTTP o Server-Sent Events)</strong>.</p>
+          <p>3. URL: <code>https://api.githubcopilot.com/mcp/</code> → Enter.</p>
+          <p>4. ID del servidor: Enter (predeterminado) o uno personalizado.</p>
+          <p>5. Elegir ámbito: usuario (todos los proyectos) o workspace (proyecto actual).</p>
+          <p>6. Autorizar con GitHub → <strong>Permitir</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-teal">
+          <div class="face-icon"><i class="ti ti-password"></i></div>
+          <div class="face-title">P — PAT</div>
+          <p>Control avanzado de permisos</p>
+          <div class="flip-hint">↩ pasos adicionales</div>
+        </div>
+        <div class="back postit-teal">
+          <p>1. Crear PAT con scope <code>repo</code> y <code>read:packages</code> en GitHub.</p>
+          <p>2. Seguir pasos de OAuth pero <strong>cancelar el OAuth</strong> cuando se solicite.</p>
+          <p>3. Añadir en config:</p>
+          <p><code>"headers": {"Authorization": "Bearer ${input:github_token}"}</code></p>
+          <p>4. Añadir entrada de contraseña segura:</p>
+          <p><code>"inputs": [{"id": "github_token", "type": "promptString", "password": true}]</code></p>
+          <p>5. Reiniciar servidor MCP → escribir PAT cuando se solicite.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-orange">
+          <div class="face-icon"><i class="ti ti-brand-docker"></i></div>
+          <div class="face-title">D — Docker</div>
+          <p>Local · Opcional · GHE Server</p>
+          <div class="flip-hint">↩ requisitos y config</div>
+        </div>
+        <div class="back postit-orange">
+          <p><strong>Requisitos:</strong> Docker instalado y corriendo + PAT (OAuth no soportado).</p>
+          <p><strong>Imagen:</strong> <code>ghcr.io/github/github-mcp-server</code></p>
+          <p>Config con <code>command: docker</code>, args <code>run -i --rm -e GITHUB_PERSONAL_ACCESS_TOKEN</code>.</p>
+          <p><em>Útil para GitHub Enterprise Server con restricciones de PAT o políticas de red estrictas.</em></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- MODO AGENTE + MCP -->
+  <div class="section-label">Modo Agente + MCP — <em>mnemónico: "IDA: Independiente, Decide, Adapta"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-purple">
+          <div class="face-icon"><i class="ti ti-robot"></i></div>
+          <div class="face-title">Capacidades agénticas IDA</div>
+          <p>Qué aporta el modo agente</p>
+          <div class="flip-hint">↩ capacidades</div>
+        </div>
+        <div class="back postit-purple">
+          <p><strong>I — Independiente:</strong> flujos de trabajo de varios pasos sin instrucciones constantes.</p>
+          <p><strong>D — Decide:</strong> elige qué herramientas o enfoques usar según el contexto disponible.</p>
+          <p><strong>A — Adapta:</strong> responde a comentarios, ajusta el enfoque e itera en los resultados.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-purple">
+          <div class="face-icon"><i class="ti ti-arrows-exchange"></i></div>
+          <div class="face-title">Bucles agente con MCP</div>
+          <p>MCP potencia al agente más allá del IDE</p>
+          <div class="flip-hint">↩ cómo funciona</div>
+        </div>
+        <div class="back postit-purple">
+          <p>MCP da a Copilot acceso a datos externos, APIs y herramientas empresariales.</p>
+          <p>Mantiene contexto en múltiples plataformas sin cambiar de app.</p>
+          <p><strong>Bucle agente:</strong> busca información dinámicamente → analiza resultados → ejecuta siguientes pasos → itera, todo sin reiniciar desde cero.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-purple">
+          <div class="face-icon"><i class="ti ti-award"></i></div>
+          <div class="face-title">3 ventajas combinadas</div>
+          <p>Agente + MCP juntos</p>
+          <div class="flip-hint">↩ beneficios</div>
+        </div>
+        <div class="back postit-purple">
+          <p><strong>Contexto extendido:</strong> extrae información de múltiples sistemas, no solo el editor.</p>
+          <p><strong>Esfuerzo reducido:</strong> issues, flujos de trabajo y comprobaciones automatizados.</p>
+          <p><strong>Integración sin problemas:</strong> tareas que abarcan herramientas y plataformas sin conectores personalizados.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PROCEDIMIENTOS RECOMENDADOS + TROUBLESHOOTING -->
+  <div class="section-label">Procedimientos recomendados y solución de problemas</div>
+  <div class="grid-2">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-lime">
+          <div class="face-icon"><i class="ti ti-bulb"></i></div>
+          <div class="face-title">5 procedimientos recomendados</div>
+          <p>Para guiar bien al agente con MCP</p>
+          <div class="flip-hint">↩ lista</div>
+        </div>
+        <div class="back postit-lime">
+          <p>1. <strong>Objetivos claros:</strong> define el resultado final esperado.</p>
+          <p>2. <strong>Proporcionar contexto:</strong> vínculos, referencias y pasos anteriores relevantes.</p>
+          <p>3. <strong>Establecer límites:</strong> especifica si quieres que solo planee (sin cambios) y qué herramientas MCP estarán activas.</p>
+          <p>4. <strong>Pedir confirmación:</strong> haz que Copilot resuma el plan antes de cambios grandes.</p>
+          <p>5. <strong>Archivos de instrucción:</strong> crea archivos de aviso personalizados para comportamiento coherente con servidores MCP específicos.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-red">
+          <div class="face-icon"><i class="ti ti-tool"></i></div>
+          <div class="face-title">Solución de problemas</div>
+          <p>5 verificaciones prácticas</p>
+          <div class="flip-hint">↩ checklist</div>
+        </div>
+        <div class="back postit-red">
+          <p>✅ Confirma que iniciaste sesión en GitHub en VS Code.</p>
+          <p>✅ Si usas PAT: verifica que tiene los ámbitos correctos y está bien escrito.</p>
+          <p>✅ Revisa la config por errores tipográficos o campos faltantes.</p>
+          <p>✅ Si usas Docker: confirma que está instalado y corriendo.</p>
+          <p>✅ Reinicia VS Code o el servidor MCP para resolver problemas de conexión temporales.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- RESUMEN -->
+  <div class="summary-box">
+    <strong>Resumen</strong>
+    <p>
+      <strong>MCP LPR:</strong> estándar USB-C para IA. 3 topologías: Local↔Local (datos privados), Puente local→remoto (caché/seguridad), Remota→remota (SaaS/cloud).<br>
+      <strong>Servidor GitHub SOWSE:</strong> +30 herramientas. Sin Docker, OAuth un clic, Web/Móvil/Desktop, SSO empresarial, Escala automática.<br>
+      <strong>Config OPD:</strong> OAuth (recomendado, 6 pasos), PAT (control avanzado, cancelar OAuth + headers), Docker (local, GHE Server, sin OAuth).<br>
+      <strong>Agente + MCP IDA:</strong> Independiente (multi-paso), Decide (elige herramientas), Adapta (itera). Resultado: bucles agente, contexto extendido, esfuerzo reducido.<br>
+      <strong>Mejores prácticas:</strong> objetivos claros, contexto, límites explícitos, confirmación previa a cambios grandes, archivos de instrucción por servidor MCP.
+    </p>
+  </div>
+
+  <!-- LEYENDA -->
+  <div class="legend">
+    <span class="postit-yellow">Qué es MCP / Topologías LPR</span>
+    <span class="postit-blue">Servidor GitHub SOWSE</span>
+    <span class="postit-green">Config OAuth</span>
+    <span class="postit-teal">Config PAT</span>
+    <span class="postit-orange">Config Docker</span>
+    <span class="postit-purple">Agente + MCP IDA</span>
+    <span class="postit-lime">Mejores prácticas</span>
+    <span class="postit-red">Troubleshooting</span>
+  </div>
+
+</div>
