@@ -1,0 +1,513 @@
+<link rel="stylesheet" href="../../_shared/cards.css">
+
+<div class="board">
+
+  <!-- OBJETIVOS -->
+  <div class="section-label">Objetivos del módulo</div>
+  <ul class="obj-list">
+    <li>Identificar cómo GitHub Copilot se integra en los flujos de trabajo y preferencias del desarrollador.</li>
+    <li>Explorar el impacto de Copilot en las distintas fases del SDLC.</li>
+    <li>Evaluar las limitaciones de la codificación asistida por IA y medir su impacto.</li>
+  </ul>
+
+  <!-- HERO -->
+  <div class="hero postit-green">
+    <div class="face-icon"><i class="ti ti-rocket"></i></div>
+    <h1>Casos de uso del desarrollador con GitHub Copilot</h1>
+    <p>Más productividad, menos cambio de contexto y mayor calidad en cada fase del ciclo de vida del software.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PRODUCTIVIDAD: 5 CASOS DE USO -->
+  <div class="section-label">Productividad del desarrollador — <em>mnemónico: "ACDAA: Aprendo Código De Automática y Avanzada forma"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-yellow">
+          <div class="face-icon"><i class="ti ti-school"></i></div>
+          <div class="face-title">A — Acelerar aprendizaje</div>
+          <p>Nuevos lenguajes y marcos</p>
+          <div class="flip-hint">↩ cómo ayuda</div>
+        </div>
+        <div class="back postit-yellow">
+          <p>Sugerencias de fragmentos que muestran el uso de funciones desconocidas.</p>
+          <p>Soporte multi-idioma para transiciones entre lenguajes.</p>
+          <p>Documentación inline: reduce la necesidad de consultar docs externas.</p>
+          <p><em>Ejemplo: "Explicar esto" en Golang desconocido.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-focus-2"></i></div>
+          <div class="face-title">C — Cambio de contexto</div>
+          <p>Minimización del cambio de foco</p>
+          <div class="flip-hint">↩ mecanismos</div>
+        </div>
+        <div class="back postit-blue">
+          <p>Asistencia nativa del IDE: sin salir del editor.</p>
+          <p>Referencias rápidas de API y parámetros de métodos.</p>
+          <p>Autocompletado de patrones repetitivos para mantener el flujo mental.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-teal">
+          <div class="face-icon"><i class="ti ti-file-description"></i></div>
+          <div class="face-title">D — Documentación</div>
+          <p>Escritura mejorada de docs</p>
+          <div class="flip-hint">↩ tipos de ayuda</div>
+        </div>
+        <div class="back postit-teal">
+          <p>Comentarios inline contextualmente relevantes.</p>
+          <p>Descripciones de funciones: parámetros y valores devueltos.</p>
+          <p>Generación de README con estructura y contenido.</p>
+          <p>Coherencia de estilo en todo el proyecto.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-orange">
+          <div class="face-icon"><i class="ti ti-robot"></i></div>
+          <div class="face-title">A — Automatizar lo aburrido</div>
+          <p>Tareas rutinarias de codificación</p>
+          <div class="flip-hint">↩ qué automatiza</div>
+        </div>
+        <div class="back postit-orange">
+          <p>Código reutilizable (APIs, clases).</p>
+          <p>Datos de ejemplo realistas para pruebas.</p>
+          <p>Pruebas unitarias completas.</p>
+          <p>Traducción y refactorización de código entre lenguajes.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-purple">
+          <div class="face-icon"><i class="ti ti-template"></i></div>
+          <div class="face-title">A — Automatización avanzada</div>
+          <p>Escenarios complejos con plantillas</p>
+          <div class="flip-hint">↩ escenarios</div>
+        </div>
+        <div class="back postit-purple">
+          <p>Esquemas de BD y configuraciones ORM.</p>
+          <p>Puntos de conexión REST completos con manejo de errores.</p>
+          <p>Archivos de configuración multi-entorno (dev/staging/prod).</p>
+          <p>Infraestructura de prueba: mocks, accesorios y helpers.</p>
+          <p><em>Nota: andamiaje completo consume ~3–5 PRUs.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-pink">
+          <div class="face-icon"><i class="ti ti-adjustments"></i></div>
+          <div class="face-title">Finalización personalizada</div>
+          <p>Se adapta a tu estilo de codificación</p>
+          <div class="flip-hint">↩ mecanismo</div>
+        </div>
+        <div class="back postit-pink">
+          <p><strong>Reconocimiento contextual:</strong> analiza la estructura del proyecto.</p>
+          <p><strong>Aprendizaje de patrones:</strong> adapta sugerencias al estilo preferido a medida que codificas.</p>
+          <p><em>Ejemplo: si cambias el estilo de función, Copilot adopta ese estilo en sugerencias siguientes.</em></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PRs Y COLABORACIÓN -->
+  <div class="section-label">Pull Requests y colaboración — <em>flujos listos para revisión</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-green">
+          <div class="face-icon"><i class="ti ti-git-pull-request"></i></div>
+          <div class="face-title">Código listo para PR</div>
+          <p>Minimiza ciclos de revisión</p>
+          <div class="flip-hint">↩ qué incluye</div>
+        </div>
+        <div class="back postit-green">
+          <p>Implementaciones completas con manejo de errores y casos límite.</p>
+          <p>Patrones coherentes con las convenciones del proyecto.</p>
+          <p>Documentación inline + actualizaciones de README.</p>
+          <p>Pruebas unitarias e integración incluidas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-eye-check"></i></div>
+          <div class="face-title">Asistencia en revisión</div>
+          <p>Antes y durante el code review</p>
+          <div class="flip-hint">↩ capacidades</div>
+        </div>
+        <div class="back postit-blue">
+          <p>Comprobaciones pre-envío: detecta problemas antes de abrir el PR.</p>
+          <p>Genera comentarios constructivos de revisión con ejemplos de código.</p>
+          <p>Iteración rápida: varias alternativas de implementación al pedir cambios.</p>
+          <p>Resolución de conflictos de merge comprendiendo ambas ramas.</p>
+          <p><em>Nota: varios borradores de refactorización consumen ~2–3 PRUs cada uno.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-teal">
+          <div class="face-icon"><i class="ti ti-users-group"></i></div>
+          <div class="face-title">Colaboración en equipo</div>
+          <p>Coherencia entre contribuciones</p>
+          <div class="flip-hint">↩ beneficios</div>
+        </div>
+        <div class="back postit-teal">
+          <p>Normalización de código: estilos consistentes entre miembros.</p>
+          <p>Compartir conocimiento: juniors aprenden de patrones senior.</p>
+          <p>Conservación del contexto: retomar trabajo de otro con el mismo estilo.</p>
+          <p>Resolución de conflictos de merge complejos.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FLUJOS ORQUESTADOS IA -->
+  <div class="section-label">Flujos de trabajo orquestados con IA — <em>mnemónico: "BRT: Borrador, Revisión, Tarea completa"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-purple">
+          <div class="face-icon"><i class="ti ti-network"></i></div>
+          <div class="face-title">B — Patrón multi-agente</div>
+          <p>2 agentes: borrador + revisión</p>
+          <div class="flip-hint">↩ flujo</div>
+        </div>
+        <div class="back postit-purple">
+          <strong>Agente borrador (Copilot):</strong>
+          <p>Genera código, pruebas básicas, docs inline y puntos de integración.</p>
+          <strong>Agente revisión:</strong>
+          <p>Evalúa calidad, seguridad, rendimiento y patrones arquitectónicos.</p>
+          <p><em>~2–3 PRUs por flujo de 2 agentes.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-purple">
+          <div class="face-icon"><i class="ti ti-brain"></i></div>
+          <div class="face-title">R — Razonamiento avanzado</div>
+          <p>Modos premium para análisis profundo</p>
+          <div class="flip-hint">↩ capacidades</div>
+        </div>
+        <div class="back postit-purple">
+          <p>Comprensión mejorada de contexto en bases de código grandes.</p>
+          <p>Sugerencias de arquitectura del sistema y patrones de integración.</p>
+          <p>Refactorización compleja multi-archivo manteniendo coherencia.</p>
+          <p><em>~4+ PRUs por solicitud (duplica el consumo estándar).</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-purple">
+          <div class="face-icon"><i class="ti ti-list-check"></i></div>
+          <div class="face-title">T — Tarea de historia completa</div>
+          <p>De requisito a producción</p>
+          <div class="flip-hint">↩ fases</div>
+        </div>
+        <div class="back postit-purple">
+          <p>1. Análisis de requisitos y criterios de aceptación.</p>
+          <p>2. Scaffolding: controladores, servicios, modelos, pruebas.</p>
+          <p>3. Integración con componentes existentes.</p>
+          <p>4. QA automatizado: errores, logs, monitoreo.</p>
+          <p>5. Documentación de usuario, API y mantenimiento.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SDLC -->
+  <div class="section-label">SDLC con GitHub Copilot — <em>mnemónico: "ADPIM: Analizo, Diseño, Pruebo, Implemento, Mantengo"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-yellow">
+          <div class="face-icon"><i class="ti ti-file-search"></i></div>
+          <div class="face-title">A — Análisis de requisitos</div>
+          <p>Prototipos rápidos desde descripciones</p>
+          <div class="flip-hint">↩ cómo ayuda</div>
+        </div>
+        <div class="back postit-yellow">
+          <p>Prototipado rápido desde descripciones de alto nivel.</p>
+          <p>Implementación de casos de usuario en clases/funciones iniciales.</p>
+          <p>Sugerir estructuras de API basadas en funcionalidad descrita.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-layout-2"></i></div>
+          <div class="face-title">D — Diseño y desarrollo</div>
+          <p>Aquí Copilot brilla más</p>
+          <div class="flip-hint">↩ capacidades</div>
+        </div>
+        <div class="back postit-blue">
+          <p>Código reutilizable y estructuras repetitivas automáticas.</p>
+          <p>Patrones de diseño sugeridos según el contexto del problema.</p>
+          <p>Optimización de código desde el principio.</p>
+          <p>Traducción entre lenguajes de programación.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-green">
+          <div class="face-icon"><i class="ti ti-test-pipe"></i></div>
+          <div class="face-title">P — Pruebas y QA</div>
+          <p>Cobertura completa automatizada</p>
+          <div class="flip-hint">↩ tipos de ayuda</div>
+        </div>
+        <div class="back postit-green">
+          <p>Pruebas unitarias basadas en firmas de función.</p>
+          <p>Datos de prueba realistas generados automáticamente.</p>
+          <p>Casos límite identificados y sugeridos.</p>
+          <p>Aserciones adecuadas propuestas.</p>
+          <p>Canalizaciones CI/CD + puertas de calidad automatizadas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-orange">
+          <div class="face-icon"><i class="ti ti-server"></i></div>
+          <div class="face-title">I — Implementación</div>
+          <p>Configuración y scripts</p>
+          <div class="flip-hint">↩ qué genera</div>
+        </div>
+        <div class="back postit-orange">
+          <p>Archivos de configuración para diferentes entornos.</p>
+          <p>Scripts y comandos para tareas comunes de despliegue.</p>
+          <p>Actualizaciones de documentación de implementación.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-teal">
+          <div class="face-icon"><i class="ti ti-tool"></i></div>
+          <div class="face-title">M — Mantenimiento</div>
+          <p>Soporte y evolución del código</p>
+          <div class="flip-hint">↩ tipos de ayuda</div>
+        </div>
+        <div class="back postit-teal">
+          <p>Correcciones de bugs basadas en mensajes de error.</p>
+          <p>Refactorización: sugiere mejoras al código existente.</p>
+          <p>Mantiene sincronizados comentarios y documentación.</p>
+          <p>Explicaciones de código legado para nuevos desarrolladores.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-pink">
+          <div class="face-icon"><i class="ti ti-chart-bar"></i></div>
+          <div class="face-title">Ciencia de datos</div>
+          <p>Soporte avanzado para data science</p>
+          <div class="flip-hint">↩ áreas</div>
+        </div>
+        <div class="back postit-pink">
+          <p>Funciones estadísticas y pruebas.</p>
+          <p>Visualización con Matplotlib, Seaborn, Plotly.</p>
+          <p>Preprocesamiento: valores faltantes, encoding, scaling.</p>
+          <p>Código para métricas de evaluación de modelos.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- LIMITACIONES -->
+  <div class="section-label">Limitaciones — <em>mnemónico: "CEDD: Calidad Errática, Datos y Diseño"</em></div>
+  <div class="grid-4">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-red">
+          <div class="face-icon"><i class="ti ti-bug"></i></div>
+          <div class="face-title">C — Calidad</div>
+          <p>Errores y seguridad</p>
+          <div class="flip-hint">↩ riesgos</div>
+        </div>
+        <div class="back postit-red">
+          <p>Puede sugerir código con errores.</p>
+          <p>No siempre sigue prácticas de seguridad recomendadas.</p>
+          <p>Puede malinterpretar el contexto más amplio del proyecto.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-red">
+          <div class="face-icon"><i class="ti ti-language"></i></div>
+          <div class="face-title">E — Especificidad</div>
+          <p>Lenguajes y marcos</p>
+          <div class="flip-hint">↩ riesgos</div>
+        </div>
+        <div class="back postit-red">
+          <p>Rendimiento variable según el lenguaje o framework.</p>
+          <p>Tecnologías de nicho o recientes: sugerencias menos precisas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-red">
+          <div class="face-icon"><i class="ti ti-database-exclamation"></i></div>
+          <div class="face-title">D — Datos entrenamiento</div>
+          <p>Sesgos y derechos de autor</p>
+          <div class="flip-hint">↩ riesgos</div>
+        </div>
+        <div class="back postit-red">
+          <p>Las sugerencias reflejan patrones y sesgos de los datos de entrenamiento.</p>
+          <p>Puede incluir prácticas obsoletas.</p>
+          <p>Debate continuo sobre implicaciones de derechos de autor.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-red">
+          <div class="face-icon"><i class="ti ti-sitemap"></i></div>
+          <div class="face-title">D — Diseño complejo</div>
+          <p>Arquitectura y creatividad</p>
+          <div class="flip-hint">↩ riesgos</div>
+        </div>
+        <div class="back postit-red">
+          <p>Débil en decisiones arquitectónicas de alto nivel.</p>
+          <p>No puede reemplazar la creatividad humana en problemas novedosos.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- MEDICIÓN DE IMPACTO -->
+  <div class="section-label">Medición del impacto — <em>mnemónico: "AEF: API, Encuesta, Framework"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-lime">
+          <div class="face-icon"><i class="ti ti-api"></i></div>
+          <div class="face-title">A — REST API métricas</div>
+          <p>Endpoints de uso de Copilot</p>
+          <div class="flip-hint">↩ endpoints</div>
+        </div>
+        <div class="back postit-lime">
+          <p><code>GET /enterprises/{'{enterprise}'}/GitHub Copilot/usage</code></p>
+          <p><code>GET /enterprises/{'{enterprise}'}/team/{'{team_slug}'}/GitHub Copilot/usage</code></p>
+          <p><code>GET /orgs/{'{org}'}/GitHub Copilot/usage</code></p>
+          <p>Incluye: sugerencias, aceptaciones, usuarios activos por editor e idioma.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-lime">
+          <div class="face-icon"><i class="ti ti-clipboard-list"></i></div>
+          <div class="face-title">E — Encuesta desarrolladores</div>
+          <p>2 formatos: corta y larga</p>
+          <div class="flip-hint">↩ cadencia y ejemplos</div>
+        </div>
+        <div class="back postit-lime">
+          <strong>Forma corta:</strong> cada 2 semanas — satisfacción inmediata, desafíos, tiempo ahorrado.
+          <strong>Forma larga:</strong> max 1 vez cada 4 semanas — impacto en equipo, revisiones, calidad.
+          <p><em>Anonimizar respuestas. Integrar en herramientas BI para seguimiento de tendencias.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-lime">
+          <div class="face-icon"><i class="ti ti-chart-line"></i></div>
+          <div class="face-title">F — Framework de medición</div>
+          <p>4 fases: EAOE</p>
+          <div class="flip-hint">↩ fases</div>
+        </div>
+        <div class="back postit-lime">
+          <p><strong>E</strong>valuación: satisfacción + tasa aceptación + usuarios activos.</p>
+          <p><strong>A</strong>dopción: métricas de productividad + identificar brechas de entrenamiento.</p>
+          <p><strong>O</strong>ptimización: ajustar a objetivos org (tiempo de mercado, calidad).</p>
+          <p><strong>E</strong>ficiencia sostenida: supervisión continua y ajuste a largo plazo.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- RESUMEN -->
+  <div class="summary-box">
+    <strong>Resumen</strong>
+    <p>
+      <strong>Productividad ACDAA:</strong> Aprendo (nuevos lenguajes), elimino Cambio de contexto, mejoro Documentación, Automatizo lo aburrido, manejo escenarios Avanzados.<br>
+      <strong>SDLC ADPIM:</strong> Copilot impacta todas las fases — desde prototipado rápido en análisis hasta explicaciones de legacy en mantenimiento.<br>
+      <strong>Flujos BRT:</strong> Borrador+Revisión multi-agente (~2–3 PRUs), Razonamiento avanzado (~4+ PRUs), Tarea de historia completa end-to-end.<br>
+      <strong>Limitaciones CEDD:</strong> Calidad (bugs/seguridad), Especificidad (lenguajes nicho), Datos de entrenamiento (sesgos), Diseño complejo (arquitectura).<br>
+      <strong>Medición AEF:</strong> API REST de métricas, Encuesta (corta c/2 semanas, larga c/4 semanas), Framework 4 fases EAOE.
+    </p>
+  </div>
+
+  <!-- LEYENDA -->
+  <div class="legend">
+    <span class="postit-yellow">Aprendizaje/Análisis</span>
+    <span class="postit-blue">Contexto/Diseño</span>
+    <span class="postit-teal">Docs/Mantenimiento</span>
+    <span class="postit-orange">Automatización/Impl.</span>
+    <span class="postit-purple">Flujos IA</span>
+    <span class="postit-green">PRs/Pruebas</span>
+    <span class="postit-red">Limitaciones</span>
+    <span class="postit-lime">Medición</span>
+  </div>
+
+</div>
