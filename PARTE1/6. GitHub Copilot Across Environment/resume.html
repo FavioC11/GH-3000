@@ -1,0 +1,248 @@
+<h2 class="sr-only">Infografía del módulo GitHub Copilot Across Environment</h2>
+<link rel="stylesheet" href="../../_shared/cards.css">
+
+<div class="board">
+
+<p class="section-label">Objetivos de aprendizaje</p>
+<ul class="obj-list">
+  <li>Usar sugerencias automáticas, panel múltiple y adaptación de estilos en el IDE.</li>
+  <li>Proporcionar contexto a Copilot mediante comentarios (inline, block, docstrings, TODO, API).</li>
+  <li>Mejorar las respuestas del chat con referencias de ámbito (#file, @terminal), slash commands y agentes.</li>
+  <li>Aprovechar Copilot en GitHub.com para PRs, issues, revisión de código y GitHub Actions.</li>
+  <li>Interactuar con la CLI de Copilot en modo interactivo y one-shot.</li>
+</ul>
+
+<div class="hero">
+  <i class="ti ti-world" style="font-size:32px;color:#92400e;opacity:.7;flex-shrink:0" aria-hidden="true"></i>
+  <div class="hero-text">
+    <strong>Copilot en todos tus entornos</strong>
+    Desde el IDE hasta la terminal, pasando por GitHub.com: Copilot se adapta a donde trabajas — autocompletado, chat conversacional, asistencia en PRs y comandos de shell, todo integrado.
+  </div>
+</div>
+
+<p class="section-label">Los 3 entornos · IDE · GitHub.com · CLI</p>
+<div class="grid grid-3">
+
+<div class="flip-wrap postit-blue" tabindex="0" role="button" aria-label="IDE" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">IDE · VS Code / JetBrains</span><i class="ti ti-code face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Autocompletado + Chat + Agentes</span><span class="face-body">Ghost text, panel de sugerencias múltiples, chat lateral, chat inline (Ctrl+I), slash commands y agentes @terminal / @vscode. Contexto de archivos abiertos.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-blue" tabindex="0" role="button" aria-label="GitHub.com" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">GitHub.com · web</span><i class="ti ti-brand-github face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Repos · PRs · Issues · Actions</span><span class="face-body">Exploración de repositorios, generación de resúmenes de PR, análisis de issues, revisión de código con sugerencias de seguridad/rendimiento, y explicación de errores en Actions.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-blue" tabindex="0" role="button" aria-label="CLI" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">CLI · terminal</span><i class="ti ti-terminal face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Explicar · Sugerir · Revisar</span><span class="face-body">copilot (modo interactivo) · copilot -i "..." (one-shot). Explica comandos, sugiere shell scripts, revisa sugerencias. Usa autenticación de GitHub.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Finalización de código en el IDE</p>
+<div class="grid grid-3">
+
+<div class="flip-wrap postit-yellow" tabindex="0" role="button" aria-label="Sugerencias automáticas" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Sugerencias automáticas</span><i class="ti ti-ghost face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Tab aceptar · parcial o completa</span><span class="face-body">Copilot sugiere en tiempo real: desde completar la línea actual hasta bloques completos de código. Puedes aceptar toda la sugerencia, parte o ignorarla.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-yellow" tabindex="0" role="button" aria-label="Panel múltiple" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Panel de sugerencias múltiples</span><i class="ti ti-layout-columns face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Hover → panel de control</span><span class="face-body">Pasa el cursor sobre la sugerencia → aparece el panel. <strong>Alt+]</strong> siguiente · <strong>Alt+[</strong> anterior (Win/Linux). <strong>⌥+]</strong> / <strong>⌥+[</strong> (macOS).</span></div>
+</div></div>
+
+<div class="flip-wrap postit-yellow" tabindex="0" role="button" aria-label="Lenguajes soportados" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">8 lenguajes principales</span><i class="ti ti-language face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Soporte excepcional</span><span class="face-body">Python · JavaScript · Java · TypeScript · Ruby · Go · C# · C++ — con soporte excepcional. También ayuda con muchos otros lenguajes y frameworks.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Adaptación al estilo · nemotecnia: "Ingenieros Construyen Formatos Comprensibles con Patrones"</p>
+<div class="grid grid-3">
+
+<div class="flip-wrap postit-green" tabindex="0" role="button" aria-label="Implementación" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">I — Implementación de métodos</span><i class="ti ti-function face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Sigue tu estilo de codificación</span><span class="face-body">Al empezar a escribir un nombre de método, Copilot sugiere la implementación completa siguiendo el estilo de codificación establecido en el proyecto.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-green" tabindex="0" role="button" aria-label="Convenciones" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">C — Convenciones de nombres</span><i class="ti ti-abc face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">camelCase · snake_case · PascalCase</span><span class="face-body">Recoge las convenciones de nomenclatura preferidas para variables, funciones y clases y las aplica consistentemente en las sugerencias.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-green" tabindex="0" role="button" aria-label="Formato" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">F — Formato</span><i class="ti ti-indent-increase face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Sangría · llaves · espaciado</span><span class="face-body">Se adapta al estilo de sangría (tabs vs espacios), colocación de llaves y otras preferencias de formato presentes en el archivo activo.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-green" tabindex="0" role="button" aria-label="Comentarios" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">C — Estilo de comentario</span><i class="ti ti-hash face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Inline · bloque · docstrings</span><span class="face-body">Imita el estilo de comentario preferido: comentarios en línea, en bloque o cadenas de documentación (docstrings), según lo que uses en el código.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-green" tabindex="0" role="button" aria-label="Patrones" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">P — Patrones de diseño</span><i class="ti ti-topology-star face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Alinea sugerencias con el proyecto</span><span class="face-body">Cuando el proyecto usa consistentemente ciertos patrones (Factory, Repository, Observer…), Copilot sugiere código que se alinea con esos patrones.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Tipos de comentarios usados como contexto · nemotecnia: "Ingenieros Buenos Documentan Todo Adecuadamente"</p>
+<div class="grid grid-3">
+
+<div class="flip-wrap postit-teal" tabindex="0" role="button" aria-label="Inline" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">I — Comentarios inline</span><i class="ti ti-arrow-right face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Junto a líneas específicas</span><span class="face-body">Explicaciones breves al lado del código. Copilot las usa para entender la intención inmediata y sugerir la siguiente línea o completar la lógica.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-teal" tabindex="0" role="button" aria-label="Bloque" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">B — Bloque de comentarios</span><i class="ti ti-align-left face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Descripción de función o clase</span><span class="face-body">Explicaciones más largas previas a una función o clase. Copilot puede sugerir la implementación completa basándose en la descripción del bloque.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-teal" tabindex="0" role="button" aria-label="Docstrings" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">D — Docstrings</span><i class="ti ti-file-text face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Documentación formal (Python, JS)</span><span class="face-body">Cadenas de documentación formales. Copilot las lee para entender parámetros, tipo de retorno y propósito, generando implementaciones más precisas.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-teal" tabindex="0" role="button" aria-label="TODO" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">T — Comentarios TODO</span><i class="ti ti-checkbox face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Notas de implementación futura</span><span class="face-body">Notas sobre mejoras o implementaciones pendientes. Copilot las usa para sugerir código que complete la tarea marcada como pendiente.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-teal" tabindex="0" role="button" aria-label="API docs" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">A — Documentación de API</span><i class="ti ti-api face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Uso y parámetros de funciones</span><span class="face-body">Comentarios que describen uso, parámetros y valores de retorno de métodos. Copilot genera implementaciones que respetan el contrato documentado.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Chat en el IDE — referencias de ámbito, agentes y modelos</p>
+<div class="grid grid-4">
+
+<div class="flip-wrap postit-purple" tabindex="0" role="button" aria-label="3 casos de uso" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">3 usos principales del chat</span><i class="ti ti-message-circle face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Generar · Depurar · Explicar</span><span class="face-body">1. <strong>Generar</strong> código complejo (regex, SQL, algoritmos). 2. <strong>Depurar</strong>: analiza errores y sugiere correcciones. 3. <strong>Explicar</strong>: divide código complejo en términos sencillos.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-purple" tabindex="0" role="button" aria-label="Referencias de ámbito" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">#file · @terminal</span><i class="ti ti-at face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Enfocar el contexto exacto</span><span class="face-body"><strong>#file:controller.js</strong> → Copilot se centra en ese archivo. <strong>@terminal</strong> → analiza la salida de la consola. Mejoran la precisión sin escribir prompts largos.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-purple" tabindex="0" role="button" aria-label="Agentes" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Agentes IDE</span><i class="ti ti-robot face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">@terminal · @vscode · /new</span><span class="face-body"><strong>@terminal:</strong> comandos y errores de consola. <strong>@vscode:</strong> configuración del IDE. <strong>/new:</strong> genera proyecto completo desde cero según requisitos.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-purple" tabindex="0" role="button" aria-label="Modelos PRU" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Modelos · 1 PRU vs 2 PRU</span><i class="ti ti-coins face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Estándar vs Premium</span><span class="face-body"><strong>Estándar (GPT-4o):</strong> 1 PRU · tareas rutinarias, depuración básica. <strong>Premium (o1-preview, o1-mini):</strong> 2 PRU · análisis complejo, arquitectura, multihilo. Agentes complejos: 2–5 PRU.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Copilot en GitHub.com · nemotecnia: "Exploramos PRs Investigando Resultados con Acciones"</p>
+<div class="grid grid-3">
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Exploración de repositorio" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">E — Exploración del repo</span><i class="ti ti-folder-search face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Explicar · Resumir · Documentar</span><span class="face-body">Explica secciones de código complejas, genera resúmenes del propósito del repositorio y crea/mejora README, docs de API y comentarios de código.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="PRs" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">P — Asistencia en PRs</span><i class="ti ti-git-pull-request face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Resúmenes · Revisión · Conflictos</span><span class="face-body">Genera resúmenes completos de cambios (1–2 PRU). Sugiere mejoras antes de la revisión formal. Ayuda a resolver conflictos de merge. Actualiza documentación automáticamente.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Issues" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">I — Gestión de issues</span><i class="ti ti-bug face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Analizar · Idear · Reproducir</span><span class="face-body">Divide issues complejos en tareas accionables, genera posibles soluciones con enfoques de implementación, ayuda a crear pasos claros de reproducción de errores.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Revisión de código" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">R — Revisión de código</span><i class="ti ti-eye-check face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Seguridad · Rendimiento · Calidad</span><span class="face-body">Genera comentarios de revisión con sugerencias específicas. Identifica vulnerabilidades de seguridad y malas prácticas. Sugiere optimizaciones de rendimiento (1–3 PRU).</span></div>
+</div></div>
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="GitHub Actions" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">A — GitHub Actions · errores</span><i class="ti ti-git-branch face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Analizar logs · Sugerir solución</span><span class="face-body">Examina los logs de flujos con errores, identifica la causa raíz, proporciona recomendaciones específicas y mejores prácticas para mejorar la confiabilidad del workflow.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">CLI de Copilot · terminal directo</p>
+<div class="grid grid-4">
+
+<div class="flip-wrap postit-lime" tabindex="0" role="button" aria-label="Instalación" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Instalación</span><i class="ti ti-download face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">brew o script oficial</span><span class="face-body"><code>brew install copilot-cli</code> (macOS/Linux) o <code>curl -fsSL https://gh.io/copilot-install | bash</code>. Usa autenticación existente de GitHub.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-lime" tabindex="0" role="button" aria-label="Modos de uso" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">2 modos de uso</span><i class="ti ti-terminal-2 face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Interactivo · One-shot</span><span class="face-body"><strong>copilot</strong> → modo interactivo (sesión completa, usa @ para seleccionar archivos). <strong>copilot -i "..."</strong> → respuesta única sin entrar al modo interactivo.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-lime" tabindex="0" role="button" aria-label="Slash commands CLI" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Slash commands clave</span><i class="ti ti-slash face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Solo controlan la sesión</span><span class="face-body">/explain · /suggest · /revise · /feedback · /exit · /model · /theme · /skills · /mcp · /list-dirs. <strong>No reemplazables por lenguaje natural</strong>.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-lime" tabindex="0" role="button" aria-label="Flujo CLI" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Flujo típico</span><i class="ti ti-arrow-right face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Explicar → Sugerir → Revisar</span><span class="face-body">1. Explica un comando desconocido. 2. Sugiere comando para una tarea en lenguaje natural. 3. Refina con prompt de seguimiento. 4. Revisa siempre antes de ejecutar.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Resumen del módulo</p>
+<div class="summary-box">
+  <p>Copilot opera en <strong>3 entornos</strong>: IDE (autocompletado + chat + agentes) · GitHub.com (PRs, issues, revisión, Actions) · CLI (explicar y sugerir comandos de shell).</p>
+  <p><strong>En el IDE:</strong> se adapta a 5 aspectos de tu estilo (implementación, convenciones, formato, comentarios, patrones) y usa 5 tipos de comentarios como contexto. Slash commands + #file/@terminal mejoran la precisión.</p>
+  <p><strong>Modelos:</strong> Estándar (1 PRU) para tareas rutinarias · Premium (2 PRU) para análisis complejo. Agentes avanzados pueden consumir 2–5 PRU.</p>
+  <p><strong>CLI:</strong> modo interactivo (copilot) o one-shot (copilot -i "..."). Los slash commands controlan la sesión y no son reemplazables por lenguaje natural.</p>
+</div>
+
+<p class="legend">Haz clic en cualquier post-it para girar · Clic de nuevo para voltear · Versión final completa</p>
+</div>
