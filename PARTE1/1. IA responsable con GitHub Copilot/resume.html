@@ -1,1041 +1,222 @@
-<h2 class="sr-only">
-  Infografía completa del módulo IA Responsable — haz clic en cada post-it para
-  ver su significado
-</h2>
-<style>
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  .board {
-    padding: 1.5rem 0.5rem 2rem;
-    font-family: var(--font-sans);
-    max-width: 50rem;
-    margin: 0 auto;
-  }
-  .obj-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 1.75rem;
-  }
-  .obj-list li {
-    background: var(--color-bg-secondary, #f8fafc);
-    border-left: 3px solid #16a34a;
-    padding: 8px 10px;
-    font-size: 12px;
-    line-height: 1.5;
-    color: var(--color-text-primary, #1a1a1a);
-    border-radius: 0 4px 4px 0;
-  }
-  .summary-box {
-    background: #f0fdf4;
-    border: 1.5px solid #16a34a;
-    border-radius: 8px;
-    padding: 14px 16px;
-    margin-bottom: 1.75rem;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .summary-box p {
-    font-size: 12px;
-    line-height: 1.6;
-    color: #14532d;
-  }
-  .summary-box strong {
-    font-weight: 600;
-  }
-  .section-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    color: var(--color-text-tertiary);
-    text-transform: uppercase;
-    margin: 0 0 0.75rem 0.25rem;
-  }
-  .grid {
-    display: grid;
-    gap: 14px;
-    margin-bottom: 1.75rem;
-  }
-  .grid-6 {
-    grid-template-columns: repeat(auto-fit, minmax(138px, 1fr));
-  }
-  .grid-2 {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-  .grid-3 {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  }
-  .grid-4 {
-    grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
-  }
-  .flip-wrap {
-    perspective: 800px;
-    cursor: pointer;
-    height: 160px;
-  }
-  .flip-wrap:focus {
-    outline: 2px solid var(--color-border-info);
-    border-radius: 6px;
-  }
-  .flip-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .flip-wrap.flipped .flip-inner {
-    transform: rotateY(180deg);
-  }
-  .face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 6px;
-    padding: 13px 11px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .back {
-    transform: rotateY(180deg);
-  }
-  .flip-hint {
-    font-size: 10px;
-    opacity: 0.45;
-    align-self: flex-end;
-  }
-  .postit-yellow .face {
-    background: #fef08a;
-    border-bottom: 3px solid #ca8a04;
-  }
-  .postit-yellow .face * {
-    color: #713f12;
-  }
-  .postit-blue .face {
-    background: #bfdbfe;
-    border-bottom: 3px solid #2563eb;
-  }
-  .postit-blue .face * {
-    color: #1e3a8a;
-  }
-  .postit-green .face {
-    background: #bbf7d0;
-    border-bottom: 3px solid #16a34a;
-  }
-  .postit-green .face * {
-    color: #14532d;
-  }
-  .postit-pink .face {
-    background: #fbcfe8;
-    border-bottom: 3px solid #db2777;
-  }
-  .postit-pink .face * {
-    color: #831843;
-  }
-  .postit-orange .face {
-    background: #fed7aa;
-    border-bottom: 3px solid #ea580c;
-  }
-  .postit-orange .face * {
-    color: #7c2d12;
-  }
-  .postit-purple .face {
-    background: #e9d5ff;
-    border-bottom: 3px solid #9333ea;
-  }
-  .postit-purple .face * {
-    color: #3b0764;
-  }
-  .postit-teal .face {
-    background: #99f6e4;
-    border-bottom: 3px solid #0d9488;
-  }
-  .postit-teal .face * {
-    color: #134e4a;
-  }
-  .postit-red .face {
-    background: #fecaca;
-    border-bottom: 3px solid #dc2626;
-  }
-  .postit-red .face * {
-    color: #7f1d1d;
-  }
-  .postit-lime .face {
-    background: #d9f99d;
-    border-bottom: 3px solid #65a30d;
-  }
-  .postit-lime .face * {
-    color: #365314;
-  }
-  .face-title {
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 1.3;
-  }
-  .face-icon {
-    font-size: 26px;
-    opacity: 0.32;
-    align-self: flex-end;
-  }
-  .back .face-title {
-    font-size: 11px;
-    font-weight: 600;
-    line-height: 1.3;
-    margin-bottom: 4px;
-  }
-  .back .face-body {
-    font-size: 10.5px;
-    line-height: 1.5;
-    flex: 1;
-  }
-  .hero {
-    background: #fef9c3;
-    border: 1.5px solid #ca8a04;
-    border-radius: 8px;
-    padding: 14px 16px;
-    margin-bottom: 1.75rem;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .hero-text {
-    font-size: 12.5px;
-    color: #713f12;
-    line-height: 1.5;
-  }
-  .hero-text strong {
-    font-size: 13px;
-    display: block;
-    margin-bottom: 3px;
-  }
-  .divider {
-    border: none;
-    border-top: 0.5px solid var(--color-border-tertiary);
-    margin: 1.25rem 0 1.5rem;
-  }
-  .legend {
-    font-size: 11.5px;
-    color: var(--color-text-secondary);
-    text-align: center;
-    padding-top: 0.25rem;
-  }
-</style>
+<h2 class="sr-only">Infografía completa del módulo IA Responsable — haz clic en cada post-it para ver su significado</h2>
+<link rel="stylesheet" href="../../_shared/cards.css">
 
 <div class="board">
-  <p class="section-label">Objetivos de aprendizaje</p>
-  <ul class="obj-list">
-    <li>Comprender y aplicar los principios de uso de una IA responsable.</li>
-    <li>
-      Identificar las limitaciones y mitigar los riesgos asociados a la IA.
-    </li>
-    <li>
-      Aplicar procedimientos recomendados para alinear el código generado por IA
-      con estándares éticos y requisitos del proyecto.
-    </li>
-    <li>
-      Reconocer la importancia de la transparencia y responsabilidad en sistemas
-      de IA para generar y conservar la confianza del usuario.
-    </li>
-  </ul>
 
-  <div class="hero">
-    <i
-      class="ti ti-robot"
-      style="font-size: 32px; color: #92400e; opacity: 0.7; flex-shrink: 0"
-      aria-hidden="true"
-    ></i>
-    <div class="hero-text">
-      <strong>¿Qué es la IA responsable?</strong>
-      Desarrollar, evaluar e implementar sistemas de IA de forma segura,
-      confiable y ética — poniendo a las personas y sus objetivos en el centro
-      de cada decisión de diseño.
-    </div>
+<p class="section-label">Objetivos de aprendizaje</p>
+<ul class="obj-list">
+  <li>Comprender y aplicar los principios de uso de una IA responsable.</li>
+  <li>Identificar las limitaciones y mitigar los riesgos asociados a la IA.</li>
+  <li>Aplicar procedimientos recomendados para alinear el código generado por IA con estándares éticos y requisitos del proyecto.</li>
+  <li>Reconocer la importancia de la transparencia y responsabilidad en sistemas de IA para generar y conservar la confianza del usuario.</li>
+</ul>
+
+<div class="hero">
+  <i class="ti ti-robot" style="font-size:32px;color:#92400e;opacity:.7;flex-shrink:0" aria-hidden="true"></i>
+  <div class="hero-text">
+    <strong>¿Qué es la IA responsable?</strong>
+    Desarrollar, evaluar e implementar sistemas de IA de forma segura, confiable y ética — poniendo a las personas y sus objetivos en el centro de cada decisión de diseño.
   </div>
+</div>
 
-  <p class="section-label">
-    Los 6 principios · nemotecnia: "El Código Para IA Tiene Reglas"
-  </p>
-  <div class="grid grid-6">
-    <div
-      class="flip-wrap postit-yellow"
-      tabindex="0"
-      role="button"
-      aria-label="Equidad"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">E — Equidad</span
-          ><i class="ti ti-scale face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">¿Lo trata igual?</span
-          ><span class="face-body"
-            >Decisiones justas para todos sin favorecer grupos. Detectar sesgos,
-            probar con muestras equilibradas, monitorear por segmento en
-            producción.</span
-          >
-        </div>
-      </div>
-    </div>
+<p class="section-label">Los 6 principios · nemotecnia: "El Código Para IA Tiene Reglas"</p>
+<div class="grid grid-6">
 
-    <div
-      class="flip-wrap postit-blue"
-      tabindex="0"
-      role="button"
-      aria-label="Confiabilidad y seguridad"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">C — Confiabilidad y seguridad</span
-          ><i class="ti ti-shield-check face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Reloj sin descarga</span
-          ><span class="face-body"
-            >Confiabilidad = predecible sin errores · Seguridad = sin daño
-            físico, emocional o financiero a personas · Deben resistir
-            manipulación dañina.</span
-          >
-        </div>
-      </div>
-    </div>
+<div class="flip-wrap postit-yellow" tabindex="0" role="button" aria-label="Equidad" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">E — Equidad</span><i class="ti ti-scale face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">¿Lo trata igual?</span><span class="face-body">Decisiones justas para todos sin favorecer grupos. Detectar sesgos, probar con muestras equilibradas, monitorear por segmento en producción.</span></div>
+</div></div>
 
-    <div
-      class="flip-wrap postit-green"
-      tabindex="0"
-      role="button"
-      aria-label="Privacidad y seguridad"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">P — Privacidad y seguridad</span
-          ><i class="ti ti-lock face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Solo lo necesario, protegido</span
-          ><span class="face-body"
-            >Consentimiento explícito · Solo datos necesarios · Anonimizar
-            (pseudonimización/agregación) · Cifrar · Acceso limitado ·
-            Auditorías periódicas.</span
-          >
-        </div>
-      </div>
-    </div>
+<div class="flip-wrap postit-blue" tabindex="0" role="button" aria-label="Confiabilidad y seguridad" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">C — Confiabilidad y seguridad</span><i class="ti ti-shield-check face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Reloj sin descarga</span><span class="face-body">Confiabilidad = predecible sin errores · Seguridad = sin daño físico, emocional o financiero a personas · Deben resistir manipulación dañina.</span></div>
+</div></div>
 
-    <div
-      class="flip-wrap postit-pink"
-      tabindex="0"
-      role="button"
-      aria-label="Inclusión"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">I — Inclusión</span
-          ><i class="ti ti-world face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">¿Puede usarlo?</span
-          ><span class="face-body"
-            >Accesible para cualquier persona, idioma, capacidad física,
-            ubicación o nivel de conexión. Voz, subtítulos, lectores de
-            pantalla, modo offline.</span
-          >
-        </div>
-      </div>
-    </div>
+<div class="flip-wrap postit-green" tabindex="0" role="button" aria-label="Privacidad y seguridad" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">P — Privacidad y seguridad</span><i class="ti ti-lock face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Solo lo necesario, protegido</span><span class="face-body">Consentimiento explícito · Solo datos necesarios · Anonimizar (pseudonimización/agregación) · Cifrar · Acceso limitado · Auditorías periódicas.</span></div>
+</div></div>
 
-    <div
-      class="flip-wrap postit-orange"
-      tabindex="0"
-      role="button"
-      aria-label="Transparencia"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">T — Transparencia</span
-          ><i class="ti ti-eye face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Comprensible y auditable</span
-          ><span class="face-body"
-            >Explicar cómo funciona · Justificar decisiones de diseño · Ser
-            honesto sobre limitaciones · Habilitar registro, informes y
-            auditoría. Prerequisito de la responsabilidad.</span
-          >
-        </div>
-      </div>
-    </div>
+<div class="flip-wrap postit-pink" tabindex="0" role="button" aria-label="Inclusión" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">I — Inclusión</span><i class="ti ti-world face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">¿Puede usarlo?</span><span class="face-body">Accesible para cualquier persona, idioma, capacidad física, ubicación o nivel de conexión. Voz, subtítulos, lectores de pantalla, modo offline.</span></div>
+</div></div>
 
-    <div
-      class="flip-wrap postit-purple"
-      tabindex="0"
-      role="button"
-      aria-label="Responsabilidad"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">R — Responsabilidad</span
-          ><i class="ti ti-user-check face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Humanos rinden cuentas</span
-          ><span class="face-body"
-            >Los creadores responden por sus sistemas. Monitoreo continuo de
-            rendimiento y mitigación de riesgos. La IA no tiene conciencia — los
-            humanos sí.</span
-          >
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Transparencia" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">T — Transparencia</span><i class="ti ti-eye face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Comprensible y auditable</span><span class="face-body">Explicar cómo funciona · Justificar decisiones de diseño · Ser honesto sobre limitaciones · Habilitar registro, informes y auditoría. Prerequisito de la responsabilidad.</span></div>
+</div></div>
 
-  <hr class="divider" />
-  <p class="section-label">Ejemplos de inclusión en práctica</p>
-  <div class="grid grid-2">
-    <div
-      class="flip-wrap postit-pink"
-      tabindex="0"
-      role="button"
-      aria-label="Reconocimiento facial inclusivo"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">Reconocimiento facial</span
-          ><i class="ti ti-face-id face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Sin discriminación visual</span
-          ><span class="face-body"
-            >Funciona correctamente en todos los tonos de piel, edades y
-            géneros. El modelo no puede rendir bien solo para ciertos grupos
-            demográficos.</span
-          >
-        </div>
-      </div>
-    </div>
+<div class="flip-wrap postit-purple" tabindex="0" role="button" aria-label="Responsabilidad" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">R — Responsabilidad</span><i class="ti ti-user-check face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Humanos rinden cuentas</span><span class="face-body">Los creadores responden por sus sistemas. Monitoreo continuo de rendimiento y mitigación de riesgos. La IA no tiene conciencia — los humanos sí.</span></div>
+</div></div>
 
-    <div
-      class="flip-wrap postit-pink"
-      tabindex="0"
-      role="button"
-      aria-label="Accesibilidad visual"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">Accesibilidad visual</span
-          ><i class="ti ti-accessible face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Interfaces para todos</span
-          ><span class="face-body"
-            >Interfaces compatibles con lectores de pantalla para personas con
-            discapacidad visual. Voz, subtítulos y modos alternativos de
-            interacción.</span
-          >
-        </div>
-      </div>
-    </div>
+</div>
 
-    <div
-      class="flip-wrap postit-pink"
-      tabindex="0"
-      role="button"
-      aria-label="Traducción de dialectos"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">Traducción de dialectos</span
-          ><i class="ti ti-language face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Sin excluir idiomas pequeños</span
-          ><span class="face-body"
-            >Soporte para dialectos regionales pequeños y contextos culturales
-            locales. No solo los idiomas mayoritarios.</span
-          >
-        </div>
-      </div>
-    </div>
+<hr class="divider">
+<p class="section-label">Ejemplos de inclusión en práctica</p>
+<div class="grid grid-2">
 
-    <div
-      class="flip-wrap postit-pink"
-      tabindex="0"
-      role="button"
-      aria-label="Conectividad limitada"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">Baja conectividad</span
-          ><i class="ti ti-wifi-off face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Offline y países en desarrollo</span
-          ><span class="face-body"
-            >Funcionar sin conexión o con recursos informáticos limitados. La IA
-            responsable no puede excluir zonas geográficas con infraestructura
-            limitada.</span
-          >
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="flip-wrap postit-pink" tabindex="0" role="button" aria-label="Reconocimiento facial inclusivo" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Reconocimiento facial</span><i class="ti ti-face-id face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Sin discriminación visual</span><span class="face-body">Funciona correctamente en todos los tonos de piel, edades y géneros. El modelo no puede rendir bien solo para ciertos grupos demográficos.</span></div>
+</div></div>
 
-  <hr class="divider" />
-  <p class="section-label">
-    Mitigación de sesgo · nemotecnia: "Rodolfo Prueba Reduciendo Su
-    Incompetencia"
-  </p>
-  <div class="grid grid-3">
-    <div
-      class="flip-wrap postit-red"
-      tabindex="0"
-      role="button"
-      aria-label="Revisar datos"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">R — Revisar datos de entrenamiento</span
-          ><i class="ti ti-database face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Auditar antes de entrenar</span
-          ><span class="face-body"
-            >¿Distribución equilibrada por grupo? ¿Labels asignados con igual
-            criterio? El sesgo histórico queda codificado si no se corrige
-            aquí.</span
-          >
-        </div>
-      </div>
-    </div>
+<div class="flip-wrap postit-pink" tabindex="0" role="button" aria-label="Accesibilidad visual" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Accesibilidad visual</span><i class="ti ti-accessible face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Interfaces para todos</span><span class="face-body">Interfaces compatibles con lectores de pantalla para personas con discapacidad visual. Voz, subtítulos y modos alternativos de interacción.</span></div>
+</div></div>
 
-    <div
-      class="flip-wrap postit-red"
-      tabindex="0"
-      role="button"
-      aria-label="Probar muestras"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">P — Probar con muestras equilibradas</span
-          ><i class="ti ti-test-pipe face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Evaluar por subgrupo</span
-          ><span class="face-body"
-            >90% accuracy global puede ocultar 60% en un segmento. Comparar tasa
-            de error entre grupos revela dónde falla el modelo realmente.</span
-          >
-        </div>
-      </div>
-    </div>
+<div class="flip-wrap postit-pink" tabindex="0" role="button" aria-label="Traducción de dialectos" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Traducción de dialectos</span><i class="ti ti-language face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Sin excluir idiomas pequeños</span><span class="face-body">Soporte para dialectos regionales pequeños y contextos culturales locales. No solo los idiomas mayoritarios.</span></div>
+</div></div>
 
-    <div
-      class="flip-wrap postit-red"
-      tabindex="0"
-      role="button"
-      aria-label="Reducción adversaria"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">R — Reducción adversaria de sesgos</span
-          ><i class="ti ti-circuit-resistor face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Modelo B testea al modelo A</span
-          ><span class="face-body"
-            >Un segundo modelo intenta adivinar el grupo demográfico a partir de
-            las predicciones. Si puede → hay sesgo filtrado. Compiten hasta
-            eliminarlo.</span
-          >
-        </div>
-      </div>
-    </div>
+<div class="flip-wrap postit-pink" tabindex="0" role="button" aria-label="Conectividad limitada" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Baja conectividad</span><i class="ti ti-wifi-off face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Offline y países en desarrollo</span><span class="face-body">Funcionar sin conexión o con recursos informáticos limitados. La IA responsable no puede excluir zonas geográficas con infraestructura limitada.</span></div>
+</div></div>
 
-    <div
-      class="flip-wrap postit-red"
-      tabindex="0"
-      role="button"
-      aria-label="Supervisar segmentos"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">S — Supervisar por segmento</span
-          ><i class="ti ti-chart-bar face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Monitoreo en producción</span
-          ><span class="face-body"
-            >El sesgo puede aparecer solo con datos reales. Dashboards con
-            métricas desglosadas por grupo, no solo accuracy global. Monitoreo
-            continuo.</span
-          >
-        </div>
-      </div>
-    </div>
+</div>
 
-    <div
-      class="flip-wrap postit-red"
-      tabindex="0"
-      role="button"
-      aria-label="Invalidar puntuaciones"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">I — Invalidar puntuaciones injustas</span
-          ><i class="ti ti-hand-stop face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Override humano</span
-          ><span class="face-body"
-            >Si el contexto era sesgado, un revisor humano puede corregir la
-            decisión del modelo. La supervisión humana como red de seguridad
-            final.</span
-          >
-        </div>
-      </div>
-    </div>
+<hr class="divider">
+<p class="section-label">Mitigación de sesgo · nemotecnia: "Rodolfo Prueba Reduciendo Su Incompetencia"</p>
+<div class="grid grid-3">
 
-    <div
-      class="flip-wrap postit-orange"
-      tabindex="0"
-      role="button"
-      aria-label="Trampa variables proxy"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">⚠ Trampa: variables proxy</span
-          ><i class="ti ti-alert-triangle face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Quitar atributos no basta</span
-          ><span class="face-body"
-            >El modelo reconstruye raza/género via "código postal",
-            "universidad", etc. El sesgo histórico se oculta en variables
-            aparentemente neutras.</span
-          >
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="flip-wrap postit-red" tabindex="0" role="button" aria-label="Revisar datos" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">R — Revisar datos de entrenamiento</span><i class="ti ti-database face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Auditar antes de entrenar</span><span class="face-body">¿Distribución equilibrada por grupo? ¿Labels asignados con igual criterio? El sesgo histórico queda codificado si no se corrige aquí.</span></div>
+</div></div>
 
-  <hr class="divider" />
-  <p class="section-label">
-    Técnicas de privacidad — detalle operativo completo
-  </p>
-  <div class="grid grid-4">
-    <div
-      class="flip-wrap postit-teal"
-      tabindex="0"
-      role="button"
-      aria-label="Pseudonimización"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">Pseudonimización</span
-          ><i class="ti ti-id-badge face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Reemplazar identidades</span
-          ><span class="face-body"
-            >"Juan Pérez, Lima" → ID_4821. Datos personales sustituidos por
-            identificadores aleatorios. Reversible con la clave correcta.</span
-          >
-        </div>
-      </div>
-    </div>
+<div class="flip-wrap postit-red" tabindex="0" role="button" aria-label="Probar muestras" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">P — Probar con muestras equilibradas</span><i class="ti ti-test-pipe face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Evaluar por subgrupo</span><span class="face-body">90% accuracy global puede ocultar 60% en un segmento. Comparar tasa de error entre grupos revela dónde falla el modelo realmente.</span></div>
+</div></div>
 
-    <div
-      class="flip-wrap postit-teal"
-      tabindex="0"
-      role="button"
-      aria-label="Agregación"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">Agregación</span
-          ><i class="ti ti-stack face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Resúmenes grupales</span
-          ><span class="face-body"
-            >En lugar de datos individuales se usan promedios o totales por
-            grupo. Elimina detalles específicos de personas concretas.</span
-          >
-        </div>
-      </div>
-    </div>
+<div class="flip-wrap postit-red" tabindex="0" role="button" aria-label="Reducción adversaria" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">R — Reducción adversaria de sesgos</span><i class="ti ti-circuit-resistor face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Modelo B testea al modelo A</span><span class="face-body">Un segundo modelo intenta adivinar el grupo demográfico a partir de las predicciones. Si puede → hay sesgo filtrado. Compiten hasta eliminarlo.</span></div>
+</div></div>
 
-    <div
-      class="flip-wrap postit-teal"
-      tabindex="0"
-      role="button"
-      aria-label="Cifrado y gestión de claves"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">Cifrado y gestión de claves</span
-          ><i class="ti ti-key face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">3 métodos + 3 reglas</span
-          ><span class="face-body"
-            >HSM (hardware a prueba de alteraciones) · Azure Key Vault · Cifrado
-            de sobre (2 claves). Rotar claves regularmente · hacer backups ·
-            acceso controlado.</span
-          >
-        </div>
-      </div>
-    </div>
+<div class="flip-wrap postit-red" tabindex="0" role="button" aria-label="Supervisar segmentos" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">S — Supervisar por segmento</span><i class="ti ti-chart-bar face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Monitoreo en producción</span><span class="face-body">El sesgo puede aparecer solo con datos reales. Dashboards con métricas desglosadas por grupo, no solo accuracy global. Monitoreo continuo.</span></div>
+</div></div>
 
-    <div
-      class="flip-wrap postit-lime"
-      tabindex="0"
-      role="button"
-      aria-label="Reglas de recolección"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">Reglas de recolección</span
-          ><i class="ti ti-clipboard-list face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">4 reglas clave</span
-          ><span class="face-body"
-            >1. Consentimiento explícito · 2. Solo datos necesarios
-            (minimización) · 3. Clasificar datos por confidencialidad · 4.
-            Auditorías de seguridad periódicas.</span
-          >
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="flip-wrap postit-red" tabindex="0" role="button" aria-label="Invalidar puntuaciones" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">I — Invalidar puntuaciones injustas</span><i class="ti ti-hand-stop face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Override humano</span><span class="face-body">Si el contexto era sesgado, un revisor humano puede corregir la decisión del modelo. La supervisión humana como red de seguridad final.</span></div>
+</div></div>
 
-  <hr class="divider" />
-  <p class="section-label">
-    Implementación de transparencia — acciones concretas
-  </p>
-  <div class="grid grid-4">
-    <div
-      class="flip-wrap postit-orange"
-      tabindex="0"
-      role="button"
-      aria-label="Documentar"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">Documentar datos y modelos</span
-          ><i class="ti ti-file-description face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Trazabilidad total</span
-          ><span class="face-body"
-            >Registrar qué datos se usaron, cómo se procesaron y qué decisiones
-            de diseño se tomaron. Base para cualquier auditoría futura.</span
-          >
-        </div>
-      </div>
-    </div>
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Trampa variables proxy" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">⚠ Trampa: variables proxy</span><i class="ti ti-alert-triangle face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Quitar atributos no basta</span><span class="face-body">El modelo reconstruye raza/género via "código postal", "universidad", etc. El sesgo histórico se oculta en variables aparentemente neutras.</span></div>
+</div></div>
 
-    <div
-      class="flip-wrap postit-orange"
-      tabindex="0"
-      role="button"
-      aria-label="Interfaces explicativas"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">Interfaces explicativas</span
-          ><i class="ti ti-message-question face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Explicar cada decisión</span
-          ><span class="face-body"
-            >El sistema debe poder responder "¿por qué tomaste esa decisión?" de
-            forma comprensible para usuarios no técnicos.</span
-          >
-        </div>
-      </div>
-    </div>
+</div>
 
-    <div
-      class="flip-wrap postit-orange"
-      tabindex="0"
-      role="button"
-      aria-label="Herramientas de depuración"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">Herramientas de depuración</span
-          ><i class="ti ti-bug face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Detectar comportamientos inesperados</span
-          ><span class="face-body"
-            >Paneles de pruebas y herramientas de debugging de IA que permitan
-            identificar y corregir comportamientos anómalos antes del
-            despliegue.</span
-          >
-        </div>
-      </div>
-    </div>
+<hr class="divider">
+<p class="section-label">Técnicas de privacidad — detalle operativo completo</p>
+<div class="grid grid-4">
 
-    <div
-      class="flip-wrap postit-orange"
-      tabindex="0"
-      role="button"
-      aria-label="Registro y auditoría"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">Registro y auditoría</span
-          ><i class="ti ti-list-search face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Logs + informes + auditoría</span
-          ><span class="face-body"
-            >Habilitar logging completo de decisiones, generar informes
-            periódicos y permitir auditorías externas. Sin logs no hay
-            responsabilidad real.</span
-          >
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="flip-wrap postit-teal" tabindex="0" role="button" aria-label="Pseudonimización" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Pseudonimización</span><i class="ti ti-id-badge face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Reemplazar identidades</span><span class="face-body">"Juan Pérez, Lima" → ID_4821. Datos personales sustituidos por identificadores aleatorios. Reversible con la clave correcta.</span></div>
+</div></div>
 
-  <hr class="divider" />
-  <p class="section-label">Distinciones clave — no confundir</p>
-  <div class="grid grid-2">
-    <div
-      class="flip-wrap postit-yellow"
-      tabindex="0"
-      role="button"
-      aria-label="Equidad vs Inclusión"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">Equidad vs Inclusión</span
-          ><i class="ti ti-arrows-diff face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Trato vs Acceso</span
-          ><span class="face-body"
-            >Equidad = ¿lo trata igual? (decisión justa) · Inclusión = ¿puede
-            usarlo? (acceso real). Un sistema puede fallar en uno y no en el
-            otro.</span
-          >
-        </div>
-      </div>
-    </div>
+<div class="flip-wrap postit-teal" tabindex="0" role="button" aria-label="Agregación" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Agregación</span><i class="ti ti-stack face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Resúmenes grupales</span><span class="face-body">En lugar de datos individuales se usan promedios o totales por grupo. Elimina detalles específicos de personas concretas.</span></div>
+</div></div>
 
-    <div
-      class="flip-wrap postit-blue"
-      tabindex="0"
-      role="button"
-      aria-label="Transparencia vs Responsabilidad"
-      onclick="this.classList.toggle('flipped')"
-      onkeydown="
-        if (event.key === 'Enter' || event.key === ' ')
-          this.classList.toggle('flipped');
-      "
-    >
-      <div class="flip-inner">
-        <div class="face front">
-          <span class="face-title">Transparencia vs Responsabilidad</span
-          ><i class="ti ti-link face-icon" aria-hidden="true"></i
-          ><span class="flip-hint">↻ clic</span>
-        </div>
-        <div class="face back">
-          <span class="face-title">Una habilita la otra</span
-          ><span class="face-body"
-            >Sin transparencia no puedes auditar. Sin auditoría no hay
-            responsabilidad real. La transparencia es el prerequisito de la
-            responsabilidad.</span
-          >
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="flip-wrap postit-teal" tabindex="0" role="button" aria-label="Cifrado y gestión de claves" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Cifrado y gestión de claves</span><i class="ti ti-key face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">3 métodos + 3 reglas</span><span class="face-body">HSM (hardware a prueba de alteraciones) · Azure Key Vault · Cifrado de sobre (2 claves). Rotar claves regularmente · hacer backups · acceso controlado.</span></div>
+</div></div>
 
-  <hr class="divider" />
-  <p class="section-label">Resumen del módulo</p>
-  <div class="summary-box">
-    <p>
-      Microsoft y GitHub son líderes en IA responsable, comprometidos a
-      garantizar que los sistemas de IA se desarrollen y usen de formas
-      <strong>seguras, confiables y éticamente sólidas</strong>.
-    </p>
-    <p>
-      <strong>Los 6 principios:</strong> Equidad · Confiabilidad y seguridad ·
-      Privacidad y seguridad · Inclusión · Transparencia · Responsabilidad.
-    </p>
-    <p>
-      El objetivo es que los sistemas de IA
-      <strong>prioricen a las personas</strong> y mantengan valores
-      fundamentales como equidad, confiabilidad y transparencia. Al aplicar
-      estos principios, los desarrolladores pueden crear soluciones de IA
-      eficaces, seguras y transparentes.
-    </p>
-  </div>
+<div class="flip-wrap postit-lime" tabindex="0" role="button" aria-label="Reglas de recolección" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Reglas de recolección</span><i class="ti ti-clipboard-list face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">4 reglas clave</span><span class="face-body">1. Consentimiento explícito · 2. Solo datos necesarios (minimización) · 3. Clasificar datos por confidencialidad · 4. Auditorías de seguridad periódicas.</span></div>
+</div></div>
 
-  <p class="legend">
-    Haz clic en cualquier post-it para girar · Clic de nuevo para voltear ·
-    Versión final completa
-  </p>
+</div>
+
+<hr class="divider">
+<p class="section-label">Implementación de transparencia — acciones concretas</p>
+<div class="grid grid-4">
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Documentar" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Documentar datos y modelos</span><i class="ti ti-file-description face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Trazabilidad total</span><span class="face-body">Registrar qué datos se usaron, cómo se procesaron y qué decisiones de diseño se tomaron. Base para cualquier auditoría futura.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Interfaces explicativas" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Interfaces explicativas</span><i class="ti ti-message-question face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Explicar cada decisión</span><span class="face-body">El sistema debe poder responder "¿por qué tomaste esa decisión?" de forma comprensible para usuarios no técnicos.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Herramientas de depuración" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Herramientas de depuración</span><i class="ti ti-bug face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Detectar comportamientos inesperados</span><span class="face-body">Paneles de pruebas y herramientas de debugging de IA que permitan identificar y corregir comportamientos anómalos antes del despliegue.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Registro y auditoría" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Registro y auditoría</span><i class="ti ti-list-search face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Logs + informes + auditoría</span><span class="face-body">Habilitar logging completo de decisiones, generar informes periódicos y permitir auditorías externas. Sin logs no hay responsabilidad real.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Distinciones clave — no confundir</p>
+<div class="grid grid-2">
+
+<div class="flip-wrap postit-yellow" tabindex="0" role="button" aria-label="Equidad vs Inclusión" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Equidad vs Inclusión</span><i class="ti ti-arrows-diff face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Trato vs Acceso</span><span class="face-body">Equidad = ¿lo trata igual? (decisión justa) · Inclusión = ¿puede usarlo? (acceso real). Un sistema puede fallar en uno y no en el otro.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-blue" tabindex="0" role="button" aria-label="Transparencia vs Responsabilidad" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Transparencia vs Responsabilidad</span><i class="ti ti-link face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Una habilita la otra</span><span class="face-body">Sin transparencia no puedes auditar. Sin auditoría no hay responsabilidad real. La transparencia es el prerequisito de la responsabilidad.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Resumen del módulo</p>
+<div class="summary-box">
+  <p>Microsoft y GitHub son líderes en IA responsable, comprometidos a garantizar que los sistemas de IA se desarrollen y usen de formas <strong>seguras, confiables y éticamente sólidas</strong>.</p>
+  <p><strong>Los 6 principios:</strong> Equidad · Confiabilidad y seguridad · Privacidad y seguridad · Inclusión · Transparencia · Responsabilidad.</p>
+  <p>El objetivo es que los sistemas de IA <strong>prioricen a las personas</strong> y mantengan valores fundamentales como equidad, confiabilidad y transparencia. Al aplicar estos principios, los desarrolladores pueden crear soluciones de IA eficaces, seguras y transparentes.</p>
+</div>
+
+<p class="legend">Haz clic en cualquier post-it para girar · Clic de nuevo para voltear · Versión final completa</p>
 </div>
