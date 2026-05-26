@@ -1,0 +1,458 @@
+<link rel="stylesheet" href="../../_shared/cards.css">
+
+<div class="board">
+
+  <!-- OBJETIVOS -->
+  <div class="section-label">Objetivos del módulo</div>
+  <ul class="obj-list">
+    <li>Explicar qué es Copilot Cloud Agent, quién puede usarlo y dónde está disponible.</li>
+    <li>Habilitar el agente y comprender los costos en Acciones (minutos) y PRUs.</li>
+    <li>Asignar tareas, rastrear progreso e iterar con @copilot en PRs.</li>
+    <li>Personalizar el entorno con copilot-setup-steps.yml y extender con MCP.</li>
+    <li>Validar resultados y usar el agente de forma responsable.</li>
+  </ul>
+
+  <!-- HERO -->
+  <div class="hero postit-blue">
+    <div class="face-icon"><i class="ti ti-cloud-computing"></i></div>
+    <h1>Copilot Cloud Agent</h1>
+    <p>Un compañero de equipo autónomo que trabaja en segundo plano dentro de GitHub: crea ramas, redacta código y abre PRs mientras tú revisas.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- QUÉ ES + PLANES + CAPACIDADES -->
+  <div class="section-label">¿Qué es y qué puede hacer? — <em>mnemónico: "BFPDD: Bugs, Features, Pruebas, Docs, Deuda"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-yellow">
+          <div class="face-icon"><i class="ti ti-users"></i></div>
+          <div class="face-title">Disponibilidad</div>
+          <p>Planes y repositorios compatibles</p>
+          <div class="flip-hint">↩ detalle</div>
+        </div>
+        <div class="back postit-yellow">
+          <p><strong>Planes:</strong> Pro, Pro+, Business, Enterprise.</p>
+          <p><strong>Repos:</strong> todos los hospedados en GitHub, excepto cuentas de usuario administradas o donde esté deshabilitado.</p>
+          <p><strong>Idioma principal:</strong> inglés.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-yellow">
+          <div class="face-icon"><i class="ti ti-list-check"></i></div>
+          <div class="face-title">Tareas BFPDD</div>
+          <p>Qué puede hacer el agente</p>
+          <div class="flip-hint">↩ lista</div>
+        </div>
+        <div class="back postit-yellow">
+          <p><strong>B — Bugs:</strong> corregir errores y regresiones.</p>
+          <p><strong>F — Features:</strong> implementar nuevas características incrementales.</p>
+          <p><strong>P — Pruebas:</strong> mejorar cobertura o generar pruebas faltantes.</p>
+          <p><strong>D — Docs:</strong> actualizar o crear documentación.</p>
+          <p><strong>D — Deuda:</strong> abordar deuda técnica y pendientes.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-yellow">
+          <div class="face-icon"><i class="ti ti-arrows-split"></i></div>
+          <div class="face-title">2 formas de delegar</div>
+          <p>Cómo asignar trabajo al agente</p>
+          <div class="flip-hint">↩ métodos</div>
+        </div>
+        <div class="back postit-yellow">
+          <p><strong>1. Asignar un issue:</strong> en GitHub.com, Mobile, API GraphQL o CLI (<code>gh issue edit</code>).</p>
+          <p><strong>2. Pedir desde chat:</strong> panel Agentes en GitHub, Copilot Chat, IDE u otra herramienta con MCP/Raycast (macOS).</p>
+          <p>Cuando termine, solicita tu revisión y responde a <code>@copilot</code> en comentarios del PR.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- COMPARATIVA CLOUD vs IDE vs MODO AGENTE -->
+  <div class="section-label">Cloud Agent vs. Modo Agente (IDE) vs. Asistentes tradicionales</div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-device-desktop-analytics"></i></div>
+          <div class="face-title">Asistente IDE tradicional</div>
+          <p>Copilot inline / Chat local</p>
+          <div class="flip-hint">↩ características</div>
+        </div>
+        <div class="back postit-blue">
+          <p>Ayuda a escribir código localmente.</p>
+          <p>Pasos manuales tuyos: crear ramas, commit, push, descripción PR.</p>
+          <p>Sesión privada, no visible para el equipo.</p>
+          <p>Sin trazabilidad en el historial de GitHub.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-code"></i></div>
+          <div class="face-title">Modo Agente (IDE)</div>
+          <p>Copilot Edits en VS Code / VS</p>
+          <div class="flip-hint">↩ características</div>
+        </div>
+        <div class="back postit-blue">
+          <p>Modificaciones locales autónomas directamente en la sesión del IDE.</p>
+          <p>Edita múltiples archivos dentro del workspace local.</p>
+          <p>Requiere que tú hagas push y abras el PR.</p>
+          <p>No se ejecuta en la nube de forma asíncrona.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-purple">
+          <div class="face-icon"><i class="ti ti-cloud"></i></div>
+          <div class="face-title">Cloud Agent</div>
+          <p>Agente asíncrono en GitHub</p>
+          <div class="flip-hint">↩ características</div>
+        </div>
+        <div class="back postit-purple">
+          <p>Todo ocurre como commits en GitHub (trazable).</p>
+          <p>Automatiza: rama <code>copilot/</code>, mensajes de commit, borrador de código.</p>
+          <p>Visible en registros de sesión e historial de PR para todo el equipo.</p>
+          <p>Iteras orientando con comentarios en el PR, no en sesión local.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SEGURIDAD Y PROTECCIONES -->
+  <div class="section-label">Modelo de seguridad — <em>mnemónico: "GERPC: Gobernanza, Entorno, Rama, Permisos, Coautoría"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-green">
+          <div class="face-icon"><i class="ti ti-shield"></i></div>
+          <div class="face-title">G — Gobernanza + E — Entorno</div>
+          <p>Control org y sandbox seguro</p>
+          <div class="flip-hint">↩ detalle</div>
+        </div>
+        <div class="back postit-green">
+          <p><strong>Gobernanza:</strong> la config de org/empresa rige la disponibilidad; todas las directivas de seguridad siguen aplicándose.</p>
+          <p><strong>Entorno:</strong> sandbox aislado en Actions con acceso a Internet con firewall y acceso de solo lectura al repositorio.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-green">
+          <div class="face-icon"><i class="ti ti-git-branch"></i></div>
+          <div class="face-title">R — Ramas + P — Permisos</div>
+          <p>Solo copilot/* y solo escritura</p>
+          <div class="flip-hint">↩ detalle</div>
+        </div>
+        <div class="back postit-green">
+          <p><strong>Ramas:</strong> solo puede crear e insertar en ramas <code>copilot/</code>; las protecciones de rama y comprobaciones necesarias siguen activas.</p>
+          <p><strong>Permisos:</strong> solo responde a usuarios con acceso de escritura; se ignoran comentarios de otros usuarios.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-green">
+          <div class="face-icon"><i class="ti ti-git-commit"></i></div>
+          <div class="face-title">C — Coautoría + Aprobaciones</div>
+          <p>Atribución clara e independencia</p>
+          <div class="flip-hint">↩ detalle</div>
+        </div>
+        <div class="back postit-green">
+          <p><strong>Coautoría:</strong> todos los commits son co-autoría con el desarrollador que asignó la tarea. Atribución clara.</p>
+          <p><strong>Aprobaciones:</strong> los PRs del agente son siempre borrador. El solicitante NO puede aprobarlos; se conservan las reglas de "revisiones requeridas".</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- RIESGOS Y LIMITACIONES -->
+  <div class="section-label">3 Riesgos + Limitaciones conocidas</div>
+  <div class="grid-2">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-red">
+          <div class="face-icon"><i class="ti ti-alert-triangle"></i></div>
+          <div class="face-title">3 Riesgos — "III"</div>
+          <p>Inserción · Información · Inyección</p>
+          <div class="flip-hint">↩ mitigaciones</div>
+        </div>
+        <div class="back postit-red">
+          <p><strong>Inserción de código:</strong> solo ramas <code>copilot/</code>, aprobación obligatoria, solicitante no puede autoaprobar.</p>
+          <p><strong>Información confidencial:</strong> firewall por defecto restringe acceso a Internet.</p>
+          <p><strong>Inyección de prompts:</strong> caracteres ocultos (HTML comments, etc.) se filtran antes de pasar la entrada al agente.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-orange">
+          <div class="face-icon"><i class="ti ti-ban"></i></div>
+          <div class="face-title">Limitaciones conocidas</div>
+          <p>Flujo de trabajo y compatibilidad</p>
+          <div class="flip-hint">↩ lista</div>
+        </div>
+        <div class="back postit-orange">
+          <p>Solo puede cambiar el mismo repositorio del issue/PR.</p>
+          <p>Abre exactamente 1 PR por tarea.</p>
+          <p>No firma commits; no usa ejecutores autohospedados (solo Ubuntu x64).</p>
+          <p>No respeta exclusiones de contenido ni la directiva "Bloquear código público".</p>
+          <p>El modelo de IA lo selecciona GitHub; no se puede cambiar.</p>
+          <p>Solo repos hospedados en GitHub.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CICLO ARIAC -->
+  <div class="section-label">Ciclo de trabajo del agente — <em>mnemónico: "ARIAC: Asigno, Rastro, Itero, Apruebo, Combino"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-teal">
+          <div class="face-icon"><i class="ti ti-user-plus"></i></div>
+          <div class="face-title">A — Asignar</div>
+          <p>Cómo delegar el trabajo</p>
+          <div class="flip-hint">↩ métodos</div>
+        </div>
+        <div class="back postit-teal">
+          <p><strong>GitHub.com:</strong> issue → Asignar → Copilot.</p>
+          <p><strong>Lista de issues, Projects o Mobile:</strong> misma asignación.</p>
+          <p><strong>CLI:</strong> <code>gh issue edit --add-assignee @copilot</code></p>
+          <p><strong>API GraphQL:</strong> mutación <code>replaceActorsForAssignable</code> con el Bot ID de Copilot.</p>
+          <p>El agente recibe el título, descripción y comentarios existentes al momento de asignación.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-teal">
+          <div class="face-icon"><i class="ti ti-activity"></i></div>
+          <div class="face-title">R — Rastrear + I — Iterar</div>
+          <p>Señales de progreso y feedback</p>
+          <div class="flip-hint">↩ señales</div>
+        </div>
+        <div class="back postit-teal">
+          <p>👀 reacción al issue = confirmación de recepción.</p>
+          <p>Rama <code>copilot/</code> + borrador de PR abierto automáticamente.</p>
+          <p>Sesión activa: mensajes de estado en el cuerpo del PR + commits.</p>
+          <p>Registros en vivo: "Ver sesión" → visor de registros en tiempo real.</p>
+          <p>Al terminar: evento "Copilot finished work" + solicita tu revisión.</p>
+          <p><strong>Iterar:</strong> menciona <code>@copilot</code> en comentarios del PR para solicitar cambios.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-teal">
+          <div class="face-icon"><i class="ti ti-check"></i></div>
+          <div class="face-title">A — Aprobar + C — Combinar</div>
+          <p>PRs siempre en borrador</p>
+          <div class="flip-hint">↩ reglas</div>
+        </div>
+        <div class="back postit-teal">
+          <p>Los PRs del agente siempre son borradores hasta que los aprueba un usuario con acceso de escritura.</p>
+          <p>Los flujos de Actions NO se ejecutan automáticamente → clic en "Aprobar y ejecutar flujos de trabajo".</p>
+          <p>El solicitante NO puede aprobar su propio PR del agente.</p>
+          <p>Las reglas de "revisiones requeridas" del repositorio permanecen intactas.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PERSONALIZACIÓN Y MCP -->
+  <div class="section-label">Personalización del entorno y extensión con MCP</div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-purple">
+          <div class="face-icon"><i class="ti ti-file-code"></i></div>
+          <div class="face-title">copilot-setup-steps.yml</div>
+          <p>Preinstalar herramientas y dependencias</p>
+          <div class="flip-hint">↩ detalles</div>
+        </div>
+        <div class="back postit-purple">
+          <p>Crear en <code>.github/workflows/copilot-setup-steps.yml</code> en la rama predeterminada.</p>
+          <p>Job obligatorio: <code>copilot-setup-steps</code>.</p>
+          <p>Solo Ubuntu x64; no ejecutores autohospedados.</p>
+          <p>Para ejecutores grandes: <code>runs-on: ubuntu-4-core</code>.</p>
+          <p>Para Git LFS: <code>actions/checkout@v5</code> con <code>lfs: true</code>.</p>
+          <p>Firewall: personalizable por directiva organizativa.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-purple">
+          <div class="face-icon"><i class="ti ti-plug"></i></div>
+          <div class="face-title">MCP — Extensión</div>
+          <p>Protocolo de contexto de modelo</p>
+          <div class="flip-hint">↩ servidores predeterminados</div>
+        </div>
+        <div class="back postit-purple">
+          <p>Estándar abierto para conectar LLMs a herramientas y datos externos.</p>
+          <p><strong>GitHub MCP:</strong> acceso a issues, PRs y datos con token de solo lectura.</p>
+          <p><strong>Playwright MCP:</strong> lee, interactúa y hace capturas de pantalla de páginas web (localhost/127.0.0.1).</p>
+          <p><em>Solo admite herramientas (no recursos ni avisos). No se admiten servidores remotos con OAuth.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-lime">
+          <div class="face-icon"><i class="ti ti-circle-check"></i></div>
+          <div class="face-title">Validación y uso responsable</div>
+          <p>Antes de combinar el PR del agente</p>
+          <div class="flip-hint">↩ prácticas</div>
+        </div>
+        <div class="back postit-lime">
+          <p>Ejecutar CI (pruebas, linters, análisis) en cada PR del agente.</p>
+          <p>Inspección manual de áreas sensibles o de alto impacto.</p>
+          <p>Pedir al agente generar pruebas (consume PRUs).</p>
+          <p>Aplicar conjuntos de reglas: pruebas + análisis + linting obligatorios antes de merge.</p>
+          <p>Etiquetar PRs del agente (<code>agent-refactor</code>, <code>agent-tests</code>) para trazabilidad.</p>
+          <p>Iterar instrucciones en <code>.github/copilot-instructions.md</code> cuando veas errores repetidos.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SOLUCIÓN DE PROBLEMAS -->
+  <div class="section-label">Solución de problemas frecuentes</div>
+  <div class="grid-4">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-orange">
+          <div class="face-icon"><i class="ti ti-user-x"></i></div>
+          <div class="face-title">Copilot no aparece en Asignados</div>
+          <p></p>
+          <div class="flip-hint">↩ solución</div>
+        </div>
+        <div class="back postit-orange">
+          <p>Verifica que estás en un plan apto (Pro, Pro+, Business, Enterprise).</p>
+          <p>Confirma que no esté deshabilitado en org o repositorio.</p>
+          <p>Revisa <code>github.com/settings/copilot/features</code>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-orange">
+          <div class="face-icon"><i class="ti ti-git-pull-request-closed"></i></div>
+          <div class="face-title">Issue asignado, sin progreso</div>
+          <p></p>
+          <div class="flip-hint">↩ solución</div>
+        </div>
+        <div class="back postit-orange">
+          <p>Actualiza la página; busca la reacción 👀 en el issue.</p>
+          <p>Verifica la línea de tiempo del PR: "Copilot ha comenzado a trabajar".</p>
+          <p>Abre "Ver los registros de sesión" para diagnóstico.</p>
+          <p>Sesiones con tiempo de espera: se agotan tras 1 hora; reasigna el issue.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-orange">
+          <div class="face-icon"><i class="ti ti-player-pause"></i></div>
+          <div class="face-title">Actions no se ejecutan</div>
+          <p></p>
+          <div class="flip-hint">↩ solución</div>
+        </div>
+        <div class="back postit-orange">
+          <p>Haz clic en <strong>"Aprobar y ejecutar flujos de trabajo"</strong> en el cuadro de fusión del PR.</p>
+          <p>Recuerda: el solicitante no puede aprobar su propio PR del agente.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-orange">
+          <div class="face-icon"><i class="ti ti-flame"></i></div>
+          <div class="face-title">CI falla / cambios no pasan</div>
+          <p></p>
+          <div class="flip-hint">↩ solución</div>
+        </div>
+        <div class="back postit-orange">
+          <p>Añade instrucciones claras en <code>.github/copilot-instructions.md</code>.</p>
+          <p>El agente puede autovalidarse con tests/linters si las instrucciones lo especifican.</p>
+          <p>Advertencias de firewall: ajusta a personalización si necesitas acceso externo.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- RESUMEN -->
+  <div class="summary-box">
+    <strong>Resumen</strong>
+    <p>
+      <strong>Cloud Agent BFPDD:</strong> asistente asíncrono en GitHub para Bugs, Features, Pruebas, Docs y Deuda técnica. Disponible en Pro+, Business, Enterprise.<br>
+      <strong>Seguridad GERPC:</strong> Gobernanza org, Entorno sandbox con firewall, Ramas solo <code>copilot/</code>, Permisos de escritura requeridos, Coautoría y aprobación independiente obligatoria.<br>
+      <strong>Riesgos III:</strong> Inserción de código, Información confidencial, Inyección de prompts — todos mitigados por diseño.<br>
+      <strong>Ciclo ARIAC:</strong> Asignar issue/chat → Rastrear (👀, PR borrador, logs en vivo) → Iterar con @copilot → Aprobar (no el solicitante) → Combinar tras CI.<br>
+      <strong>Personalización:</strong> <code>copilot-setup-steps.yml</code> + ejecutores grandes + LFS + MCP (GitHub + Playwright) + <code>copilot-instructions.md</code>.
+    </p>
+  </div>
+
+  <!-- LEYENDA -->
+  <div class="legend">
+    <span class="postit-yellow">Definición / Capacidades</span>
+    <span class="postit-blue">Comparativa modos</span>
+    <span class="postit-purple">Cloud Agent / MCP</span>
+    <span class="postit-green">Seguridad GERPC</span>
+    <span class="postit-red">Riesgos</span>
+    <span class="postit-orange">Limitaciones / Troubleshooting</span>
+    <span class="postit-teal">Ciclo ARIAC</span>
+    <span class="postit-lime">Validación responsable</span>
+  </div>
+
+</div>
