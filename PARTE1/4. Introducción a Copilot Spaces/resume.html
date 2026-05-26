@@ -1,0 +1,176 @@
+<h2 class="sr-only">Infografía del módulo Introducción a Copilot Spaces</h2>
+<link rel="stylesheet" href="../../_shared/cards.css">
+
+<div class="board">
+
+<p class="section-label">Objetivos de aprendizaje</p>
+<ul class="obj-list">
+  <li>Explicar qué son los Spaces y en qué difieren del chat general de Copilot.</li>
+  <li>Crear, configurar e iterar un espacio con contexto e instrucciones personalizadas.</li>
+  <li>Conocer los 4 tipos de contexto que se pueden adjuntar a un espacio.</li>
+  <li>Aplicar procedimientos de gobernanza: visibilidad, permisos, nomenclatura y cadencia de revisión.</li>
+  <li>Distinguir qué se debe y no se debe hacer al trabajar dentro de un espacio.</li>
+</ul>
+
+<div class="hero">
+  <i class="ti ti-layout-grid" style="font-size:32px;color:#92400e;opacity:.7;flex-shrink:0" aria-hidden="true"></i>
+  <div class="hero-text">
+    <strong>¿Qué es GitHub Copilot Spaces?</strong>
+    Un chat de Copilot dedicado, anclado en un conjunto curado de contexto de tu elección: archivos, issues, PRs e instrucciones. Restringe el modelo a lo que más importa → respuestas más coherentes y reproducibles.
+  </div>
+</div>
+
+<p class="section-label">Spaces vs. chat general — amplitud vs. profundidad</p>
+<div class="grid grid-2">
+
+<div class="flip-wrap postit-blue" tabindex="0" role="button" aria-label="Copilot Spaces" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Copilot Spaces · profundidad</span><i class="ti ti-focus face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Amplitud ↓ · Precisión ↑</span><span class="face-body">Contexto restringido a lo que defines. Respuestas predecibles, fundamentadas y reproducibles. Ideal para un servicio, runbook, dataset o flujo concreto.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-teal" tabindex="0" role="button" aria-label="Chat general" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">Chat general · amplitud</span><i class="ti ti-messages face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Amplitud ↑ · Precisión ↓</span><span class="face-body">Permite una exploración más amplia, pero puede ser menos preciso. Sin contexto restringido, las respuestas pueden ser más genéricas o dispersas.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">4 tipos de contexto · nemotecnia: "Archivos Issues Uploads Texto"</p>
+<div class="grid grid-4">
+
+<div class="flip-wrap postit-green" tabindex="0" role="button" aria-label="Archivos y carpetas" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">A — Archivos y carpetas</span><i class="ti ti-folder face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Del repo, siempre actualizados</span><span class="face-body">Archivos de código, documentación, configuración desde repositorios de GitHub. Referencian la rama predeterminada → se mantienen al día automáticamente.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-green" tabindex="0" role="button" aria-label="Issues y PRs" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">I — Issues y PRs</span><i class="ti ti-git-pull-request face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Pegar URL de GitHub</span><span class="face-body">Vincula issues y solicitudes de incorporación de cambios por URL. Evolucionan a medida que cambian, reduciendo la necesidad de copiar contenido en documentos independientes.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-green" tabindex="0" role="button" aria-label="Uploads locales" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">U — Uploads locales</span><i class="ti ti-upload face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Desde tu máquina</span><span class="face-body">Imágenes, archivos de texto, documentos, hojas de cálculo. Para contexto que no existe en el repositorio. Solo si el entorno lo permite.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-green" tabindex="0" role="button" aria-label="Texto libre" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">T — Texto libre</span><i class="ti ti-notes face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Transcripciones, notas, instrucciones</span><span class="face-body">Escribe o pega cualquier contenido relevante. Úsalo para instrucciones específicas del espacio. ⚠ Nunca pegues datos confidenciales aquí.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Crear tu primer espacio — pasos</p>
+<div class="grid grid-3">
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Paso 1-2" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">1 · Ir y nombrar</span><i class="ti ti-map-pin face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">github.com/copilot/spaces</span><span class="face-body">Clic en "Crear espacio" → asigna un nombre claro y orientado a propósito. La descripción es opcional y no afecta las respuestas, pero ayuda a otros a entender el contexto.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Paso 3" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">2 · Propietario y visibilidad</span><i class="ti ti-users face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Personal u organización</span><span class="face-body">Espacios de organización → compartibles con el modelo de permisos de GitHub. La visibilidad define quién puede encontrar y usar el espacio. Clic en Guardar.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-orange" tabindex="0" role="button" aria-label="Paso 4" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">3 · Agregar contexto</span><i class="ti ti-puzzle face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Instrucciones + Accesorios</span><span class="face-body"><strong>Instrucciones:</strong> texto libre con objetivos, preferencias, ejemplos. <strong>Accesorios:</strong> archivos, issues, PRs, uploads. El orden importa: pon primero lo más relevante.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Gobernanza · nemotecnia: "Nombre Propietario Seguridad Revisión"</p>
+<div class="grid grid-4">
+
+<div class="flip-wrap postit-purple" tabindex="0" role="button" aria-label="Nomenclatura" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">N — Nomenclatura</span><i class="ti ti-tag face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">"Un trabajo por espacio"</span><span class="face-body">Título claro: "ServiceName—Onboarding Helper". Descripción 1-2 oraciones con: ámbito · audiencia · salidas esperadas. Nota "Cómo usar este espacio" al inicio de las instrucciones.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-purple" tabindex="0" role="button" aria-label="Propiedad" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">P — Propiedad</span><i class="ti ti-user-check face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Asignar mantenedor responsable</span><span class="face-body">Define propietario individual u organización. Los espacios heredan permisos de GitHub: no conceden acceso nuevo. Verifica el acceso con un usuario sin permisos de propietario.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-purple" tabindex="0" role="button" aria-label="Seguridad" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">S — Seguridad</span><i class="ti ti-shield face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Permisos GitHub · sin datos sensibles</span><span class="face-body">Repositorios privados vinculados → solo usuarios con acceso al repo ven el contenido. Nunca pegues datos confidenciales en texto libre. Prefiere vincular archivos con control de versiones.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-purple" tabindex="0" role="button" aria-label="Revisión" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">R — Revisión periódica</span><i class="ti ti-calendar-check face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Cadencia mensual o por versión</span><span class="face-body">En cada revisión: validar vínculos · probar 2–3 prompts representativos · actualizar ejemplos · recortar fuentes ruidosas · confirmar visibilidad. Si crece → dividir en espacios más pequeños.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Lo que se debe y no se debe hacer en un Space</p>
+<div class="grid grid-2">
+
+<div class="flip-wrap postit-lime" tabindex="0" role="button" aria-label="Do: preguntas limitadas" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">✓ Preguntas limitadas al contexto</span><i class="ti ti-circle-check face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Respuestas ancladas en los orígenes</span><span class="face-body">Mantén las preguntas dentro del alcance de los archivos, issues, PRs y notas adjuntas. Las respuestas permanecen fundamentadas y verificables.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-red" tabindex="0" role="button" aria-label="Don't: mencionar personas" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">✗ No mencionar @personas</span><i class="ti ti-user-off face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">No notifican a nadie</span><span class="face-body">Las menciones de usuario no notifican a nadie en un Space. Las extensiones de Copilot tampoco pueden invocarse desde chats de espacio.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-lime" tabindex="0" role="button" aria-label="Do: iterar" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">✓ Iterar cuando se desvíe</span><i class="ti ti-refresh face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Ajustar · Ejemplificar · Recortar</span><span class="face-body">Si las respuestas se desvían: ajusta instrucciones, agrega 1–3 ejemplos de salida de alta calidad, elimina orígenes ruidosos o irrelevantes.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-red" tabindex="0" role="button" aria-label="Don't: datos confidenciales" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">✗ No pegar datos confidenciales</span><i class="ti ti-lock-off face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Prefiere vincular archivos versionados</span><span class="face-body">El texto libre no tiene control de acceso. Para info sensible: vincula archivos en repositorios donde se aplican permisos y revisión estándar de GitHub.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-lime" tabindex="0" role="button" aria-label="Do: contexto fresco" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">✓ Contexto fresco y ordenado</span><i class="ti ti-sort-ascending face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Lo más importante primero</span><span class="face-body">Vincula archivos versionados para que el espacio refleje la rama predeterminada. El orden de los orígenes influye en las respuestas: coloca los más importantes al inicio.</span></div>
+</div></div>
+
+<div class="flip-wrap postit-red" tabindex="0" role="button" aria-label="Don't: expansión" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+<div class="flip-inner">
+<div class="face front"><span class="face-title">✗ No expandir más de un trabajo</span><i class="ti ti-arrows-maximize face-icon" aria-hidden="true"></i><span class="flip-hint">↻ clic</span></div>
+<div class="face back"><span class="face-title">Divide si crece demasiado</span><span class="face-body">Si aparecen advertencias de tamaño o baja la calidad de respuestas, el contexto superó los límites del modelo. Divide en espacios más pequeños para restaurar precisión.</span></div>
+</div></div>
+
+</div>
+
+<hr class="divider">
+<p class="section-label">Resumen del módulo</p>
+<div class="summary-box">
+  <p>Copilot Spaces intercambia <strong>amplitud por profundidad</strong>: al restringir el contexto a archivos, issues, PRs e instrucciones seleccionadas, se obtienen respuestas más predecibles y fundamentadas que en el chat general.</p>
+  <p><strong>4 tipos de contexto:</strong> Archivos del repo · Issues y PRs · Uploads locales · Texto libre. El <strong>orden importa</strong>: los orígenes más relevantes van primero.</p>
+  <p><strong>Gobernanza:</strong> Nomenclatura clara · Propietario asignado · Seguridad heredada de GitHub (sin nuevos accesos) · Cadencia de revisión periódica.</p>
+  <p>Mantén los espacios pequeños y enfocados en <strong>un solo trabajo</strong>. Si crece, divide. Si las respuestas se desvían, itera: ajusta instrucciones, agrega ejemplos, elimina ruido.</p>
+</div>
+
+<p class="legend">Haz clic en cualquier post-it para girar · Clic de nuevo para voltear · Versión final completa</p>
+</div>
