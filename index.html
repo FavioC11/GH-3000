@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Copilot — Curso completo</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f4f5f7;
+      --surface: #ffffff;
+      --border: #e2e4e8;
+      --text: #1a1d23;
+      --muted: #6b7280;
+      --accent1: #6366f1;   /* parte 1 */
+      --accent2: #0ea5e9;   /* parte 2 */
+      --radius: 12px;
+      --shadow: 0 2px 8px rgba(0,0,0,.08), 0 0 0 1px rgba(0,0,0,.04);
+      --shadow-hover: 0 8px 24px rgba(0,0,0,.14), 0 0 0 1px rgba(0,0,0,.06);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ──────────────────────────────────────────── */
+    header {
+      background: linear-gradient(135deg, #1a1d23 0%, #2d3748 100%);
+      color: #fff;
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+    header .logo {
+      font-size: 3rem;
+      margin-bottom: .75rem;
+      display: block;
+    }
+    header h1 {
+      font-size: clamp(1.5rem, 4vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: 1.2;
+    }
+    header p {
+      margin-top: .6rem;
+      color: #a0aec0;
+      font-size: clamp(.85rem, 2vw, 1rem);
+    }
+    .badge-row {
+      display: flex;
+      gap: .5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+    }
+    .badge {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px;
+      padding: .25rem .75rem;
+      font-size: .78rem;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+    }
+
+    /* ── MAIN LAYOUT ─────────────────────────────────────── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    /* ── PART SECTION ────────────────────────────────────── */
+    .part {
+      margin-bottom: 3rem;
+    }
+    .part-header {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1.25rem;
+    }
+    .part-header .part-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: .95rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .part1 .part-num { background: var(--accent1); }
+    .part2 .part-num { background: var(--accent2); }
+    .part-header h2 {
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      font-weight: 700;
+    }
+    .part-header .part-count {
+      margin-left: auto;
+      font-size: .8rem;
+      color: var(--muted);
+      background: var(--border);
+      padding: .2rem .6rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    /* ── CARD GRID ───────────────────────────────────────── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    /* ── MODULE CARD ─────────────────────────────────────── */
+    .module-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.25rem 1.25rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .18s ease, box-shadow .18s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .module-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+    .part1 .module-card::before { background: var(--accent1); }
+    .part2 .module-card::before { background: var(--accent2); }
+
+    .module-card:hover, .module-card:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      outline: none;
+    }
+    .module-card:focus-visible {
+      outline: 2px solid var(--accent1);
+      outline-offset: 2px;
+    }
+    .part2 .module-card:focus-visible { outline-color: var(--accent2); }
+
+    .card-icon {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+    .part1 .card-icon { color: var(--accent1); }
+    .part2 .card-icon { color: var(--accent2); }
+
+    .card-num {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .card-title {
+      font-size: .93rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--text);
+    }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .3rem;
+      margin-top: auto;
+      padding-top: .4rem;
+    }
+    .tag {
+      font-size: .68rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: .1rem .4rem;
+      color: var(--muted);
+    }
+    .card-arrow {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      font-size: 1rem;
+      color: var(--border);
+      transition: color .18s, transform .18s;
+    }
+    .module-card:hover .card-arrow { color: var(--muted); transform: translateX(2px); }
+
+    /* ── DIVIDER ─────────────────────────────────────────── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: .8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── RESPONSIVE TWEAKS ───────────────────────────────── */
+    @media (max-width: 480px) {
+      header { padding: 2rem 1rem 1.75rem; }
+      .card-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="logo"><i class="ti ti-brand-github"></i></span>
+  <h1>GitHub Copilot — Curso completo</h1>
+  <p>Tarjetas de estudio interactivas para cada módulo del curso</p>
+  <div class="badge-row">
+    <span class="badge"><i class="ti ti-stack-2"></i> 2 partes</span>
+    <span class="badge"><i class="ti ti-layout-cards"></i> 15 módulos</span>
+    <span class="badge"><i class="ti ti-robot"></i> IA generativa</span>
+    <span class="badge"><i class="ti ti-brand-python"></i><i class="ti ti-brand-javascript"></i> Python · JS</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- ═══════════════════════════════════════════════════
+       PARTE 1
+  ════════════════════════════════════════════════════ -->
+  <section class="part part1">
+    <div class="part-header">
+      <div class="part-num">P1</div>
+      <h2>Parte 1 — Fundamentos de GitHub Copilot</h2>
+      <span class="part-count">9 módulos</span>
+    </div>
+
+    <div class="card-grid">
+
+      <a class="module-card" href="PARTE1/1. IA responsable con GitHub Copilot/resume.html">
+        <span class="card-icon"><i class="ti ti-shield-check"></i></span>
+        <span class="card-num">Módulo 1</span>
+        <span class="card-title">IA responsable con GitHub Copilot</span>
+        <div class="card-tags">
+          <span class="tag">Ética IA</span>
+          <span class="tag">Principios</span>
+          <span class="tag">FATE</span>
+        </div>
+        <span class="card-arrow"><i class="ti ti-arrow-right"></i></span>
+      </a>
+
+      <a class="module-card" href="PARTE1/2. Introducción a GitHub Copilot/resume.html">
+        <span class="card-icon"><i class="ti ti-robot"></i></span>
+        <span class="card-num">Módulo 2</span>
+        <span class="card-title">Introducción a GitHub Copilot</span>
+        <div class="card-tags">
+          <span class="tag">Autocompletado</span>
+          <span class="tag">Chat</span>
+          <span class="tag">Planes</span>
+        </div>
+        <span class="card-arrow"><i class="ti ti-arrow-right"></i></span>
+      </a>
+
+      <a class="module-card" href="PARTE1/3. Introducción a la ingeniería de solicitudes con GitHub Copilot/resume.html">
+        <span class="card-icon"><i class="ti ti-prompt"></i></span>
+        <span class="card-num">Módulo 3</span>
+        <span class="card-title">Ingeniería de solicitudes con Copilot</span>
+        <div class="card-tags">
+          <span class="tag">Prompts</span>
+          <span class="tag">4S</span>
+          <span class="tag">Contexto</span>
+        </div>
+        <span class="card-arrow"><i class="ti ti-arrow-right"></i></span>
+      </a>
+
+      <a class="module-card" href="PARTE1/4. Introducción a Copilot Spaces/resume.html">
+        <span class="card-icon"><i class="ti ti-layout-sidebar"></i></span>
+        <span class="card-num">Módulo 4</span>
+        <span class="card-title">Introducción a Copilot Spaces</span>
+        <div class="card-tags">
+          <span class="tag">Spaces</span>
+          <span class="tag">Contexto</span>
+          <span class="tag">Colaboración</span>
+        </div>
+        <span class="card-arrow"><i class="ti ti-arrow-right"></i></span>
+      </a>
+
+      <a class="module-card" href="PARTE1/5. Uso de las características avanzadas de GitHub Copilot/resume.html">
+        <span class="card-icon"><i class="ti ti-wand"></i></span>
+        <span class="card-num">Módulo 5</span>
+        <span class="card-title">Características avanzadas de Copilot</span>
+        <div class="card-tags">
+          <span class="tag">Ediciones</span>
+          <span class="tag">Agente</span>
+          <span class="tag">CLI</span>
+        </div>
+        <span class="card-arrow"><i class="ti ti-arrow-right"></i></span>
+      </a>
+
+      <a class="module-card" href="PARTE1/6. GitHub Copilot Across Environment/resume.html">
+        <span class="card-icon"><i class="ti ti-world"></i></span>
+        <span class="card-num">Módulo 6</span>
+        <span class="card-title">Copilot Across Environments</span>
+        <div class="card-tags">
+          <span class="tag">VS Code</span>
+          <span class="tag">JetBrains</span>
+          <span class="tag">CLI</span>
+        </div>
+        <span class="card-arrow"><i class="ti ti-arrow-right"></i></span>
+      </a>
+
+      <a class="module-card" href="PARTE1/7. Consideraciones de administración y personalización con GitHub Copilot/resume.html">
+        <span class="card-icon"><i class="ti ti-settings-2"></i></span>
+        <span class="card-num">Módulo 7</span>
+        <span class="card-title">Administración y personalización</span>
+        <div class="card-tags">
+          <span class="tag">Políticas</span>
+          <span class="tag">Org</span>
+          <span class="tag">Enterprise</span>
+        </div>
+        <span class="card-arrow"><i class="ti ti-arrow-right"></i></span>
+      </a>
+
+      <a class="module-card" href="PARTE1/8. Casos de uso de desarrollador para la inteligencia artificial con GitHub Copilot/resume.html">
+        <span class="card-icon"><i class="ti ti-bulb"></i></span>
+        <span class="card-num">Módulo 8</span>
+        <span class="card-title">Casos de uso con IA para desarrolladores</span>
+        <div class="card-tags">
+          <span class="tag">Debugging</span>
+          <span class="tag">Refactor</span>
+          <span class="tag">Docs</span>
+        </div>
+        <span class="card-arrow"><i class="ti ti-arrow-right"></i></span>
+      </a>
+
+      <a class="module-card" href="PARTE1/9. Desarrollo de pruebas unitarias mediante herramientas de Copilot de GitHub/resume.html">
+        <span class="card-icon"><i class="ti ti-test-pipe"></i></span>
+        <span class="card-num">Módulo 9</span>
+        <span class="card-title">Pruebas unitarias con Copilot</span>
+        <div class="card-tags">
+          <span class="tag">Unit tests</span>
+          <span class="tag">TDD</span>
+          <span class="tag">Cobertura</span>
+        </div>
+        <span class="card-arrow"><i class="ti ti-arrow-right"></i></span>
+      </a>
+
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ═══════════════════════════════════════════════════
+       PARTE 2
+  ════════════════════════════════════════════════════ -->
+  <section class="part part2">
+    <div class="part-header">
+      <div class="part-num">P2</div>
+      <h2>Parte 2 — GitHub Copilot avanzado</h2>
+      <span class="part-count">6 módulos</span>
+    </div>
+
+    <div class="card-grid">
+
+      <a class="module-card" href="PARTE2/1. Compilación de aplicaciones con el modo de agente de Copilot de GitHub/resume.html">
+        <span class="card-icon"><i class="ti ti-robot-face"></i></span>
+        <span class="card-num">Módulo 1</span>
+        <span class="card-title">Modo Agente de GitHub Copilot</span>
+        <div class="card-tags">
+          <span class="tag">Agente</span>
+          <span class="tag">DSES</span>
+          <span class="tag">OctoFit</span>
+        </div>
+        <span class="card-arrow"><i class="ti ti-arrow-right"></i></span>
+      </a>
+
+      <a class="module-card" href="PARTE2/2. Aceleración del desarrollo con gitHub Copilot Cloud Agent/resume.html">
+        <span class="card-icon"><i class="ti ti-cloud-up"></i></span>
+        <span class="card-num">Módulo 2</span>
+        <span class="card-title">Copilot Cloud Agent</span>
+        <div class="card-tags">
+          <span class="tag">Cloud</span>
+          <span class="tag">ARIAC</span>
+          <span class="tag">Issues</span>
+        </div>
+        <span class="card-arrow"><i class="ti ti-arrow-right"></i></span>
+      </a>
+
+      <a class="module-card" href="PARTE2/3. Introducción al servidor MCP/resume.html">
+        <span class="card-icon"><i class="ti ti-plug-connected"></i></span>
+        <span class="card-num">Módulo 3</span>
+        <span class="card-title">Introducción al servidor MCP</span>
+        <div class="card-tags">
+          <span class="tag">MCP</span>
+          <span class="tag">OAuth</span>
+          <span class="tag">Topologías</span>
+        </div>
+        <span class="card-arrow"><i class="ti ti-arrow-right"></i></span>
+      </a>
+
+      <a class="module-card" href="PARTE2/4. Mejorar las revisiones de código y los pull requests con GitHub Copilot/resume.html">
+        <span class="card-icon"><i class="ti ti-git-pull-request"></i></span>
+        <span class="card-num">Módulo 4</span>
+        <span class="card-title">Code Reviews y Pull Requests</span>
+        <div class="card-tags">
+          <span class="tag">PRs</span>
+          <span class="tag">RSERI</span>
+          <span class="tag">PRUs</span>
+        </div>
+        <span class="card-arrow"><i class="ti ti-arrow-right"></i></span>
+      </a>
+
+      <a class="module-card" href="PARTE2/5. Uso de GitHub Copilot con JavaScript/resume.html">
+        <span class="card-icon"><i class="ti ti-brand-javascript"></i></span>
+        <span class="card-num">Módulo 5</span>
+        <span class="card-title">Copilot con JavaScript</span>
+        <div class="card-tags">
+          <span class="tag">JavaScript</span>
+          <span class="tag">SRRC</span>
+          <span class="tag">Portfolio</span>
+        </div>
+        <span class="card-arrow"><i class="ti ti-arrow-right"></i></span>
+      </a>
+
+      <a class="module-card" href="PARTE2/6. Uso de GitHub Copilot con Python/resume.html">
+        <span class="card-icon"><i class="ti ti-brand-python"></i></span>
+        <span class="card-num">Módulo 6</span>
+        <span class="card-title">Copilot con Python</span>
+        <div class="card-tags">
+          <span class="tag">Python</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">MEI</span>
+        </div>
+        <span class="card-arrow"><i class="ti ti-arrow-right"></i></span>
+      </a>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  GitHub Copilot — Curso completo &nbsp;·&nbsp; 15 módulos &nbsp;·&nbsp; 2 partes
+</footer>
+
+</body>
+</html>
