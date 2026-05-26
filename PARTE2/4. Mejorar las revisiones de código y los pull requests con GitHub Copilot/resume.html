@@ -1,0 +1,387 @@
+<link rel="stylesheet" href="../../_shared/cards.css">
+
+<div class="board">
+
+  <!-- OBJETIVOS -->
+  <div class="section-label">Objetivos del módulo</div>
+  <ul class="obj-list">
+    <li>Identificar las características clave que Copilot agrega al proceso de revisión de código.</li>
+    <li>Solicitar e interpretar revisiones de Copilot en GitHub.com y en el IDE.</li>
+    <li>Personalizar el comportamiento con instrucciones específicas de repositorio y ruta.</li>
+    <li>Automatizar revisiones con conjuntos de reglas a nivel de cuenta, repo y organización.</li>
+    <li>Entender las PRUs y optimizar su uso para máximo valor.</li>
+  </ul>
+
+  <!-- HERO -->
+  <div class="hero postit-green">
+    <div class="face-icon"><i class="ti ti-code-plus"></i></div>
+    <h1>Revisiones de código con GitHub Copilot</h1>
+    <p>Copilot actúa como revisor colaborativo — detecta problemas, sugiere mejoras y redacta comentarios, sin reemplazar el juicio humano.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 5 CARACTERÍSTICAS CLAVE -->
+  <div class="section-label">5 características clave — <em>mnemónico: "RSERI: Resúmenes, Seguridad, Explicaciones, Redacción, IDE"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-yellow">
+          <div class="face-icon"><i class="ti ti-file-description"></i></div>
+          <div class="face-title">R — Resúmenes de PR</div>
+          <p>Descripciones automáticas de cambios</p>
+          <div class="flip-hint">↩ detalle</div>
+        </div>
+        <div class="back postit-yellow">
+          <p>Redacta automáticamente descripciones de PR que incluyen:</p>
+          <p>✅ Resumen claro de los cambios.</p>
+          <p>✅ Lista de archivos afectados.</p>
+          <p>Los revisores comienzan con contexto, no con estimaciones.</p>
+          <p><em>Usa el ícono de Copilot en el editor de descripción del PR.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-red">
+          <div class="face-icon"><i class="ti ti-shield-lock"></i></div>
+          <div class="face-title">S — Seguridad</div>
+          <p>Detección y corrección de vulnerabilidades</p>
+          <div class="flip-hint">↩ ejemplo</div>
+        </div>
+        <div class="back postit-red">
+          <p>Integrado con el análisis de código de GitHub; detecta vulnerabilidades en todos los lenguajes.</p>
+          <p><strong>Ejemplo JS:</strong> detecta <code>eval()</code> con entrada del usuario → comenta: "Puede causar inyección de código. Reemplaza por <code>JSON.parse()</code>".</p>
+          <p>Ofrece parche inline alineado con las guías de seguridad del repositorio.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-bulb"></i></div>
+          <div class="face-title">E — Explicaciones + R — Redacción</div>
+          <p>Línea a línea y comentarios de revisión</p>
+          <div class="flip-hint">↩ cómo ayudan</div>
+        </div>
+        <div class="back postit-blue">
+          <p><strong>Explicaciones:</strong> resalta código y pide a Copilot que explique la funcionalidad. Ideal para entender código desconocido rápidamente.</p>
+          <p><strong>Redacción:</strong> genera comentarios de revisión basados en procedimientos recomendados o directrices del equipo. Comentarios claros y accionables.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-teal">
+          <div class="face-icon"><i class="ti ti-table"></i></div>
+          <div class="face-title">Formato de datos en PRs</div>
+          <p>Tablas y métricas con buen formato</p>
+          <div class="flip-hint">↩ ejemplo</div>
+        </div>
+        <div class="back postit-teal">
+          <p>Detecta tablas con mal formato en la descripción del PR.</p>
+          <p>Aplica las directrices de Markdown de <code>.github/copilot-instructions.md</code>.</p>
+          <p>Propone versión corregida lista para pegar con un solo clic.</p>
+          <p><em>Copilot actúa como revisor automático de estilo, no como agente de codificación.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-yellow">
+          <div class="face-icon"><i class="ti ti-versions"></i></div>
+          <div class="face-title">I — IDE local</div>
+          <p>Detecta problemas antes del PR</p>
+          <div class="flip-hint">↩ ventajas</div>
+        </div>
+        <div class="back postit-yellow">
+          <p>Revisa cambios en VS Code o JetBrains antes de hacer commit.</p>
+          <p>Detecta infracciones de estilo, brechas de seguridad y problemas de procedimientos recomendados antes del ciclo de revisión formal.</p>
+          <p>Reduce el ruido en la revisión posterior.</p>
+          <p><em>Con PRUs: análisis más profundo, diferencias más grandes, instrucciones personalizadas.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-language"></i></div>
+          <div class="face-title">Multi-idioma</div>
+          <p>Revisión fuera de tu área de experiencia</p>
+          <div class="flip-hint">↩ cómo ayuda</div>
+        </div>
+        <div class="back postit-blue">
+          <p>Copilot resalta automáticamente áreas que no siguen procedimientos recomendados en el lenguaje específico.</p>
+          <p>Genera mejoras alineadas con las convenciones del lenguaje.</p>
+          <p>Proporciona comentarios más sólidos incluso fuera de tu área principal.</p>
+          <p><em>Ejemplo: sugiere refactorización limpia en Ruby sin que seas experto en Ruby.</em></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- REVISIÓN EN GITHUB.COM -->
+  <div class="section-label">Revisión en GitHub.com — <em>flujo de 4 pasos + límites</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-green">
+          <div class="face-icon"><i class="ti ti-git-pull-request"></i></div>
+          <div class="face-title">Flujo de revisión</div>
+          <p>4 pasos en GitHub.com</p>
+          <div class="flip-hint">↩ pasos</div>
+        </div>
+        <div class="back postit-green">
+          <p>1. Abre o crea un PR en el repositorio.</p>
+          <p>2. En menú <strong>Revisores</strong> → selecciona <strong>Copilot</strong>.</p>
+          <p>3. Espera ~30 segundos a que Copilot analice.</p>
+          <p>4. Lee los comentarios en las líneas pertinentes y aplica sugerencias.</p>
+          <p>Los comentarios se ven y comportan como los de compañeros de equipo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-green">
+          <div class="face-icon"><i class="ti ti-wand"></i></div>
+          <div class="face-title">Aplicar sugerencias</div>
+          <p>Correcciones desde la interfaz del PR</p>
+          <div class="flip-hint">↩ cómo</div>
+        </div>
+        <div class="back postit-green">
+          <p>Confirma correcciones directamente desde la interfaz del PR.</p>
+          <p>Para comentarios entre pares: pide a Copilot que genere la solución.</p>
+          <p><em>Ejemplo: "Sugerir corrección para: Reemplaza exec() por una función más segura" → Copilot propone <code>subprocess.run()</code>.</em></p>
+          <p>Desarrollador prueba localmente y confirma que las pruebas pasan antes de hacer merge.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-orange">
+          <div class="face-icon"><i class="ti ti-info-circle"></i></div>
+          <div class="face-title">Límites del rol</div>
+          <p>Asesoramiento, no decisión final</p>
+          <div class="flip-hint">↩ qué NO hace</div>
+        </div>
+        <div class="back postit-orange">
+          <p>❌ No aprueba ni rechaza PRs.</p>
+          <p>❌ Sus comentarios no cuentan para aprobaciones requeridas.</p>
+          <p>❌ No reemplaza decisiones arquitectónicas complejas.</p>
+          <p>✅ Detecta problemas temprano.</p>
+          <p>✅ Genera sugerencias accionables.</p>
+          <p>✅ Acelera verificaciones rutinarias.</p>
+          <p><em>Confía en revisores humanos para las decisiones finales.</em></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- INSTRUCCIONES PERSONALIZADAS + IDE -->
+  <div class="section-label">Personalización e instrucciones — <em>archivos de guía para el revisor</em></div>
+  <div class="grid-2">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-teal">
+          <div class="face-icon"><i class="ti ti-file-settings"></i></div>
+          <div class="face-title">copilot-instructions.md</div>
+          <p>Reglas globales del repositorio</p>
+          <div class="flip-hint">↩ ejemplos de reglas</div>
+        </div>
+        <div class="back postit-teal">
+          <p>Ruta: <code>.github/copilot-instructions.md</code></p>
+          <p>Ejemplo de reglas:</p>
+          <p>"Céntrate en la seguridad y evita la interpolación de cadenas no segura."</p>
+          <p>"Asegura que las funciones tienen docstrings con parámetros y tipos de retorno."</p>
+          <p>Copilot aplica estas reglas automáticamente a todas las revisiones del repo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-teal">
+          <div class="face-icon"><i class="ti ti-folder-cog"></i></div>
+          <div class="face-title">Instrucciones por ruta</div>
+          <p>.github/instructions/*.instructions.md</p>
+          <div class="flip-hint">↩ configuración applyTo</div>
+        </div>
+        <div class="back postit-teal">
+          <p>Crear en <code>.github/instructions/</code> archivos <code>*.instructions.md</code>.</p>
+          <p>Frontmatter con <code>applyTo</code> + glob:</p>
+          <p>Modelos Ruby: <code>applyTo: "app/models/**/*.rb"</code></p>
+          <p>TypeScript: <code>applyTo: "**/*.ts,**/*.tsx"</code></p>
+          <p>Todo el repo: <code>applyTo: "**"</code></p>
+          <p>Copilot aplica esas instrucciones solo a los archivos coincidentes.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 3 NIVELES DE AUTOMATIZACIÓN -->
+  <div class="section-label">3 niveles de automatización — <em>mnemónico: "CRO: Cuenta, Repositorio, Organización"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-purple">
+          <div class="face-icon"><i class="ti ti-user"></i></div>
+          <div class="face-title">C — Cuenta personal</div>
+          <p>Pro / Pro+ · todos los PRs propios</p>
+          <div class="flip-hint">↩ pasos</div>
+        </div>
+        <div class="back postit-purple">
+          <p>1. Foto de perfil → <strong>Su Copilot</strong>.</p>
+          <p>2. Busca "revisión de código automática de Copilot".</p>
+          <p>3. Lista desplegable → <strong>Habilitado</strong>.</p>
+          <p>Todos los PRs que abras incluirán automáticamente revisión de Copilot.</p>
+          <p><em>Solo disponible en Copilot Pro y Copilot Pro+.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-purple">
+          <div class="face-icon"><i class="ti ti-git-branch"></i></div>
+          <div class="face-title">R — Repositorio</div>
+          <p>Conjunto de reglas de rama</p>
+          <div class="flip-hint">↩ pasos</div>
+        </div>
+        <div class="back postit-purple">
+          <p>1. Repo → <strong>Configuración</strong> → Código y automatización → <strong>Reglas → Conjuntos de reglas</strong>.</p>
+          <p>2. <strong>Nuevo conjunto de reglas de rama</strong>.</p>
+          <p>3. Nombre, Estado: Activo, ramas de destino.</p>
+          <p>4. Marcar <strong>"Requerir revisión de PR antes de combinar"</strong>.</p>
+          <p>5. Activar <strong>"Solicitar revisión de PR de Copilot"</strong>.</p>
+          <p>Opcional: habilitar "Requerir resolución de conversación antes de combinar".</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-purple">
+          <div class="face-icon"><i class="ti ti-building"></i></div>
+          <div class="face-title">O — Organización</div>
+          <p>Multi-repositorio a escala</p>
+          <div class="flip-hint">↩ pasos</div>
+        </div>
+        <div class="back postit-purple">
+          <p>1. Foto de perfil → <strong>Sus organizaciones</strong> → Configuración.</p>
+          <p>2. Barra lateral → <strong>Repositorio → Conjuntos de reglas</strong>.</p>
+          <p>3. Nuevo conjunto de reglas de rama.</p>
+          <p>4. Agregar repositorios destino con patrones glob (p. ej. <code>*servicio</code>).</p>
+          <p>5. Definir ramas, habilitar revisión de Copilot → <strong>Crear</strong>.</p>
+          <p>Garantiza estándares coherentes y reduce tiempos de revisión en toda la org.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PRUs -->
+  <div class="section-label">PRUs — <em>mnemónico: "PERE: Planea, Estratégico, Refina, Escala"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-bolt"></i></div>
+          <div class="face-title">¿Qué son las PRUs?</div>
+          <p>El "engranaje adicional" de Copilot</p>
+          <div class="flip-hint">↩ cuándo se consumen</div>
+        </div>
+        <div class="back postit-blue">
+          <p>Tokens que desbloquean el análisis profundo de Copilot.</p>
+          <p><strong>No consumen PRU:</strong> refactorizaciones ligeras de una línea.</p>
+          <p><strong>Consumen PRU:</strong> revisar PR de 1500+ líneas en varios archivos, aplicar <code>copilot-instructions.md</code>, análisis de seguridad y estilo completo.</p>
+          <p><em>Cada vez que Copilot comenta en un PR como revisor: 1 PRU.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-chart-bar"></i></div>
+          <div class="face-title">Impacto medible</div>
+          <p>Métricas antes/después</p>
+          <div class="flip-hint">↩ qué medir</div>
+        </div>
+        <div class="back postit-blue">
+          <p><strong>Plazo de PR:</strong> tiempo de apertura a combinación. (Ejemplo: 3 días → 1 día)</p>
+          <p><strong>Calidad:</strong> reducción de problemas post-merge detectados por otras herramientas.</p>
+          <p><strong>Experiencia del dev:</strong> ¿las revisiones son más rápidas y claras?</p>
+          <p><em>Ejemplo real: -30% en uso de PRUs al reservarlas solo para código de producción.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-lime">
+          <div class="face-icon"><i class="ti ti-settings-automation"></i></div>
+          <div class="face-title">Optimización PERE</div>
+          <p>Presupuestar y maximizar valor</p>
+          <div class="flip-hint">↩ estrategias</div>
+        </div>
+        <div class="back postit-lime">
+          <p><strong>P — Planear:</strong> configura alertas al 75%, 90% y 100% del uso mensual.</p>
+          <p><strong>E — Estratégico:</strong> reserva PRUs para cambios grandes o de alto riesgo en producción.</p>
+          <p><strong>R — Refinar:</strong> mensajes claros y específicos reducen reintentos y PRUs desperdiciadas.</p>
+          <p><strong>E — Escalar:</strong> si el equipo supera constantemente el límite, considera un plan Copilot superior.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- RESUMEN -->
+  <div class="summary-box">
+    <strong>Resumen</strong>
+    <p>
+      <strong>Características RSERI:</strong> Resúmenes de PR automáticos, Seguridad (detección + parche inline), Explicaciones línea a línea, Redacción de comentarios, IDE local antes del PR.<br>
+      <strong>GitHub.com:</strong> Agregar Copilot como revisor → 30s → comentarios en líneas. Asesoramiento, no aprueba ni rechaza. Aplica sugerencias + pruebas locales antes de merge.<br>
+      <strong>Personalización:</strong> <code>copilot-instructions.md</code> (global) + <code>.github/instructions/*.instructions.md</code> con <code>applyTo</code> por ruta glob.<br>
+      <strong>Automatización CRO:</strong> Cuenta (Pro/Pro+, todos los PRs), Repositorio (conjunto de reglas de rama), Organización (multi-repo con patrones glob).<br>
+      <strong>PRUs PERE:</strong> Planea alertas → Estratégico (alto riesgo) → Refina mensajes → Escala si necesario.
+    </p>
+  </div>
+
+  <!-- LEYENDA -->
+  <div class="legend">
+    <span class="postit-yellow">Características RSERI</span>
+    <span class="postit-red">Seguridad</span>
+    <span class="postit-blue">Explicaciones / PRUs</span>
+    <span class="postit-teal">Personalización</span>
+    <span class="postit-green">Revisión GitHub.com</span>
+    <span class="postit-orange">Límites del rol</span>
+    <span class="postit-purple">Automatización CRO</span>
+    <span class="postit-lime">Optimización PRUs</span>
+  </div>
+
+</div>
