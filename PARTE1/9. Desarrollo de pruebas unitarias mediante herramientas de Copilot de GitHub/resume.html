@@ -1,0 +1,400 @@
+<link rel="stylesheet" href="../../_shared/cards.css">
+
+<div class="board">
+
+  <!-- OBJETIVOS -->
+  <div class="section-label">Objetivos del módulo</div>
+  <ul class="obj-list">
+    <li>Describir cómo VS Code, el SDK de .NET y el C# Dev Kit admiten pruebas unitarias en C#.</li>
+    <li>Usar el modo Agente en Copilot Chat para generar pruebas unitarias con /setupTests y /tests.</li>
+    <li>Usar los agentes Plan y Agent para diseñar estrategias y automatizar flujos de prueba de varios archivos.</li>
+    <li>Ampliar cobertura con texto fantasma y corregir fallos con el Test Explorer y /fixTestFailure.</li>
+  </ul>
+
+  <!-- HERO -->
+  <div class="hero postit-teal">
+    <div class="face-icon"><i class="ti ti-test-pipe-2"></i></div>
+    <h1>Pruebas unitarias con GitHub Copilot</h1>
+    <p>Setup → Generar → Ejecutar → Mantener: un flujo completo sin salir de Visual Studio Code.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ENTORNO VS CODE -->
+  <div class="section-label">Entorno de pruebas — <em>mnemónico: "XNM: eXcelentes Números Miden"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-yellow">
+          <div class="face-icon"><i class="ti ti-beaker"></i></div>
+          <div class="face-title">Explorador de pruebas</div>
+          <p>Vista árbol + botones de reproducción</p>
+          <div class="flip-hint">↩ funciones</div>
+        </div>
+        <div class="back postit-yellow">
+          <p>Vista árbol de todos los casos de prueba del workspace.</p>
+          <p>Botones de reproducción verde junto a cada clase y método.</p>
+          <p>Resultados en decoraciones del editor + seguimiento de pila.</p>
+          <p>Comandos en paleta: <em>Test: Run All Tests, Debug Failed Tests, Show Output.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-yellow">
+          <div class="face-icon"><i class="ti ti-package"></i></div>
+          <div class="face-title">3 marcos — XNM</div>
+          <p>xUnit · NUnit · MSTest</p>
+          <div class="flip-hint">↩ paquetes de cada uno</div>
+        </div>
+        <div class="back postit-yellow">
+          <strong>X — xUnit:</strong>
+          <p>Microsoft.NET.Test.Sdk + xUnit + xunit.runner.visualstudio + coverlet</p>
+          <strong>N — NUnit:</strong>
+          <p>Microsoft.NET.Test.Sdk + NUnit + NUnit3TestAdapter</p>
+          <strong>M — MSTest:</strong>
+          <p>Microsoft.NET.Test.Sdk + MSTest.TestAdapter + MSTest.TestFramework + coverlet</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-yellow">
+          <div class="face-icon"><i class="ti ti-layers-intersect"></i></div>
+          <div class="face-title">3 fases del flujo</div>
+          <p>SGE: Setup, Generar, Ejecutar</p>
+          <div class="flip-hint">↩ detalle</div>
+        </div>
+        <div class="back postit-yellow">
+          <p><strong>S — Setup:</strong> VS Code + .NET SDK + C# Dev Kit + proyecto de prueba referenciado.</p>
+          <p><strong>G — Generar:</strong> Copilot Chat (Ask/Plan/Agent) → /setupTests, /tests, lenguaje natural.</p>
+          <p><strong>E — Ejecutar/Mantener:</strong> Test Explorer + texto fantasma + /fixTestFailure.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 3 AGENTES -->
+  <div class="section-label">3 Agentes en la vista Chat — <em>mnemónico: "APA: Analizo, Planifico, Actúo"</em></div>
+  <div class="grid-3">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-help"></i></div>
+          <div class="face-title">A — Ask (Preguntar)</div>
+          <p>Solo lectura, sin modificar archivos</p>
+          <div class="flip-hint">↩ cuándo usarlo</div>
+        </div>
+        <div class="back postit-blue">
+          <p>Explora casos perimetrales antes de escribir código.</p>
+          <p>Compara marcos de prueba o estilos de aserción.</p>
+          <p>Ve ejemplos de prueba en el chat sin escribirlos al disco.</p>
+          <p><em>Ideal para análisis previo antes de pasar a Plan o Agent.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-map"></i></div>
+          <div class="face-title">P — Plan</div>
+          <p>Estrategia revisable antes de codificar</p>
+          <div class="flip-hint">↩ flujo</div>
+        </div>
+        <div class="back postit-blue">
+          <p>1. Abre los archivos a probar.</p>
+          <p>2. Selecciona Plan y describe el trabajo.</p>
+          <p>3. El agente hace preguntas aclarantes (marco, convenciones).</p>
+          <p>4. Genera plan con resumen, pasos y verificación.</p>
+          <p>5. Itera el plan hasta aprobarlo y envíalo al Agente.</p>
+          <p><em>Ideal para varias archivos o convenciones de equipo.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-blue">
+          <div class="face-icon"><i class="ti ti-bolt"></i></div>
+          <div class="face-title">A — Agent (Agente)</div>
+          <p>Flujo autónomo de varios archivos</p>
+          <div class="flip-hint">↩ flujo</div>
+        </div>
+        <div class="back postit-blue">
+          <p>Edita archivos, ejecuta comandos en terminal, reintenta tras errores.</p>
+          <p>Scaffolding del proyecto, genera y ejecuta pruebas en un solo prompt.</p>
+          <p>Confirma o rechaza cada invocación de herramienta.</p>
+          <p>Revisa diffs antes de aceptar con Mantener/Deshacer.</p>
+          <p><em>Cada transferencia ~1 PRU; tarea compleja puede ser 3–5 PRUs.</em></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SLASH COMMANDS GENERACIÓN -->
+  <div class="section-label">Comandos para generar pruebas — <em>en la vista Chat con el Agente</em></div>
+  <div class="grid-4">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-green">
+          <div class="face-icon"><i class="ti ti-settings-2"></i></div>
+          <div class="face-title">/setupTests</div>
+          <p>Configura el marco de pruebas</p>
+          <div class="flip-hint">↩ detalle</div>
+        </div>
+        <div class="back postit-green">
+          <p>Recomienda un marco y guía la instalación.</p>
+          <p>En modo Agente: instala paquetes y crea el proyecto automáticamente.</p>
+          <p><em>Útil al iniciar un nuevo proyecto o al incorporar uno sin pruebas.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-green">
+          <div class="face-icon"><i class="ti ti-file-code"></i></div>
+          <div class="face-title">/tests (archivo)</div>
+          <p>Todo el archivo activo en el editor</p>
+          <div class="flip-hint">↩ flujo</div>
+        </div>
+        <div class="back postit-green">
+          <p>Abre el archivo a probar → Chat con Agente → escribe <code>/tests + instrucción</code>.</p>
+          <p>Copilot detecta el marco existente y el estilo de codificación.</p>
+          <p>Anexa a archivo existente o crea uno nuevo en la ubicación adecuada.</p>
+          <p>Confirma cada herramienta, revisa diff → Mantener o Deshacer.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-green">
+          <div class="face-icon"><i class="ti ti-cursor-text"></i></div>
+          <div class="face-title">/tests (selección)</div>
+          <p>Método o bloque seleccionado</p>
+          <div class="flip-hint">↩ flujo</div>
+        </div>
+        <div class="back postit-green">
+          <p>Selecciona el método en el editor → Chat con Agente.</p>
+          <p>Escribe: <code>/tests Generate tests for the selected method. Include success, failure, and edge cases.</code></p>
+          <p>Revisa y acepta o descarta los cambios resultantes.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-green">
+          <div class="face-icon"><i class="ti ti-message-2"></i></div>
+          <div class="face-title">Lenguaje natural</div>
+          <p>Sin comandos de barra diagonal</p>
+          <div class="flip-hint">↩ ejemplos</div>
+        </div>
+        <div class="back postit-green">
+          <p>"Genera pruebas xUnit para los métodos y agrégalas al proyecto Calculator.Tests".</p>
+          <p>"Escribe pruebas para CalculateDiscount con casos límite (negativos, cero). Ejecuta las pruebas después".</p>
+          <p>"Crea pruebas de integración para la capa de acceso a datos".</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CONTEXTO Y PERSONALIZACIÓN -->
+  <div class="section-label">Contexto y personalización — <em>mnemónico: "BAME: Botón, Arrastra, Menciona, Externo"</em></div>
+  <div class="grid-2">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-teal">
+          <div class="face-icon"><i class="ti ti-paperclip"></i></div>
+          <div class="face-title">4 formas de adjuntar contexto</div>
+          <p>BAME</p>
+          <div class="flip-hint">↩ detalle</div>
+        </div>
+        <div class="back postit-teal">
+          <p><strong>B — Botón</strong> Agregar contexto: archivos, carpetas, símbolos, selección del editor.</p>
+          <p><strong>A — Arrastra</strong> archivos desde el Explorador o pestañas al Chat.</p>
+          <p><strong>M — #Menciones</strong>: <code>#selection</code>, <code>#editor</code>, <code>#codebase</code>, nombre de archivo/símbolo.</p>
+          <p><strong>E — Externos</strong>: abre archivos MD (convenciones) y adjúntalos via Agregar contexto.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-teal">
+          <div class="face-icon"><i class="ti ti-file-settings"></i></div>
+          <div class="face-title">Instrucciones personalizadas</div>
+          <p>*.instructions.md en el workspace</p>
+          <div class="flip-hint">↩ qué controlan</div>
+        </div>
+        <div class="back postit-teal">
+          <p>Marco preferido (xUnit vs NUnit).</p>
+          <p>Convenciones de nomenclatura de clases y métodos de prueba.</p>
+          <p>Estructura: Arrange-Act-Assert.</p>
+          <p>Patrones: pruebas parametrizadas para valores límite.</p>
+          <p><em>Usa <code>applyTo: tests/**</code> para limitar al directorio de pruebas. Compartir en control de código fuente.</em></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- EXTENSIÓN Y CORRECCIÓN -->
+  <div class="section-label">Extensión y corrección de pruebas — <em>mnemónico: "FEFA: Fantasma, Explorer, Fix, Agente"</em></div>
+  <div class="grid-4">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-orange">
+          <div class="face-icon"><i class="ti ti-ghost"></i></div>
+          <div class="face-title">F — Texto fantasma</div>
+          <p>Casos adicionales sin salir del editor</p>
+          <div class="flip-hint">↩ cuándo funciona mejor</div>
+        </div>
+        <div class="back postit-orange">
+          <p>Cursor al final del último test → Enter → escribe un comentario descriptivo o el inicio del método.</p>
+          <p>Copilot sugiere el test completo con Tab para aceptar.</p>
+          <p><strong>Funciona mejor cuando:</strong> ya hay patrones AAA, el método está importado, el comentario describe el escenario.</p>
+          <p><em>Para trabajo mayor (clase nueva), usa la vista Chat.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-orange">
+          <div class="face-icon"><i class="ti ti-sparkles"></i></div>
+          <div class="face-title">E — Explorer (sparkle)</div>
+          <p>Un clic desde el Test Explorer</p>
+          <div class="flip-hint">↩ flujo</div>
+        </div>
+        <div class="back postit-orange">
+          <p>Ejecuta la prueba → falla → hover sobre prueba con error.</p>
+          <p>Clic en botón <strong>Corregir error de prueba</strong> (ícono sparkle ✨).</p>
+          <p>Copilot abre chat con la prueba fallida + salida como contexto y propone corrección.</p>
+          <p>Aplica con Conservar o descarta con Deshacer → reejecutar para confirmar.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-orange">
+          <div class="face-icon"><i class="ti ti-bandage"></i></div>
+          <div class="face-title">F — /fixTestFailure</div>
+          <p>Desde la vista Chat con contexto extra</p>
+          <div class="flip-hint">↩ cuándo usarlo</div>
+        </div>
+        <div class="back postit-orange">
+          <p>Abre Chat → escribe <code>/fixTestFailure</code>.</p>
+          <p>Adjunta contexto extra: archivos relacionados o salida del terminal.</p>
+          <p>Ideal cuando hay <strong>varios fallos a la vez</strong> o necesitas adjuntar más contexto que el sparkle.</p>
+          <p>Sigue sugerencias → reejecutar para confirmar.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-orange">
+          <div class="face-icon"><i class="ti ti-refresh-alert"></i></div>
+          <div class="face-title">A — Agente automático</div>
+          <p>Ciclo ejecutar-corregir-reejecutar</p>
+          <div class="flip-hint">↩ prompt ejemplo</div>
+        </div>
+        <div class="back postit-orange">
+          <p>Selecciona Agente → prompt:</p>
+          <p><em>"Run the xUnit tests in Calculator.Tests. If any fail, propose and apply fixes, then rerun until they pass."</em></p>
+          <p>El Agente supervisa la salida, identifica errores y repara en varios archivos automáticamente.</p>
+          <p><em>Confirma cada invocación de herramienta; revisa cambios antes de aceptar.</em></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- TABLA: HERRAMIENTA CORRECTA -->
+  <div class="section-label">¿Qué herramienta usar? — <em>guía rápida de decisión</em></div>
+  <div class="grid-2">
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-lime">
+          <div class="face-icon"><i class="ti ti-device-floppy"></i></div>
+          <div class="face-title">Generar pruebas</div>
+          <p>¿Qué agente elijo?</p>
+          <div class="flip-hint">↩ criterios</div>
+        </div>
+        <div class="back postit-lime">
+          <p><strong>Ask</strong> → análisis previo, sin modificar archivos.</p>
+          <p><strong>Plan</strong> → varios archivos, ambigüedad o convenciones del equipo por confirmar.</p>
+          <p><strong>Agent</strong> → tarea bien definida, quieres scaffolding + generación + ejecución en un solo paso.</p>
+          <p><strong>Plan → Agent</strong> → máximo control: plan revisable + implementación autónoma.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-wrap" onclick="this.classList.toggle('flipped')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="face postit-lime">
+          <div class="face-icon"><i class="ti ti-first-aid-kit"></i></div>
+          <div class="face-title">Corregir / ampliar</div>
+          <p>¿Qué herramienta elijo?</p>
+          <div class="flip-hint">↩ criterios</div>
+        </div>
+        <div class="back postit-lime">
+          <p><strong>Texto fantasma</strong> → agregar casos a un archivo de prueba existente con patrón visible.</p>
+          <p><strong>Sparkle (Explorer)</strong> → un solo fallo, corrección rápida y específica.</p>
+          <p><strong>/fixTestFailure</strong> → varios fallos o necesitas adjuntar más contexto.</p>
+          <p><strong>Agente automático</strong> → ejecutar + corregir + reintentar en varios archivos en una sesión.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- RESUMEN -->
+  <div class="summary-box">
+    <strong>Resumen</strong>
+    <p>
+      <strong>Entorno XNM:</strong> VS Code + .NET SDK + C# Dev Kit con Explorador de pruebas. Marcos: xUnit, NUnit, MSTest.<br>
+      <strong>Agentes APA:</strong> Ask (analiza sin modificar), Plan (estrategia revisable), Agent (flujo autónomo multi-archivo). Decide: solo→Agent, ambiguo→Plan+Agent.<br>
+      <strong>Comandos:</strong> /setupTests para configurar, /tests para generar (archivo completo o selección), lenguaje natural con contexto BAME (#selection, #codebase, instrucciones .md).<br>
+      <strong>Extensión y corrección FEFA:</strong> Fantasma (casos adicionales en editor), Explorer sparkle (1 fallo rápido), /fixTestFailure (varios fallos + contexto), Agente automático (ciclo ejecutar-corregir-reejecutar).
+    </p>
+  </div>
+
+  <!-- LEYENDA -->
+  <div class="legend">
+    <span class="postit-yellow">Entorno VS Code</span>
+    <span class="postit-blue">Agentes APA</span>
+    <span class="postit-green">Comandos generación</span>
+    <span class="postit-teal">Contexto y personalización</span>
+    <span class="postit-orange">Extensión y corrección</span>
+    <span class="postit-lime">Guía de decisión</span>
+  </div>
+
+</div>
